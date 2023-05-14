@@ -1,0 +1,211 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap";
+
+.contact-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 2000px;
+	background-color: #ffffff;
+
+	.container1{
+		margin-bottom: 100px;
+		width: 1518px;
+		margin-top: -280px;
+	}
+
+	.quote{
+		margin-bottom: 300px;
+		margin-left: 540px;
+		margin-top: -350px;
+		color: #ffffff;
+		font-size: 50px;
+		font-family: Georgia, 'Times New Roman', Times, serif;
+	}
+
+	.contact-form-container {
+	  display: flex;
+	  padding: 50px;
+	  background-color: #E8F3DB;
+	  border-radius: 10px 10px 10px 10px;
+	  margin-left: 20px;
+	  width: 1400px;
+	  height: 700px;
+
+	  h1 {
+		margin-top: 0;
+		margin-bottom: 30px;
+		font-size: 36px;
+		font-weight: bold;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	  }
+  
+	  form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+  
+		.form-field {
+		  display: flex;
+		  flex-direction: column;
+		  width: 600px;
+  
+		  label {
+			margin-bottom: 5px;
+			font-size: 18px;
+			font-weight: bold;
+		  }
+  
+		  input,
+		  textarea {
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+		  }
+  
+		  textarea {
+			height: 200px;
+		  }
+		}
+  
+		button {
+		  padding: 10px;
+		  background-color: #25a929;
+		  color: #ffffff;
+		  border: none;
+		  border-radius: 5px;
+		  font-size: 16px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  transition: background-color 0.3s ease-in-out;
+  
+		  &:hover {
+			background-color: #034f06;
+		  }
+		}
+	  }
+	}
+
+	.contact-image-container {
+	  flex: 1;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 700px;
+	  margin-right: 20px;
+	  margin-left: 20px;
+	  margin-top: -40px;
+  
+	  img {
+		max-width: 800%;
+		max-height: 800%;
+	  }
+	}
+  }
+.container3{
+	background-color: white;
+	margin-top: 100px;
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	padding: 60px;
+	height: 300px;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: -190px;
+
+	.left{
+		margin-left: -5px;
+	}
+	.right1{
+		margin-top: -90px;
+		margin-left: 1100px;
+
+	}
+	.center2{
+		margin-top: -120px;
+		margin-left: 580px;
+	}
+	.left1{
+		margin-left: -5px;
+		margin-top: 20px;
+		font-weight: 500;
+	}
+	.left2{
+		margin-left: -5px;
+		margin-top: 10px;
+		font-weight: 500;
+	}
+	.center1{
+		margin-left: 520px;
+		margin-top: 20px;
+		font-weight: 500;
+	}
+	.vertical {
+		border-left: 3px solid black;
+		height: 200px;
+		position:absolute;
+		left: 70%;
+		margin-top: -110px;
+	}
+	.vertical1 {
+		border-left: 3px solid black;
+		height: 200px;
+		position:absolute;
+		left: 30%;
+		margin-top: -143px;
+	}
+	.fa {
+		padding: 20px;
+        font-size: 30px;
+        width: 30px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 50%;
+		display: flex;
+		justify-content: space-between;
+
+		 /* Add a hover effect */
+		 .fa:hover {
+			opacity: 0.7;
+		  }
+	}
+	
+		  /* Facebook */
+		  .fa-facebook {
+			background: #3B5998;
+			color: white;
+			margin-left: 1100px;
+			margin-top: 20px;
+			border-radius: 50px;
+			padding-right: 45px;
+			padding-left: 25px;
+			margin-bottom: 45px;
+		  }
+		  
+		  /* Twitter */
+		  .fa-twitter {
+			background: #55ACEE;
+			color: white;
+			margin-left: 1200px;
+			margin-top: -110px;
+			border-radius: 50px;
+			margin-bottom: 20px;
+			padding-right: 46px;
+			padding-left: 24px;
+			margin-right: 20px;
+		  }
+	
+		  .fa-instagram{
+			background: #fb12dc;
+			color: white;
+			margin-left: 1300px;
+			border-radius: 50px;
+			margin-bottom: 60px;
+			padding-right: 48px;
+			padding-left: 24px;
+			margin-top: -95px;
+		  } 
+}

@@ -1,0 +1,212 @@
+.Cart {
+  width: 380px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  justify-content: flex-start;
+  background-color: white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  //   display: none;
+  //   max-height: 80vh;
+  height: 100vh;
+  z-index: 11;
+  flex-direction: column;
+  transition: var(--transition);
+
+  .top__cart-section {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1vmax 2vmax;
+
+    svg {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  }
+
+  .comp2 {
+    justify-content: flex-start;
+  }
+
+  .cart__del-info {
+    background-color: #f8f9fa;
+    width: 100%;
+    padding: 4px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn_sm {
+      padding: 8px 4px;
+      border-radius: 5px;
+      font-size: 10px;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .item__container {
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+    overflow-y: scroll;
+    width: 100%;
+  }
+
+  .place__order {
+    position: absolute;
+    bottom: 0;
+    background-color: #8bc54b;
+    display: flex;
+    margin-left: 1rem;
+    justify-content: space-between;
+    width: 90%;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: white;
+    padding: 2vmax;
+  }
+  padding-bottom: 18px;
+}
+
+.active {
+  display: block;
+  transform: none;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  p {
+    margin: 0;
+  }
+
+  span {
+    padding: 0.4vmax 0.7vmax;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1.5px solid red;
+    color: red;
+  }
+}
+
+.submit {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.address {
+  background-color: #f8f9fa;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.comp2 {
+  padding: 4px 8%;
+}
+
+.address__selection > p {
+  font-size: 0.8rem;
+  padding-left: 2rem;
+  padding-top: 0.2rem;
+}
+.address__selection {
+  width: 100%;
+  padding-top: 1rem;
+
+  .address__selection-container {
+    // padding-left: 2rem;
+    padding: 2vmax;
+    width: 100%;
+    background-color: #f8f9fa;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 99vw;
+  z-index: 15;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    position: absolute;
+    font-size: 2rem;
+    top: 10px;
+    color: white;
+    right: 25px;
+    cursor: pointer;
+    background-color: #a8f556;
+    padding: 0.4vmax;
+    border-radius: 50%;
+  }
+
+  .Address__Box {
+    background-color: white;
+    padding: 2vmax;
+    border-radius: 8px;
+    width: 480px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+
+    .form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 0.4rem;
+
+      .cost__name {
+        display: grid;
+        grid-template-columns: 20% calc(80% - 25px);
+        width: 100%;
+        gap: 25px;
+        input {
+          flex: 1;
+        }
+        select {
+          width: 100px;
+          margin-right: 12px;
+        }
+      }
+
+      .address {
+        width: 100%;
+      }
+
+      input,
+      select {
+        padding: 1vmax;
+        flex: 1;
+      }
+
+      .btn {
+        width: 100%;
+        background-color: #8bc54b;
+        border-radius: 7px;
+        border: none;
+
+        &:hover {
+          border: none;
+          background-color: #a8f556;
+        }
+      }
+    }
+  }
+}

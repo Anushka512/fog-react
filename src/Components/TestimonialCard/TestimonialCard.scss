@@ -1,0 +1,31 @@
+.testimonial__card {
+  width: 350px;
+  height: 200px;
+  text-align: center;
+  gap: 5px;
+  background-color: rgb(230, 230, 230);
+  padding: 1vmax;
+  border-radius: 18px;
+  // box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+
+  .userIMg {
+    border-radius: 50%;
+  }
+
+  img {
+    width: 45px;
+    height: 45px;
+  }
+  .stars{
+    width: 160px;
+    height: 25px;
+  }
+  .name{
+    margin-left: -220px;
+  }
+  .p-text{
+    justify-content: left;
+  }
+  
+}

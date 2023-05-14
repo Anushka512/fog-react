@@ -1,0 +1,121 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 230px;
+  height: 320px;
+  background-color: white;
+  border: 1px solid #D9D9D9;
+  border-radius: 10px;
+  transition: var(--transition);
+  position: relative;
+
+  .card__top {
+    flex: 1;
+    background-color: #f3f9fb;
+    padding: 12px;
+    border-radius: 10px 10px 0px 0px;
+    position: relative;
+    border-bottom: 1px solid #EDEDED;
+
+    p {
+      position: absolute;
+      border-radius: 0px 10px 0px 10px;
+      top: 0px;
+      right: 0px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      padding:7px;
+      color: #f2fef2;
+      background-color: #51aa1b;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+
+    .card__img {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      background-color: #f3f9fb;;
+      position: relative;
+      
+
+      img {
+        width: 190px;
+      }
+    }
+  }
+
+
+  .card__bottom {
+    padding: 10px 12px;
+
+    .card__info {
+      padding-bottom: 8px;
+      border-bottom: 1px solid #EDEDED;
+
+      h3 {
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      span {
+        color: #54B22C;
+        font-size: 15px;
+      }
+    }
+
+    .card__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+      
+
+      .card__price {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 0px 4px;
+
+        .price {
+          text-decoration: line-through;
+          font-weight: 400;
+          font-size: 11px;
+        }
+
+        .sale__price {
+          font-size: 16px;
+          font-weight: 500;
+          color: #FF0202;
+        }
+      }
+
+      .btn {
+        padding: 0.4vmax 0.7vmax;
+        font-size: 14px;
+        border: 1px solid #ff0202;
+        background-color: transparent;
+        color: #ff0202;
+        font-weight: 500;
+        border-radius: 3px;
+        transform-origin: bottom;
+        transition: all 0.2s linear;
+      }
+
+      .btn:hover {
+        background-color: #ff0202;
+        color: white;
+      }
+    }
+  }
+}

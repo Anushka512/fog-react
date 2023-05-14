@@ -1,0 +1,24 @@
+.CategoryComp {
+  width: 142px;
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  img {
+    transition: var(--transition);
+    cursor: pointer;
+    background-color: white;
+    width: 80%;
+    padding: 0.6vmax 0.8vmax;
+    border: 1.5px solid #ff0202;
+    border-radius: 50%;
+
+    &:hover {
+      transform: scale(1.09);
+      box-shadow: 0 0 6px #ff0202;
+    }
+  }
+}

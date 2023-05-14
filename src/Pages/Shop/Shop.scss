@@ -1,0 +1,69 @@
+
+.div__row-img {
+    padding: 5vmax 0 0 0;
+    margin-top: -75px;
+  }
+  
+  .Menu {
+    padding-top: 5vmax;
+    background-color: #fef4fb;
+    padding-bottom: 5vmax;
+  
+    .menu__container > h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .menu__container {
+      .menu__head-sec {
+        font-weight: 400;
+      }
+  
+      .menu__head {
+        font-size: 50px;
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+  
+      .menu__items {
+        gap: 35px;
+        background-color: #ececec;
+        width: 50vmax;
+        margin: 0 auto 35px auto; //For Centering
+        border-radius: 25px;
+  
+        //Removing Marign From Class p-text
+        .p-text {
+          margin: 0;
+        }
+  
+        div {
+          padding: 0.6vmax 0;
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+  
+        //Active Item Will Have this property
+        .item-active {
+          background-color: #8bc54b;
+          color: white;
+          border-radius: 25px;
+          padding: 0.6vmax 10px;
+        }
+      }
+  
+      .menu__cards-container {
+        flex-wrap: wrap;
+        gap: 45px;
+  
+        .Card {
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+  

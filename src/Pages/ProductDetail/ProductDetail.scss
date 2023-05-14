@@ -1,0 +1,77 @@
+.ProductDetail {
+  background-color: #e8f3db;
+
+  .product__detail-container {
+    display: flex;
+    gap: 70px;
+    margin: 0 auto;
+    padding: 90px 8rem;
+
+    .product__img {
+      width: 450px;
+      background-color: white;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img{
+        width: 85%;
+      }
+    }
+
+    .product__details {
+      .product__sm-desc {
+        max-width: 70%;
+      }
+
+      .weight__badge {
+        span {
+          background-color: transparent;
+          border: 1px solid #6c757d;
+          padding: 5px 10px;
+          margin-right: 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          color: #6c757d;
+        }
+
+        .active-badge {
+          background-color: #6c757d;
+          color: white;
+        }
+        margin-bottom: 15px;
+      }
+
+      .prize {
+        font-size: 30px;
+        margin: 10px 0;
+      }
+
+      .submit__btn {
+        .btn {
+          background-color: #8bc54b;
+          border-radius: 8px;
+          border: none;
+        }
+      }
+    }
+
+    .product__details > p {
+      color: #28a745;
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .product__details > h3 {
+      font-size: 40px;
+
+      margin-bottom: 8px;
+    }
+  }
+
+  .product__About-container {
+    background-color: white;
+    padding: 5rem;
+  }
+}

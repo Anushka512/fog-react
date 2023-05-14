@@ -1,0 +1,44 @@
+.AddressBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 2vmax 1vmax;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+
+    .left__add-info{
+        display: flex;
+        justify-content: center;
+
+        svg{
+            font-size: 1.5rem;
+            margin-right: 12px;
+        }
+
+        .info{
+            h5{
+                font-size: 1.2rem;
+            }
+
+            p{
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    span{
+        width: 15px;
+        height: 15px;
+        background-color: gainsboro;
+        border-radius: 50%;
+
+    }
+
+    .left__add-info{
+
+        p{
+            font-size: 0.6rem;
+        }
+    }
+}

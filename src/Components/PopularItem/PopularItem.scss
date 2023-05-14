@@ -1,0 +1,29 @@
+.PopularItem {
+  position: relative;
+  .img__Popular {
+    width: 470px;
+    // padding: 1vmax;
+  }
+
+  .item__info {
+    position: absolute;
+    top: 10px;
+
+    h3,
+    h4,
+    button {
+      margin: 5px 10px;
+    }
+    h4 {
+      font-weight: 500;
+    }
+
+    .pop {
+        margin-top: 15px;
+      padding: 4px 10px;
+      background-color: #ff0202;
+      border-radius: 5px;
+      color: white;
+    }
+  }
+}
