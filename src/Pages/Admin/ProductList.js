@@ -8,27 +8,44 @@ import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
-import { getAdminProduct } from "../../app/slices/products";
+import {
+  getAdminProducts,
+  deleteProduct,
+  resetStatusError,
+} from "../../Redux/slices/productSlice";
 
-const ProductList = ({ history }) => {
+const ProductList = () => {
   const dispatch = useDispatch();
 
-  const { error, products } = useSelector((state) => state.products);
+  const { error, products, isDeleted } = useSelector((state) => state.products);
 
   const deleteProductHandler = (id) => {
-    // dispatch(deleteProduct(id));
+    dispatch(deleteProduct({ id }));
   };
 
   useEffect(() => {
     if (error) {
       swal2.fire({
-        title: "Error",
+        icon: "error",
+        title: error,
         timer: 2500,
       });
+
+      dispatch(resetStatusError());
     }
 
-    dispatch(getAdminProduct());
-  }, [dispatch]);
+    if (isDeleted) {
+      swal2.fire({
+        title: "Deleted",
+        timer: 2500,
+        text: "Product Deleted Successfully",
+        icon: "success",
+      });
+
+      dispatch(resetStatusError());
+    }
+    dispatch(getAdminProducts());
+  }, [dispatch, isDeleted, error]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },

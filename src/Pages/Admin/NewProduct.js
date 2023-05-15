@@ -12,8 +12,8 @@ import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SideBar from "./Sidebar";
 import Swal from "sweetalert2";
+import { getCategories } from "../../Redux/slices/categories";
 import { useNavigate } from "react-router-dom";
-// import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
 function NewProduct() {
   const navigate = useNavigate();
@@ -22,15 +22,17 @@ function NewProduct() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [descountedPrice, setDescountedPrice] = useState(0);
+  const [discountedPrice, setDiscountedPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [longDescription, setLongDescription] = useState("");
+  const [weight, setWeight] = useState(0);
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
   const { success, error, message } = useSelector((state) => state.products);
   const { isLoading } = useSelector((state) => state.app);
+  const { categories } = useSelector((state) => state.categories);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -44,7 +46,8 @@ function NewProduct() {
         images,
         longDescription,
         category,
-        descountedPrice,
+        discountedPrice,
+        weight,
       })
     );
   };
@@ -57,6 +60,7 @@ function NewProduct() {
     } else if (error) {
       Swal.fire("Error", error, "error");
     }
+    dispatch(getCategories());
   }, [dispatch, success, error]);
 
   const createProductImagesChange = (e) => {
@@ -136,24 +140,6 @@ function NewProduct() {
                           <div className="col-lg-6">
                             <div className="fotm-group">
                               <label htmlFor="product_price">
-                                Discounted Price
-                                <span className="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                id="product_price"
-                                className="form-control"
-                                placeholder="Product Discounted Price"
-                                required
-                                onChange={(e) =>
-                                  setDescountedPrice(e.target.value)
-                                }
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="fotm-group">
-                              <label htmlFor="product_price">
                                 Price
                                 <span className="text-danger">*</span>
                               </label>
@@ -164,6 +150,42 @@ function NewProduct() {
                                 placeholder="Product Price"
                                 required
                                 onChange={(e) => setPrice(e.target.value)}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Discounted Price
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_price"
+                                className="form-control"
+                                placeholder="Product Discounted Price"
+                                required
+                                onChange={(e) =>
+                                  setDiscountedPrice(e.target.value)
+                                }
+                              />
+                            </div>
+                          </div>
+
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_weight">
+                                Weight
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_weight"
+                                className="form-control"
+                                placeholder="Product Weight"
+                                required
+                                onChange={(e) => setWeight(e.target.value)}
                               />
                             </div>
                           </div>
@@ -189,14 +211,14 @@ function NewProduct() {
                                 Stock
                                 <span className="text-danger">*</span>
                               </label>
-                              <input
-                                type="number"
-                                id="product_price"
+                              <select
                                 className="form-control"
-                                placeholder="Stock"
-                                required
                                 onChange={(e) => setStock(e.target.value)}
-                              />
+                              >
+                                <option>---Select Stock---</option>
+                                <option>In Stock</option>
+                                <option>Out Of Stock</option>
+                              </select>
                             </div>
                           </div>
                           <div className="col-lg-6">
@@ -205,14 +227,17 @@ function NewProduct() {
                                 Category
                                 <span className="text-danger">*</span>
                               </label>
-                              <input
-                                type="text"
-                                id="product_price"
+                              <select
                                 className="form-control"
-                                placeholder="Category Name"
-                                required
                                 onChange={(e) => setCategory(e.target.value)}
-                              />
+                              >
+                                <option>---Select Category---</option>
+                                {categories.map((item, index) => (
+                                  <option key={item._id} value={item.name}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                              </select>
                             </div>
                           </div>
 

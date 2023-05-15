@@ -13,11 +13,14 @@ import Account from "./Pages/Account/index";
 import Admin from "./Pages/Admin/Dashboard";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
-import CreateProduct from "./Pages/Admin/NewProduct"
+import CreateProduct from "./Pages/Admin/NewProduct";
+import ProductList from "./Pages/Admin/ProductList";
+import Categories from "./Pages/Admin/CategoryList";
 
 import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
 import { useState } from "react";
 import { ContactEmergency } from "@mui/icons-material";
+import CreateCategory from "./Pages/Admin/CreateCategory";
 
 function App() {
   const [toggleCart, setToggleCart] = useState(false);
@@ -36,9 +39,12 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/shop" element={<Products />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/about" element={<About />} />
         <Route path="/reach" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/products" element={<ProductList />} />
+        <Route path="/admin/categories" element={<Categories />} />
+        <Route path="/admin/categories/create" element={<CreateCategory />} />
         <Route path="/admin/createproject" element={<CreateProduct />} />
       </Routes>
       <Cart toggleCart={toggleCart} setToggleCart={handleToggleCart} />
