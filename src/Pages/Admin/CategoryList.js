@@ -10,7 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 
 import SideBar from "./Sidebar";
-import { getCategories } from "../../app/slices/categories";
+import { getCategories } from "../../Redux/slices/categories";
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -34,12 +34,10 @@ const ProductList = ({ history }) => {
 
   const columns = [
     {
-      field: "subcategories",
-      headerName: "Subcategories",
-      width: 300,
-      valueGetter: (params) => {
-        return params.row.subcategories.map((sub) => sub.name).join(", ");
-      },
+      field: "id",
+      headerName: "Category Id",
+      minWidth: 350,
+      flex: 1,
     },
     {
       field: "name",

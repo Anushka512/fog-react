@@ -20,6 +20,20 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
+export const getAdminProducts = createAsyncThunk(
+  "/api/v1/admin/products",
+  async (body) => {
+    try {
+      const response = await axiosClient.get("/api/v1/admin/products");
+      console.log("This is Product Data", response);
+      return response.data;
+    } catch (e) {
+      console.log(e);
+      return Promise.reject(e);
+    }
+  }
+);
+
 //create Product
 export const createProduct = createAsyncThunk(
   "/api/v1/product/admin/new",
@@ -27,8 +41,25 @@ export const createProduct = createAsyncThunk(
     try {
       console.log(body);
       const { data } = await axiosClient.post(
-        "http://localhost:4000/api/v1/admin/product/new",
+        "/api/v1/admin/product/new",
         body
+      );
+      console.log("This is created Product", data);
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+//Delete Product
+export const deleteProduct = createAsyncThunk(
+  "/api/v1/product/admin/:id",
+  async (body, thunkAPI) => {
+    try {
+      console.log(body);
+      const { data } = await axiosClient.delete(
+        `/api/v1/admin/product/${body.id}`
       );
       console.log("This is created Product", data);
       return data;
@@ -44,6 +75,7 @@ const productSlice = createSlice({
     success: false,
     message: "",
     error: false,
+    isDeleted: false,
     products: [],
     carts: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
@@ -69,6 +101,7 @@ const productSlice = createSlice({
       state.error = "";
       state.success = false;
       state.message = "";
+      state.isDeleted = false;
     },
     addToCart: (state, action) => {
       let { id } = action.payload;
@@ -162,6 +195,19 @@ const productSlice = createSlice({
           state.success = true;
           state.message = "Create Succesfully ";
         } else {
+          state.error = action.payload?.message;
+        }
+      })
+      .addCase(getAdminProducts.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.products = action.payload.result;
+        }
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.isDeleted = true;
+        } else {
+          state.isDeleted = false;
           state.error = action.payload?.message;
         }
       });
