@@ -1,0 +1,22 @@
+.per-day-graph {
+    max-width: 800px;
+    margin-bottom: 50px;
+  
+    .recharts-wrapper {
+      font-size: 14px;
+    }
+  
+    .recharts-cartesian-axis-tick-value {
+      fill: #666;
+    }
+  
+    .recharts-tooltip-label {
+      color: #333;
+      font-weight: bold;
+    }
+  
+    .recharts-tooltip-item-value {
+      color: #888;
+    }
+  }
+  

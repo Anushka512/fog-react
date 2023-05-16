@@ -1,0 +1,44 @@
+.topdiv{
+  margin-top: -110px;
+
+.graphs-section {
+    background-color: #ffffff;
+    padding-top: 130px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: -1550px;
+    margin-right: -50px;
+    margin-top: 180px;
+    margin-bottom: 450px;
+    display: flex;
+  
+    h2 {
+      margin-left: 20px;
+      margin-right: -10px;
+      margin-top: -90px;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 90px;
+    }
+    .linechart{
+      margin-left: -160px;
+    }
+    .line-chart {
+      max-width: 600px;
+      margin-bottom: 100px;
+      margin-top: 980px;
+      margin-left: -1000px;
+    }
+    .perdaychart{
+      margin-left: -60px;
+    }
+  
+    .per-day-graph {
+      max-width: 800px;
+      margin-bottom: 100px;
+      margin-left: -90px;
+
+    }
+  }
+}
