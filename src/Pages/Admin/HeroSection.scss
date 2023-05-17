@@ -1,0 +1,25 @@
+.hero-section1 {
+  background-color: #e7b82e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -1300px;
+  margin-bottom: 490px;
+
+  .total-revenue {
+    text-align: center;
+
+    h2 {
+      font-size: 28px;
+      margin-left: -990px;
+      color: #fff;
+    }
+
+    p {
+      font-size: 20px;
+      color: #fff;
+      margin-top: -30px;
+      margin-left: -690px;
+    }
+  }
+}

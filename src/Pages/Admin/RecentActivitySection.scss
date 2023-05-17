@@ -1,0 +1,47 @@
+.recent-activity-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 10px rgba(175, 137, 255, 0.15);
+  transition: transform 0.3s ease-in-out;
+  margin-top: -1390px;
+  margin-left: 350px;
+  margin-right: 200px;
+  margin-bottom: 1300px;
+  background: linear-gradient(98.86deg, #5bff63 0%, #a6ffbf 100%);
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      
+  
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        border-bottom: 1px solid #f5f5f5;
+        padding-bottom: 1rem;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+  
+        .activity-type {
+          font-weight: bold;
+        }
+  
+        .activity-time {
+          color: #888;
+        }
+      }
+    }
+  }
+  
