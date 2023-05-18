@@ -54,15 +54,13 @@ function About() {
           <h2 className="ncr">BEST GLUTEN FREE PRODUCT IN DELHI-NCR</h2>
         </div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Posuere
-          lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Posuere lorem ipsum dolor
-          sit amet consectetur adipiscing. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Posuere lorem ipsum dolor sit amet
-          consectetur adipiscing.
+          Welcome to Free of Gluten by Chocolate Temptation, a unique gluten-free food service dedicated to providing the ultimate experience for all our customers. <br></br>
+          We understand that living with gluten intolerance or celiac disease can be a challenging and frustrating experience. That's why we built the Free of Gluten community - helping those with special dietary needs enjoy numerous mouth-watering meals without subtle worries!<br></br>
+          We use only the freshest and highest quality ingredients to create dishes - that are both flavourful and healthy. From delectable appetizers to satisfying entrees and tempting desserts, our menu has something for everyone.<br></br>
+          But we are more than just a restaurant; we are a community of individuals sharing the passion for healthy and delicious gluten-free food.
+          At Free of Gluten, we are committed to providing the highest level of service and satisfaction. We take pride in our attention to detail and our commitment to excellence. Our team, dedicated to every customer, ensures that consumers derive maximum contentment and pleasure, seeking from our innovative, healthy, and delectable presentations.
+          <br></br>Whether you are gluten intolerant, celiac, or simply looking for a healthy and delicious meal, we invite you to join us at Free of Gluten. Come and experience the ultimate gluten-free legacy from the comfort of your home -<b>an experience you will never forget!</b>
+
         </p>
       </section>
 
@@ -74,19 +72,18 @@ function About() {
             <div className="about__banner-info">
               <h3 className="ab-head-first">What Inspire us?</h3>
               <h2 className="ab-head-sec">
-                Story behind{" "}
-                <span style={{ fontWeight: "bold" }}> Free Of Gluten </span>
+                Story behind{" "}-
+                <span style={{ fontWeight: "bold" }}> “A Tryst with Destiny!” </span>
               </h2>
               <p className="p-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Posuere lorem ipsum dolor sit amet consectetur adipiscing.
+                In 2010, Free of Gluten was established in the vibrant city of New Delhi with a singular mission: to provide delicious and healthy gluten-free food for everyone. At the time, gluten-free food was a relatively new concept, rocking back and forth in its infancy. But only a few options were available for those with gluten intolerance and celiac disease.
+                Our team of passionate bakers and confectioners recognized this gap in the market and set out to create a range of gluten-free products that were healthily delectable.
+                We understood that people with gluten intolerance and celiac disease deserved access to the same delicious and varied food options as everyone else - and we were determined to make this a reality!
+                Our journey began with carefully crafting new recipes in a controlled gluten-free environment. It was a painstaking process that required experimentation with myriad ingredients and techniques to achieve the perfect texture and flavour. But our motives, driven by our passion - to innovate something special and unique, didn't let us halt to see how far we've come!
+                As our range of gluten-free products grew, so did our customer base. We were overwhelmed by the positive feedback we received from our customers, who appreciated the quality and taste of our products and the care and attention we put into every one.
+                Today, Free of Gluten is a leading gluten-free food-producing initiative, with over 1 lakh happy customers across India. We are proud to offer a diverse range of products, from sweet treats to savoury snacks, all made with the same dedication to quality and taste that has been our hallmark since the beginning.
+                Our journey has been one of passion, dedication, and a commitment to making a positive difference in the lives of those with gluten intolerance and celiac disease. And we look forward to continuing to provide delicious and healthy gluten-free food for years to come!
+
               </p>
               <button className="btn1">
                 <img src={arrow} alt="" className="arrow" /> Story behind Free

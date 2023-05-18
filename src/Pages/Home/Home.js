@@ -20,7 +20,6 @@ import { MdOutlineSupportAgent, MdPayments } from "react-icons/md";
 import { BiTimer } from "react-icons/bi";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import { ProductData } from "../../Data/productsData.js";
-
 import "./Home.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
