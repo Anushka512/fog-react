@@ -32,10 +32,23 @@ export const createUser = createAsyncThunk(
   }
 );
 
+//Get All User (admin)
+
+export const getAllUsers = createAsyncThunk("/api/v1/admin/users", async () => {
+  try {
+    const response = await axiosClient.get("/api/v1/admin/users");
+    console.log("This is Response from our APi", response);
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+});
+
 // User Slice
 const userSlice = createSlice({
   name: "user",
   initialState: {
+    allUsers: [],
     status: false,
     user: {},
     isAuthenticated: false,
@@ -85,6 +98,11 @@ const userSlice = createSlice({
 
         if (action.payload.statusCode === 401) {
           state.error = action.payload.message;
+        }
+      })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.allUsers = action.payload.result;
         }
       });
   },

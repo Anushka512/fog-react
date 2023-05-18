@@ -10,66 +10,42 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 
 import SideBar from "./Sidebar";
-import { getCategories } from "../../Redux/slices/categories";
+import { getAllUsers } from "../../Redux/slices/user";
 
-const ProductList = ({ history }) => {
+const UserList = () => {
   const dispatch = useDispatch();
 
-  const { error, categories } = useSelector((state) => state.categories);
+  const { allUsers } = useSelector((state) => state.user);
 
   const deleteProductHandler = (id) => {
     // dispatch(deleteProduct(id));
   };
 
   useEffect(() => {
-    if (error) {
-      swal2.fire({
-        title: "Error",
-        timer: 2500,
-      });
-    }
+    // if (error) {
+    //   swal2.fire({
+    //     title: "Error",
+    //     timer: 2500,
+    //   });
+    // }
 
-    dispatch(getCategories());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   const columns = [
-    {
-      field: "_id",
-      headerName: "Category Id",
-      minWidth: 350,
-      flex: 1,
-    },
-    {
-      field: "name",
-      headerName: "Category Name",
-      minWidth: 350,
-      flex: 1,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      minWidth: 150,
-      flex: 0.3,
-      renderCell: (params) => (
-        <Tooltip title={params.value}>
-          <div
-            style={{
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {params.value}
-          </div>
-        </Tooltip>
-      ),
-    },
+    { field: "_id", headerName: "User ID", minWidth: 200, flex: 0.5 },
 
     {
-      field: "title",
-      headerName: "Title",
-      minWidth: 270,
-      flex: 0.5,
+      field: "name",
+      headerName: "User Name",
+      minWidth: 350,
+      flex: 1,
+    },
+    {
+      field: "email",
+      headerName: "User Email",
+      minWidth: 350,
+      flex: 1,
     },
 
     {
@@ -82,9 +58,6 @@ const ProductList = ({ history }) => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.id}`}>
-              <EditIcon />
-            </Link>
             <Button onClick={() => deleteProductHandler(params.id)}>
               <DeleteIcon />
             </Button>
@@ -96,32 +69,23 @@ const ProductList = ({ history }) => {
 
   const rows = [];
 
-  categories &&
-    categories.forEach((item) => {
+  allUsers &&
+    allUsers.forEach((item) => {
       rows.push({
-        _id: "item._id",
-        description: item.description,
-        title: item.title,
+        _id: item._id,
         name: item.name,
+        email: item.email,
       });
     });
-  console.log("This is category Id", categories[0]._id);
   return (
     <Fragment>
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL CATEGORIES</h1>
-          <div className="btn create">
-            <Link
-              to="/admin/categories/create"
-              className="theme-btn-one bg-black btn_md"
-            >
-              Create Category
-            </Link>
-          </div>
+          <h1 id="productListHeading">ALL USERS</h1>
+
           <DataGrid
-            rows={categories}
+            rows={allUsers}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
@@ -134,4 +98,4 @@ const ProductList = ({ history }) => {
   );
 };
 
-export default ProductList;
+export default UserList;

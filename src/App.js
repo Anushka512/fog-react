@@ -21,6 +21,7 @@ import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
 import { useState } from "react";
 import { ContactEmergency } from "@mui/icons-material";
 import CreateCategory from "./Pages/Admin/CreateCategory";
+import UserList from "./Pages/Admin/UserList";
 
 function App() {
   const [toggleCart, setToggleCart] = useState(false);
@@ -46,6 +47,7 @@ function App() {
         <Route path="/admin/categories" element={<Categories />} />
         <Route path="/admin/categories/create" element={<CreateCategory />} />
         <Route path="/admin/createproject" element={<CreateProduct />} />
+        <Route path="/admin/users" element={<UserList />} />
       </Routes>
       <Cart toggleCart={toggleCart} setToggleCart={handleToggleCart} />
       <Footer />
