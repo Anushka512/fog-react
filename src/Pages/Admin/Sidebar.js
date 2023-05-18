@@ -98,40 +98,104 @@
 
 // export default Sidebar;
 
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import './sidebar.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChartBar, faBox, faList, faShoppingCart, faUsers, faStar } from '@fortawesome/free-solid-svg-icons'
+import "./sidebar.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartBar,
+  faBox,
+  faList,
+  faShoppingCart,
+  faUsers,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
-return (
-<div className="sidebar">
-<ul>
-<Link to="/admin" style={{color:"white"}}><li className="option active"><FontAwesomeIcon icon={faChartBar} />Dashboard</li></Link>
-<li className="option">
-<FontAwesomeIcon icon={faBox} />Products
-<ul>
-<Link to="/admin/products" style={{color:"white"}}><li><FontAwesomeIcon icon={faList} />All</li></Link>
-<Link to="/admin/createproject" style={{color:"white"}}><li><FontAwesomeIcon icon={faBox} />Create</li></Link>
-</ul>
-</li>
-<li className="option">
-<FontAwesomeIcon icon={faList} />Catalog
-<ul>
-<Link to="/admin/categories" style={{color:"white"}}><li><FontAwesomeIcon icon={faList} />All Categories</li></Link>
-<Link to="/admin/categories/create"style={{color:"white"}}><li><FontAwesomeIcon icon={faList} />Create Category</li></Link>
-<Link to="/admin/categories/create-sub" style={{color:"white"}}><li><FontAwesomeIcon icon={faList} />Create Subcategory</li></Link>
-<Link to="/admin/sizes" style={{color:"white"}}><li><FontAwesomeIcon icon={faList} />Sizes</li></Link>
-<Link to="/admin/pincodes" style={{color:"white"}}><li><FontAwesomeIcon icon={faList} />Pincodes</li></Link>
-</ul>
-</li>
-<Link to="/admin/orders" style={{color:"white"}}><li className="option"><FontAwesomeIcon icon={faShoppingCart} />Orders</li></Link>
-<Link to="/admin/users" style={{color:"white"}}><li className="option"><FontAwesomeIcon icon={faUsers} />Users</li></Link>
-<Link to="/admin/reviews" style={{color:"white"}}><li className="option"><FontAwesomeIcon icon={faStar} />Reviews</li></Link>
-</ul>
-</div>
-);
+  return (
+    <div className="sidebar">
+      <ul>
+        <Link to="/admin" style={{ color: "white" }}>
+          <li className="option active">
+            <FontAwesomeIcon icon={faChartBar} />
+            Dashboard
+          </li>
+        </Link>
+        <li className="option">
+          <FontAwesomeIcon icon={faBox} />
+          Products
+          <ul>
+            <Link to="/admin/products" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faList} />
+                All
+              </li>
+            </Link>
+            <Link to="/admin/createproject" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faBox} />
+                Create
+              </li>
+            </Link>
+          </ul>
+        </li>
+        <li className="option">
+          <FontAwesomeIcon icon={faList} />
+          Catalog
+          <ul>
+            <Link to="/admin/categories" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faList} />
+                All Categories
+              </li>
+            </Link>
+            <Link to="/admin/categories/create" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faList} />
+                Create Category
+              </li>
+            </Link>
+            <Link to="/admin/categories/create-sub" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faList} />
+                Create Subcategory
+              </li>
+            </Link>
+            <Link to="/admin/sizes" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faList} />
+                Sizes
+              </li>
+            </Link>
+            <Link to="/admin/pincodes" style={{ color: "white" }}>
+              <li>
+                <FontAwesomeIcon icon={faList} />
+                Pincodes
+              </li>
+            </Link>
+          </ul>
+        </li>
+        <Link to="/admin/orders" style={{ color: "white" }}>
+          <li className="option">
+            <FontAwesomeIcon icon={faShoppingCart} />
+            Orders
+          </li>
+        </Link>
+        <Link to="/admin/users" style={{ color: "white" }}>
+          <li className="option">
+            <FontAwesomeIcon icon={faUsers} />
+            Users
+          </li>
+        </Link>
+        <Link to="/admin/reviews" style={{ color: "white" }}>
+          <li className="option">
+            <FontAwesomeIcon icon={faStar} />
+            Reviews
+          </li>
+        </Link>
+      </ul>
+    </div>
+  );
 };
 
 export default Sidebar;
