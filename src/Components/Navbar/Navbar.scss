@@ -1,3 +1,4 @@
+
 .top__nav {
   display: flex;
   justify-content: space-between;
@@ -19,6 +20,25 @@
     color: #ffffff;
     font-size: 19px;
     
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+
+    .social__icon {
+      margin-top: 10px;
+
+      svg {
+        margin-bottom: 10px;
+      }
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
   }
 }
 
@@ -66,6 +86,32 @@ nav {
         color: var(--secondary-black);
         font-size: 25px;
         cursor: pointer;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    .nav__container {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .logo {
+        margin-bottom: 10px;
+      }
+
+      ul {
+        gap: 20px;
+
+        li {
+          a {
+            font-size: 16px;
+          }
+        }
+      }
+      .right {
+        margin-top: 10px;
       }
     }
   }
