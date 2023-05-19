@@ -30,3 +30,51 @@
     }
   }
 }
+
+
+/* Tablets/iPad */
+@media (max-width: 1024px) {
+  .error-page .error-page-wrapper .error-top {
+    // flex-direction: column;
+
+    h1 {
+      font-size: 200px;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+}
+
+/* Desktops */
+@media (min-width: 1025px) {
+  .error-page .error-page-wrapper .error-top {
+    flex-direction: row;
+
+    h1 {
+      font-size: 390px;
+    }
+
+    img {
+      width: 300px;
+    }
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 767px) {
+  .error-page .error-page-wrapper .error-top {
+    // flex-direction: column;
+
+    margin-top: -290px;
+
+    h1 {
+      font-size: 140px;
+    }
+
+    img {
+      width: 145px;
+    }
+  }
+}
