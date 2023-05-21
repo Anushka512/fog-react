@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Banner from "../../Assets/Images/hero-img-new.png";
-import CardImg from "../../Assets/Images/3.jpg.png";
+// import CardImg from "../../Assets/Images/3.jpg.png";
 import logoSec from "../../Assets/Images/logo__sec.png";
 import aboutBanner from "../../Assets/Images/all.png";
 // import rowIMG from "../../Assets/Images/div.row.png";
@@ -19,7 +19,7 @@ import { FiTruck } from "react-icons/fi";
 import { MdOutlineSupportAgent, MdPayments } from "react-icons/md";
 import { BiTimer } from "react-icons/bi";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
-import { ProductData } from "../../Data/productsData.js";
+// import { ProductData } from "../../Data/productsData.js";//
 import "./Home.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -92,18 +92,6 @@ function Home() {
       <div className="banner">
         <div className=" hero__container">
           <img src={Banner} alt="HERO__IMG" />
-          {/* <div className="home__h-img">
-            <img src={Banner} alt="HERO__IMG" />
-          </div>
-          <div className="home__h-info">
-            <h1>
-              <span>It’s not a dream. </span>Gluten Free is finally real!
-            </h1>
-            <p className="p-text">
-              lorem ipsum ld{" "}
-            </p>
-            <button className="btn cart">Shop Now</button>
-          </div> */}
         </div>
       </div>
 
@@ -187,13 +175,6 @@ function Home() {
                 id={item._id}
               />
             ))}
-            {/* <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} /> */}
           </div>
           <div className="scroll__buttons">
             <AiFillCaretRight
