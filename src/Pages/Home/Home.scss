@@ -1,7 +1,4 @@
 .banner {
-  // height: 80vh;
-  // padding-top: 2vmin;
-  // padding-bottom: 2vmin;
   background-color: #fef4fb;
 
   .hero__container {
@@ -11,32 +8,12 @@
     width: 100%;
 
   }
-
-  // .home__h-img {
-  //   width: 690px;
-  // }
-
-  // .home__h-info>h1 {
-  //   font-size: 40px;
-  //   margin-bottom: 38px;
-  //   user-select: none;
-
-  //   span {
-  //     font-weight: 400;
-  //   }
-  // }
-
-  // .cart {
-  //   border-radius: 22px;
-  //   color: white;
-  // }
 }
 
 //----------------------------SERVICES-----------------
 .service__detail{
   background-color: var(--fade-yl-bg);
   height: 150px;
-  // border: 1px solid black;
   position: relative;
   position: relative;
 
@@ -53,7 +30,6 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.184);
-  //  width: 90%;
   
     &:last-child {
       border-right: none;
@@ -123,8 +99,6 @@
       display: grid;
       grid-auto-flow: column;
       grid-auto-columns: 21%;
-
-      // padding: 0 (2rem) (2rem);
       overflow-x: auto;
       overscroll-behavior-inline: contain;
       -webkit-overflow-scrolling: touch;
@@ -421,7 +395,6 @@
     text-align: center;
     margin-left: -270px;
     font-weight: 400;
-    // margin-bottom: 50px;
   }
   .enjoy1{
     margin-left: 300px;
@@ -617,5 +590,82 @@
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+// ----------------------MEDIA QUERIES-------------------
+/* Tablets/iPads */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .banner .hero__container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .service__detail .services__option .ser {
+    width: 23%;
+  }
+
+  .products .products__container .product__heading h1 {
+    font-size: 40px;
+  }
+
+  .footer .footer__container {
+    flex-direction: row-reverse;
+  }
+
+  .footer .footer__left {
+    width: 40%;
+  }
+
+  .footer .footer__right .footer__menu {
+    flex-direction: row;
+  }
+
+  .footer .footer__right .footer__menu h4 {
+    margin-right: 30px;
+  }
+}
+
+/* Desktops */
+@media only screen and (min-width: 1024px) {
+  .banner .hero__container {
+    width: 100%;
+  }
+
+  .footer .footer__container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile screens */
+@media only screen and (max-width: 767px) {
+  .banner .hero__container {
+    width: 100%;
+  }
+
+  .service__detail .services__option .ser {
+    width: 100%;
+  }
+
+  .products .products__container .product__heading h1 {
+    font-size: 32px;
+  }
+
+  .footer .footer__container {
+    flex-direction: column;
+  }
+
+  .footer .footer__left {
+    width: 100%;
+  }
+
+  .footer .footer__right .footer__menu {
+    flex-direction: column;
+  }
+
+  .footer .footer__right .footer__menu h4 {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 }
