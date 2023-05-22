@@ -80,10 +80,6 @@ function About() {
                  At the time, gluten-free food was a relatively new concept, rocking back and forth in its infancy. But only a few options were available for those with gluten intolerance and celiac disease.
                 Our team of passionate bakers and confectioners recognized this gap in the market and set out to create a range of gluten-free products that were healthily delectable.
               </p>
-              {/* <button className="btn1">
-                <img src={arrow} alt="" className="arrow" /> Story behind Free
-                Of Gluten{" "}
-              </button> */}
             </div>
           </div>
         </div>
@@ -193,50 +189,6 @@ function About() {
           <span>A-30 road, Old city, new delhi, India</span>
         </div>
       </div>
-
-      {/* Gallery Section
-      <section className="gallery-section">
-        <div className="section-title">
-          <h2>Gallery</h2>
-        </div>
-        <div className="gallery-images">
-          <img src="gallery-image-1.jpg" alt="Gallery 1" />
-          <img src="gallery-image-2.jpg" alt="Gallery 2" />
-          <img src="gallery-image-3.jpg" alt="Gallery 3" />
-          <img src="gallery-image-4.jpg" alt="Gallery 4" />
-          <img src="gallery-image-5.jpg" alt="Gallery 5" />
-          <img src="gallery-image-6.jpg" alt="Gallery 6" />
-        </div>
-      </section> */}
-
-      {/* Team Section */}
-      {/* <section className="team-section">
-        <div className="section-title">
-          <h2>Our Team</h2>
-        </div>
-        <div className="team-members">
-<div className="team-member">
-<img src="team-member-1.jpg" alt="Team Member 1" />
-<h4>John Doe</h4>
-<p>CEO</p>
-</div>
-<div className="team-member">
-<img src="team-member-2.jpg" alt="Team Member 2" />
-<h4>Jane Smith</h4>
-<p>COO</p>
-</div>
-<div className="team-member">
-<img src="team-member-3.jpg" alt="Team Member 3" />
-<h4>Mike Johnson</h4>
-<p>CTO</p>
-</div>
-<div className="team-member">
-<img src="team-member-4.jpg" alt="Team Member 4" />
-<h4>Sarah Lee</h4>
-<p>CFO</p>
-</div>
-</div>
-</section> */}
     </div>
   );
 }
