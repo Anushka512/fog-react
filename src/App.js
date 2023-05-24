@@ -9,7 +9,7 @@ import Login from "./Pages/Login/Login";
 import Products from "./Pages/Shop/Shop.js";
 import Faq from "./Pages/FAQ/Faq";
 import Cart from "./Components/Cart/Cart.js";
-import Account from "./Pages/Account/index";
+import Account from "./Pages/Account/Account";
 import Admin from "./Pages/Admin/Dashboard";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
@@ -19,7 +19,7 @@ import Categories from "./Pages/Admin/CategoryList";
 
 import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
 import { useState } from "react";
-import { ContactEmergency } from "@mui/icons-material";
+// import { ContactEmergency } from "@mui/icons-material";
 import CreateCategory from "./Pages/Admin/CreateCategory";
 import UserList from "./Pages/Admin/UserList";
 

@@ -1,6 +1,5 @@
 import React from "react";
 import Dummy from "../../Assets/Images/3.jpg.png";
-
 import "./ProductDetail.scss";
 
 function ProductDetails() {

@@ -338,7 +338,7 @@
   background-color: #ffffff;
 
   h2 {
-
+    
     text-align: center;
     font-family: "cookie", cursive;
     font-size: 50px;
@@ -364,27 +364,24 @@
   background-color: rgb(255, 248, 239);
   padding: 100px;
   margin-top: -40px;
-  text-align: center;
-  font-size: 100px;
-
-  div {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    font-size: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0px 15px;
+  
+  h1{
+    margin-left: 500px;
+    font-size: 40px;
   }
-}
-
-.food {
-  color: #54B22C;
-}
-
-.life {
-  color: red;
+  .food{
+    margin-left: 735px;
+    margin-top: -48px;
+    color: #54B22C;
+  }
+  .life{
+    color: red;
+    margin-left: 635px;
+    margin-top: -48px;
+  }
+  .life1{
+    margin-left: 530px;
+  }
 }
 
 
