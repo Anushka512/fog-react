@@ -288,25 +288,30 @@ function Home() {
 
       {/* text section  */}
 
-      <div className="lifestyle">
-        <h1>It's not just </h1>
-        <h1 className="food">food,</h1>
-        <br />
-        <h1 className="life1">It's a</h1>
-        <h1 className="life">lifestyle!</h1>
-      </div>
+      <h1 className="lifestyle">
+        <div>
+          It's not just
+          <span className="food"> Food,</span>
+        </div>
+        <div>
+          It's a
+          <span className="life"> Lifestyle!</span>
+        </div>
+      </h1>
 
       {/* {---------------------TESTIMONIALS SECTION START----------------------------} */}
 
       <div className="Testimonials1">
-        <h2>We Serve - they </h2>
-        <h2 className="enjoy1">enjoy</h2>
-        <h2 className="every1">every</h2>
-        <br />
-        <br />
-        <h2>minute of their</h2>
-        <img src={arrow} alt="" />
-        <h2 className="live1">lives</h2>
+        <h1>
+          We Serve - they
+          <span className="enjoy1"> Enjoy</span>
+          every
+        </h1>
+        <h1>
+          minute of their
+          {/* <img src={arrow} alt="" /> */}
+          <span className="live1"> Lives</span>
+        </h1>
       </div>
 
       <div className="test">
