@@ -99,13 +99,12 @@ const ProductList = ({ history }) => {
   categories &&
     categories.forEach((item) => {
       rows.push({
-        _id: "item._id",
+        _id: item._id,
         description: item.description,
         title: item.title,
         name: item.name,
       });
     });
-  console.log("This is category Id", categories[0]._id);
   return (
     <Fragment>
       <div className="dashboard">

@@ -66,7 +66,7 @@ export const createProduct = createAsyncThunk(
   "/api/v1/product/admin/new",
   async (body, thunkAPI) => {
     try {
-      console.log(body);
+      thunkAPI.dispatch(setLoading(true));
       const { data } = await axiosClient.post(
         "/api/v1/admin/product/new",
         body
@@ -75,6 +75,8 @@ export const createProduct = createAsyncThunk(
       return data;
     } catch (error) {
       return error;
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
     }
   }
 );

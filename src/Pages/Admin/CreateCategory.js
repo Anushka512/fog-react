@@ -6,11 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import swal2 from "sweetalert2";
 import Button from "@mui/material/Button";
 import SideBar from "./Sidebar";
+import Loader from "../../Components/Loader/Loader";
 import {
   createNewCategory,
   setStatusResponse,
 } from "../../Redux/slices/categories";
-import { setLoading } from "../../Redux/slices/appConfigSlice";
 
 function CreateCategory() {
   const navigate = useNavigate();
@@ -65,118 +65,125 @@ function CreateCategory() {
     <Fragment>
       <div className="dashboard">
         <SideBar />
-        <section id="add_product_area">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="add_product_wrapper">
-                  <h4>Add Category</h4>
-                  <form
-                    className="add_product_form"
-                    onSubmit={handleSubmitForm}
-                  >
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <div className="image-input">
-                          {img && (
-                            <img
-                              src={img}
-                              className="image-preview"
-                              alt="img"
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <section id="add_product_area">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="add_product_wrapper">
+                    <h4>Add Category</h4>
+                    <form
+                      className="add_product_form"
+                      onSubmit={handleSubmitForm}
+                    >
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="image-input">
+                            {img && (
+                              <img
+                                src={img}
+                                className="image-preview"
+                                alt="img"
+                              />
+                            )}
+                            <input
+                              onChange={createProductImage}
+                              type="file"
+                              accept="image/*"
+                              id="imageInput"
                             />
-                          )}
-                          <input
-                            onChange={createProductImage}
-                            type="file"
-                            accept="image/*"
-                            id="imageInput"
-                          />
-                          <label htmlFor="imageInput" className="image-button">
-                            <i className="fa fa-image"></i>Choose image
-                          </label>
+                            <label
+                              htmlFor="imageInput"
+                              className="image-button"
+                            >
+                              <i className="fa fa-image"></i>Choose image
+                            </label>
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="fotm-group">
-                          <label htmlFor="product_name">
-                            Category Name
-                            <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            id="product_name"
-                            className="form-control"
-                            placeholder="Category Title here"
-                            required
-                            onChange={(e) => setName(e.target.value)}
-                          />
+                        <div className="col-lg-12">
+                          <div className="fotm-group">
+                            <label htmlFor="product_name">
+                              Category Name
+                              <span className="text-danger">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              id="product_name"
+                              className="form-control"
+                              placeholder="Category Title here"
+                              required
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="fotm-group">
-                          <label htmlFor="product_price">
-                            Meta Title<span className="text-danger">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            id="product_price"
-                            className="form-control"
-                            placeholder="Meta Title"
-                            required
-                            onChange={(e) => setTitle(e.target.value)}
-                          />
+                        <div className="col-lg-12">
+                          <div className="fotm-group">
+                            <label htmlFor="product_price">
+                              Meta Title<span className="text-danger">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              id="product_price"
+                              className="form-control"
+                              placeholder="Meta Title"
+                              required
+                              onChange={(e) => setTitle(e.target.value)}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="fotm-group">
-                          <label htmlFor="product_price">
-                            Meta Keyword
-                            <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            id="product_price"
-                            className="form-control"
-                            placeholder="Meta Keyword"
-                            required
-                            onChange={(e) => setKeyword(e.target.value)}
-                          />
+                        <div className="col-lg-12">
+                          <div className="fotm-group">
+                            <label htmlFor="product_price">
+                              Meta Keyword
+                              <span className="text-danger">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              id="product_price"
+                              className="form-control"
+                              placeholder="Meta Keyword"
+                              required
+                              onChange={(e) => setKeyword(e.target.value)}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="fotm-group">
-                          <label htmlFor="product_price">
-                            Meta Description
-                            <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            id="product_price"
-                            className="form-control"
-                            placeholder="Meta Description"
-                            required
-                            onChange={(e) => setDesc(e.target.value)}
-                          />
+                        <div className="col-lg-12">
+                          <div className="fotm-group">
+                            <label htmlFor="product_price">
+                              Meta Description
+                              <span className="text-danger">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              id="product_price"
+                              className="form-control"
+                              placeholder="Meta Description"
+                              required
+                              onChange={(e) => setDesc(e.target.value)}
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="col-lg-12">
-                        <div className="btn_right_table">
-                          <button
-                            className="theme-btn-one bg-black btn_sm"
-                            type="submit"
-                          >
-                            Add Category
-                          </button>
+                        <div className="col-lg-12">
+                          <div className="btn_right_table">
+                            <button
+                              className="theme-btn-one bg-black btn_sm"
+                              type="submit"
+                            >
+                              Add Category
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </Fragment>
   );

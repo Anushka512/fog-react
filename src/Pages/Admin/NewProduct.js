@@ -14,6 +14,7 @@ import SideBar from "./Sidebar";
 import Swal from "sweetalert2";
 import { getCategories } from "../../Redux/slices/categories";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 
 function NewProduct() {
   const navigate = useNavigate();
@@ -85,12 +86,12 @@ function NewProduct() {
 
   return (
     <Fragment>
-      {isLoading ? (
-        "<Loader />"
-      ) : (
-        <Fragment>
-          <div className="dashboard">
-            <SideBar />
+      <Fragment>
+        <div className="dashboard">
+          <SideBar />
+          {isLoading ? (
+            <Loader />
+          ) : (
             <section id="add_product_area">
               <div className="container">
                 <div className="row">
@@ -288,9 +289,9 @@ function NewProduct() {
                 </div>
               </div>
             </section>
-          </div>
-        </Fragment>
-      )}
+          )}
+        </div>
+      </Fragment>
     </Fragment>
   );
 }

@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const appConfigSlice = createSlice({
-  name: "appConfig",
+  name: "appConfigSlice",
   initialState: {
     isLoading: false,
   },
-  reducer: {
+  reducers: {
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
@@ -13,4 +13,5 @@ const appConfigSlice = createSlice({
 });
 
 export default appConfigSlice.reducer;
+
 export const { setLoading } = appConfigSlice.actions;

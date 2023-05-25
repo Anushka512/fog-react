@@ -19,12 +19,15 @@ export const createNewCategory = createAsyncThunk(
   "/api/v1/add-cat",
   async (body, thunkAPI) => {
     try {
+      thunkAPI.dispatch(setLoading(true));
       console.log("This is Body for Category Section ", body);
       const response = await axiosClient.post("/api/v1/add-cat", body);
       console.log("This is New Category", response);
       return response.data;
     } catch (e) {
       return Promise.reject(e);
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
     }
   }
 );
