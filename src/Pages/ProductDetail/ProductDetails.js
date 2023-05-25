@@ -26,7 +26,7 @@ function ProductDetails() {
     <div className="ProductDetail">
       <div className="container product__detail-container">
         <div className="product__img">
-        { product.length && <img src={`${URL}${product.images[0]?.filename}`}  alt=''/> }
+        { product.length && <img  src={product.images[0].url}  alt="product"/> }
           {/* <img src={product.images[0].url} alt="Product" /> */}
         </div>
         <div className="product__details">
@@ -45,10 +45,10 @@ function ProductDetails() {
           </div>
 
           <div className="prize">
-            <h5>Actual Price ₹{product.price} <br></br> Discounted Price ₹{product.discountedPrice}</h5>  
+            <h5>₹{product.price}</h5>
             <h6>{product.Stock}</h6>
           </div>
-
+<br></br>
           <div className="submit__btn">
             <button className="btn" onClick={() => addToCart(product.id)}>Add To Cart</button>
           </div>
@@ -62,7 +62,7 @@ function ProductDetails() {
             {product.longDescription}
           </p>
         </div>
-
+<br></br>
         <div className="manu__detail">
           <h3>Manufacturer Details</h3>
           <p className="p-text">
@@ -75,6 +75,7 @@ function ProductDetails() {
             small note about the product small note about the product
           </p>
         </div>
+        <br></br>
 
         <div className="disclaimer">
           <h3>Disclaimer</h3>

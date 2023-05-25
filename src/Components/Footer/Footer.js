@@ -42,7 +42,7 @@ function Footer() {
           <h4>Contact Us</h4>
           <div className="cont c-1">
             <span className="icon">
-              <i class="fa-regular fa-phone"></i>{" "}
+              <i class="fa fa-phone"></i>{" "}
             </span>
             <h5>9876543210</h5>
           </div>
@@ -54,7 +54,7 @@ function Footer() {
           </div>
           <div className="cont c-3">
             <span className="icon">
-              <i class="fa-regular fa-location-dot"></i>{" "}
+              <i class="fa fa-location-dot"></i>{" "}
             </span>
             <h5>xyz, old city jamun road, Delhi.</h5>
           </div>
