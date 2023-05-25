@@ -17,9 +17,6 @@ function CreateCategory() {
   const { success } = useSelector((state) => state.categories);
   const { isLoading } = useSelector((state) => state.app);
   const [name, setName] = useState("");
-  const [title, setTitle] = useState("");
-  const [keyword, setKeyword] = useState("");
-  const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
   const dispatch = useDispatch();
 
@@ -53,9 +50,6 @@ function CreateCategory() {
     dispatch(
       createNewCategory({
         name,
-        title,
-        description: desc,
-        keyword,
         categoryIMG: img,
       })
     );
@@ -115,53 +109,6 @@ function CreateCategory() {
                               placeholder="Category Title here"
                               required
                               onChange={(e) => setName(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="fotm-group">
-                            <label htmlFor="product_price">
-                              Meta Title<span className="text-danger">*</span>
-                            </label>
-                            <input
-                              type="text"
-                              id="product_price"
-                              className="form-control"
-                              placeholder="Meta Title"
-                              required
-                              onChange={(e) => setTitle(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="fotm-group">
-                            <label htmlFor="product_price">
-                              Meta Keyword
-                              <span className="text-danger">*</span>
-                            </label>
-                            <input
-                              type="text"
-                              id="product_price"
-                              className="form-control"
-                              placeholder="Meta Keyword"
-                              required
-                              onChange={(e) => setKeyword(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="fotm-group">
-                            <label htmlFor="product_price">
-                              Meta Description
-                              <span className="text-danger">*</span>
-                            </label>
-                            <input
-                              type="text"
-                              id="product_price"
-                              className="form-control"
-                              placeholder="Meta Description"
-                              required
-                              onChange={(e) => setDesc(e.target.value)}
                             />
                           </div>
                         </div>

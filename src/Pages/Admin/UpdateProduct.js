@@ -1,114 +1,87 @@
 import React, { Fragment, useEffect, useState } from "react";
+import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  clearErrors,
+  getProductDetail,
+  resetStatusError,
   updateProduct,
-  getProductDetails,
-} from "../../actions/productAction";
-import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import DescriptionIcon from "@material-ui/icons/Description";
-import StorageIcon from "@material-ui/icons/Storage";
-import SpellcheckIcon from "@material-ui/icons/Spellcheck";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+} from "../../Redux/slices/productSlice";
 import SideBar from "./Sidebar";
-import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import Swal from "sweetalert2";
+import { getCategories } from "../../Redux/slices/categories";
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 
-const UpdateProduct = ({ history, match }) => {
+function UpdateProduct() {
+  const navigate = useNavigate();
+  const params = useParams();
   const dispatch = useDispatch();
-  const alert = useAlert();
-
-  const { error, product } = useSelector((state) => state.productDetails);
-
-  const {
-    loading,
-    error: updateError,
-    isUpdated,
-  } = useSelector((state) => state.product);
-
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [discountedPrice, setDiscountedPrice] = useState(0);
   const [description, setDescription] = useState("");
+  const [longDescription, setLongDescription] = useState("");
+  const [weight, setWeight] = useState(0);
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
-  const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+  const { success, error, message } = useSelector((state) => state.products);
+  const { isLoading } = useSelector((state) => state.app);
+  const { categories } = useSelector((state) => state.categories);
+  const { product } = useSelector((state) => state.products);
 
-  const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
-  ];
-
-  const productId = match.params.id;
-
-  useEffect(() => {
-    if (product && product._id !== productId) {
-      dispatch(getProductDetails(productId));
-    } else {
-      setName(product.name);
-      setDescription(product.description);
-      setPrice(product.price);
-      setCategory(product.category);
-      setStock(product.Stock);
-      setOldImages(product.images);
-    }
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
-
-    if (updateError) {
-      alert.error(updateError);
-      dispatch(clearErrors());
-    }
-
-    if (isUpdated) {
-      alert.success("Product Updated Successfully");
-      history.push("/admin/products");
-      dispatch({ type: UPDATE_PRODUCT_RESET });
-    }
-  }, [
-    dispatch,
-    alert,
-    error,
-    history,
-    isUpdated,
-    productId,
-    product,
-    updateError,
-  ]);
-
-  const updateProductSubmitHandler = (e) => {
+  const createProductSubmitHandler = (e) => {
     e.preventDefault();
-
-    const myForm = new FormData();
-
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
-
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
-    dispatch(updateProduct(productId, myForm));
+    dispatch(
+      updateProduct({
+        name,
+        Stock,
+        name,
+        price,
+        description,
+        images,
+        longDescription,
+        category,
+        discountedPrice,
+        weight,
+        _id: params.id,
+      })
+    );
   };
 
-  const updateProductImagesChange = (e) => {
+  useEffect(() => {
+    if (product && product._id !== params.id) {
+      dispatch(getProductDetail({ id: params.id }));
+      dispatch(getCategories());
+    }
+
+    if (product) {
+      setName(product.name);
+      setCategory(product.category);
+      setDescription(product.description);
+      setPrice(product.price);
+      setWeight(product.weight);
+      setDiscountedPrice(product.discountedPrice);
+      setStock(product.Stock);
+      setLongDescription(product.longDescription);
+      setImages(product.images);
+    }
+
+    if (success) {
+      Swal.fire("Success", message, "success");
+      dispatch(resetStatusError());
+      navigate("/");
+    } else if (error) {
+      Swal.fire("Error", error, "error");
+    }
+  }, [dispatch, success, error, product]);
+
+  const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
     setImages([]);
     setImagesPreview([]);
-    setOldImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
@@ -126,111 +99,222 @@ const UpdateProduct = ({ history, match }) => {
 
   return (
     <Fragment>
-      <MetaData title="Create Product" />
-      <div className="dashboard">
-        <SideBar />
-        <div className="newProductContainer">
-          <form
-            className="createProductForm"
-            encType="multipart/form-data"
-            onSubmit={updateProductSubmitHandler}
-          >
-            <h1>Create Product</h1>
+      <Fragment>
+        <div className="dashboard">
+          <SideBar />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <section id="add_product_area">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div className="add_product_wrapper">
+                      <h4>Update Product</h4>
+                      <form
+                        className="add_product_form"
+                        onSubmit={createProductSubmitHandler}
+                      >
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="image-input">
+                              <input
+                                onChange={createProductImagesChange}
+                                type="file"
+                                accept="image/*"
+                                id="imageInput"
+                                multiple
+                              />
+                              <label
+                                htmlFor="imageInput"
+                                className="image-button"
+                              >
+                                <i className="fa fa-image"></i>Choose image
+                              </label>
+                            </div>
+                          </div>
 
-            <div>
-              <SpellcheckIcon />
-              <input
-                type="text"
-                placeholder="Product Name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <AttachMoneyIcon />
-              <input
-                type="number"
-                placeholder="Price"
-                required
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
-              />
-            </div>
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Product Name *
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                id="product_price"
+                                value={name}
+                                className="form-control"
+                                placeholder="Product Name"
+                                required
+                                onChange={(e) => setName(e.target.value)}
+                              />
+                            </div>
+                          </div>
 
-            <div>
-              <DescriptionIcon />
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Price
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_price"
+                                className="form-control"
+                                placeholder="Product Price"
+                                required
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                              />
+                            </div>
+                          </div>
 
-              <textarea
-                placeholder="Product Description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Discounted Price
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_price"
+                                value={discountedPrice}
+                                className="form-control"
+                                placeholder="Product Discounted Price"
+                                required
+                                onChange={(e) =>
+                                  setDiscountedPrice(e.target.value)
+                                }
+                              />
+                            </div>
+                          </div>
 
-            <div>
-              <AccountTreeIcon />
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option value="">Choose Category</option>
-                {categories.map((cate) => (
-                  <option key={cate} value={cate}>
-                    {cate}
-                  </option>
-                ))}
-              </select>
-            </div>
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_weight">
+                                Weight
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_weight"
+                                className="form-control"
+                                placeholder="Product Weight"
+                                required
+                                value={weight}
+                                onChange={(e) => setWeight(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Short Description
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                id="product_price"
+                                className="form-control"
+                                placeholder="Product Description"
+                                required
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Stock
+                                <span className="text-danger">*</span>
+                              </label>
+                              <select
+                                value={Stock}
+                                className="form-control"
+                                onChange={(e) => setStock(e.target.value)}
+                              >
+                                <option>---Select Stock---</option>
+                                <option>In Stock</option>
+                                <option>Out Of Stock</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Category
+                                <span className="text-danger">*</span>
+                              </label>
+                              <select
+                                className="form-control"
+                                onChange={(e) => setCategory(e.target.value)}
+                                value={category}
+                              >
+                                <option>---Select Category---</option>
+                                {categories.map((item, index) => (
+                                  <option key={item._id} value={item.name}>
+                                    {item.name}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
 
-            <div>
-              <StorageIcon />
-              <input
-                type="number"
-                placeholder="Stock"
-                required
-                onChange={(e) => setStock(e.target.value)}
-                value={Stock}
-              />
-            </div>
+                          <div className="col-lg-6">
+                            <div
+                              className="fotm-group"
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                            >
+                              <label htmlFor="product_desc">
+                                Long Description
+                                <span className="text-danger">*</span>
+                              </label>
+                              <textarea
+                                rows={10}
+                                cols={52}
+                                placeholder="Enter Long Description"
+                                value={longDescription}
+                                onChange={(e) =>
+                                  setLongDescription(e.target.value)
+                                }
+                              />
+                            </div>
+                          </div>
 
-            <div id="createProductFormFile">
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={updateProductImagesChange}
-                multiple
-              />
-            </div>
+                          <div id="createProductFormImage">
+                            {imagesPreview.map((image, index) => (
+                              <img
+                                key={index}
+                                src={image}
+                                alt="Product Preview"
+                              />
+                            ))}
+                          </div>
 
-            <div id="createProductFormImage">
-              {oldImages &&
-                oldImages.map((image, index) => (
-                  <img key={index} src={image.url} alt="Old Product Preview" />
-                ))}
-            </div>
-
-            <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
-            </div>
-
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={loading ? true : false}
-            >
-              Create
-            </Button>
-          </form>
+                          <div className="col-lg-12">
+                            <div className="btn_right_table">
+                              <button className="theme-btn-one bg-black btn_sm">
+                                Update Product
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
-      </div>
+      </Fragment>
     </Fragment>
   );
-};
+}
 
 export default UpdateProduct;

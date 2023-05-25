@@ -31,6 +31,41 @@ export const createNewCategory = createAsyncThunk(
     }
   }
 );
+//Create New Category
+export const deleteCategory = createAsyncThunk(
+  "/api/v1/category/:id",
+  async (body, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      console.log("This is Body for Category Section ", body);
+      const response = await axiosClient.delete(`/api/v1/category/${body.id}`);
+      console.log("This is Deleted Category", response);
+      return response.data;
+    } catch (e) {
+      return Promise.reject(e);
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
+    }
+  }
+);
+
+//CategoryDetail
+export const getCategoryDetails = createAsyncThunk(
+  "/api/v1/category/delete/:id",
+  async (body, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      console.log("This is Body for Category Section ", body);
+      const response = await axiosClient.get(`/api/v1/category/${body.id}`);
+      console.log("This is Category info", response);
+      return response.data;
+    } catch (e) {
+      return Promise.reject(e);
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
+    }
+  }
+);
 
 // Settings Slice
 const categorySlice = createSlice({
@@ -39,10 +74,12 @@ const categorySlice = createSlice({
     categories: [],
     error: "",
     success: false,
+    category: {},
   },
   reducers: {
-    setStatusResponse: (state, action) => {
-      state.success = action.payload;
+    setStatusResponse: (state) => {
+      state.success = false;
+      state.error = "";
     },
   },
   extraReducers: (builder) => {
@@ -55,6 +92,20 @@ const categorySlice = createSlice({
       .addCase(createNewCategory.fulfilled, (state, action) => {
         if (action.payload?.statusCode == 200) {
           state.success = true;
+        }
+      })
+      .addCase(deleteCategory.fulfilled, (state, action) => {
+        if (action.payload?.statusCode == 200) {
+          state.success = true;
+        } else {
+          state.error = action.payload.message;
+        }
+      })
+      .addCase(getCategoryDetails.fulfilled, (state, action) => {
+        if (action.payload?.statusCode == 200) {
+          state.category = action.payload.result;
+        } else {
+          state.error = action.payload.message;
         }
       });
   },

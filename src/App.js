@@ -9,19 +9,24 @@ import Login from "./Pages/Login/Login";
 import Products from "./Pages/Shop/Shop.js";
 import Faq from "./Pages/FAQ/Faq";
 import Cart from "./Components/Cart/Cart.js";
-import Account from "./Pages/Account/index";
+import Account from "./Pages/Account/Account";
 import Admin from "./Pages/Admin/Dashboard";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import CreateProduct from "./Pages/Admin/NewProduct";
 import ProductList from "./Pages/Admin/ProductList";
 import Categories from "./Pages/Admin/CategoryList";
+import Pincodes from "./Pages/Admin/PinCodeList";
+import CreatePincode from "./Pages/Admin/CreatePincode";
+import UpdateProduct from "./Pages/Admin/UpdateProduct";
 
 import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
 import { useState } from "react";
-import { ContactEmergency } from "@mui/icons-material";
+// import { ContactEmergency } from "@mui/icons-material";
 import CreateCategory from "./Pages/Admin/CreateCategory";
 import UserList from "./Pages/Admin/UserList";
+import UpdateCategory from "./Pages/Admin/UpdateCategory";
+import HeaderOffer from "./Pages/Admin/HeaderOffer";
 
 function App() {
   const [toggleCart, setToggleCart] = useState(false);
@@ -44,10 +49,15 @@ function App() {
         <Route path="/reach" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/products" element={<ProductList />} />
+        <Route path="/admin/product/:id" element={<UpdateProduct />} />
         <Route path="/admin/categories" element={<Categories />} />
+        <Route path="/admin/category/:id" element={<UpdateCategory />} />
         <Route path="/admin/categories/create" element={<CreateCategory />} />
         <Route path="/admin/createproject" element={<CreateProduct />} />
         <Route path="/admin/users" element={<UserList />} />
+        <Route path="/admin/pincodes" element={<Pincodes />} />
+        <Route path="/admin/pincodes/create" element={<CreatePincode />} />
+        <Route path="/admin/header" element={<HeaderOffer />} />
       </Routes>
       <Cart toggleCart={toggleCart} setToggleCart={handleToggleCart} />
       <Footer />

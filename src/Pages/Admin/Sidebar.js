@@ -117,80 +117,96 @@ const Sidebar = () => {
       <ul>
         <Link to="/admin" style={{ color: "white" }}>
           <li className="option active">
-            <FontAwesomeIcon icon={faChartBar} />
+            <span> <FontAwesomeIcon icon={faChartBar} /> </span>
             Dashboard
           </li>
         </Link>
-        <li className="option">
-          <FontAwesomeIcon icon={faBox} />
-          Products
-          <ul>
-            <Link to="/admin/products" style={{ color: "white" }}>
-              <li>
-                <FontAwesomeIcon icon={faList} />
-                All
-              </li>
-            </Link>
-            <Link to="/admin/createproject" style={{ color: "white" }}>
-              <li>
-                <FontAwesomeIcon icon={faBox} />
-                Create
-              </li>
-            </Link>
-          </ul>
-        </li>
-        <li className="option">
-          <FontAwesomeIcon icon={faList} />
-          Catalog
-          <ul>
-            <Link to="/admin/categories" style={{ color: "white" }}>
-              <li>
-                <FontAwesomeIcon icon={faList} />
-                All Categories
-              </li>
-            </Link>
-            <Link to="/admin/categories/create" style={{ color: "white" }}>
-              <li>
-                <FontAwesomeIcon icon={faList} />
-                Create Category
-              </li>
-            </Link>
-            <Link to="/admin/categories/create-sub" style={{ color: "white" }}>
+
+        <Link to="/admin/orders" style={{ color: "white" }}>
+          <li className="option">
+            <span><FontAwesomeIcon icon={faShoppingCart} /></span>
+            All Orders
+          </li>
+        </Link>
+
+        <Link to="/admin/products" style={{ color: "white" }}>
+          <li>
+            <span><FontAwesomeIcon icon={faList} /></span>
+            All Products
+          </li>
+        </Link>
+
+        <Link to="/admin/createproject" style={{ color: "white" }}>
+          <li>
+            <span><FontAwesomeIcon icon={faBox} /></span>
+            Create Products
+          </li>
+        </Link>
+
+
+        <Link to="/admin/categories" style={{ color: "white" }}>
+          <li>
+            <span><FontAwesomeIcon icon={faList} /></span>
+            All Categories
+          </li>
+        </Link>
+
+        <Link to="/admin/categories/create" style={{ color: "white" }}>
+          <li>
+            <span><FontAwesomeIcon icon={faList} /></span>
+            Create Category
+          </li>
+        </Link>
+
+        {/* no need for sub categories  */}
+        {/* <Link to="/admin/categories/create-sub" style={{ color: "white" }}>
               <li>
                 <FontAwesomeIcon icon={faList} />
                 Create Subcategory
               </li>
-            </Link>
-            <Link to="/admin/sizes" style={{ color: "white" }}>
+            </Link> */}
+
+        {/* <Link to="/admin/sizes" style={{ color: "white" }}>
               <li>
                 <FontAwesomeIcon icon={faList} />
                 Sizes
               </li>
-            </Link>
-            <Link to="/admin/pincodes" style={{ color: "white" }}>
-              <li>
-                <FontAwesomeIcon icon={faList} />
-                Pincodes
-              </li>
-            </Link>
-          </ul>
-        </li>
-        <Link to="/admin/orders" style={{ color: "white" }}>
-          <li className="option">
-            <FontAwesomeIcon icon={faShoppingCart} />
-            Orders
+            </Link> */}
+
+        <Link to="/admin/pincodes" style={{ color: "white" }}>
+          <li>
+            <span><FontAwesomeIcon icon={faList} /></span>
+            Pincodes Manager
           </li>
         </Link>
+
+
+
         <Link to="/admin/users" style={{ color: "white" }}>
           <li className="option">
-            <FontAwesomeIcon icon={faUsers} />
-            Users
+            <span><FontAwesomeIcon icon={faUsers} /></span>
+            All Users
           </li>
         </Link>
+
         <Link to="/admin/reviews" style={{ color: "white" }}>
           <li className="option">
-            <FontAwesomeIcon icon={faStar} />
+            <span><FontAwesomeIcon icon={faStar} /></span>
             Reviews
+          </li>
+        </Link>
+
+        <Link to="/admin/header" style={{ color: "white" }}>
+          <li className="option">
+            <span><FontAwesomeIcon icon={faStar} /></span>
+            Header Promotion
+          </li>
+        </Link>
+
+        <Link to="/admin/reviews" style={{ color: "white" }}>
+          <li className="option">
+            <span><FontAwesomeIcon icon={faStar} /></span>
+            Logout
           </li>
         </Link>
       </ul>

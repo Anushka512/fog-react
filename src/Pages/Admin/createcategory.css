@@ -9,27 +9,6 @@
     min-height: 100vh;
   }
   
-  #add_product_area{
-    margin-top: 10rem;
-  
-  }
-
-  .status{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .status p {
-    user-select: no;
-  }
-
-  .status__container{
-    display: flex;
-    gap: 0.5rem;
-  }
-  
   @media screen and (max-width: 600px) {
     .productListTable div {
       font: 300 4vw "Roboto";

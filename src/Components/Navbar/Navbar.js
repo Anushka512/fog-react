@@ -8,8 +8,11 @@ import {
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Navbar({ setToggleCart }) {
+  const { headerTagLine } = useSelector((state) => state.utils);
+
   return (
     <div className="wrapper__nav">
       <div className="top__nav">
@@ -19,7 +22,7 @@ export default function Navbar({ setToggleCart }) {
           <BsTwitter />
         </div>
 
-        <p>Sale: 20% off on orders above ₹999</p>
+        <p>{headerTagLine ? headerTagLine : "Sale: 20% off on orders above ₹999"}</p>
       </div>
       <nav className="navbar-items">
         <div className="container nav__container">
@@ -35,7 +38,6 @@ export default function Navbar({ setToggleCart }) {
           </ul>
           <div className="right">
             <AiOutlineSearch />
-            <AiOutlineHeart />
             <AiOutlineShoppingCart onClick={setToggleCart} />
             <Link to="/auth">
               <AiOutlineUser />

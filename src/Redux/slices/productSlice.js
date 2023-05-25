@@ -1,9 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProductData } from "../../Data/productsData";
+// import { ProductData } from "../../Data/productsData";
 import { axiosClient } from "../../utils/axios/axios";
 import { setLoading } from "./appConfigSlice";
-
 import Swal from "sweetalert2";
+
+// import { positions, Provider } from "react-alert";
+// import AlertTemplate from "react-alert-template-basic";
+// import axios from "axios";
+import "./product.css";
+
 
 export const getAllProducts = createAsyncThunk(
   "/api/v1/auth/products",
@@ -24,13 +29,17 @@ export const getAllProducts = createAsyncThunk(
 
 export const getProductDetail = createAsyncThunk(
   "/api/v1/product/:id",
-  async (body) => {
+  async (body,thunkAPI) => {
     try {
+      thunkAPI.dispatch(setLoading(true));
       const response = await axiosClient.get(`/api/v1/product/${body.id}`);
       return response.data;
     } catch (e) {
       console.log(e);
       return Promise.reject(e);
+    }
+    finally{
+      thunkAPI.dispatch(setLoading(false));
     }
   }
 );
@@ -72,6 +81,25 @@ export const createProduct = createAsyncThunk(
         body
       );
       console.log("This is created Product", data);
+      return data;
+    } catch (error) {
+      return error;
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
+    }
+  }
+);
+//create Product
+export const updateProduct = createAsyncThunk(
+  "/api/v1/product/admin/:id",
+  async (body, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      const { data } = await axiosClient.put(
+        `/api/v1/admin/product/${body._id}`,
+        body
+      );
+      console.log("This is Updated Product", data);
       return data;
     } catch (error) {
       return error;
@@ -138,13 +166,37 @@ const productSlice = createSlice({
 
         arr.quantity = 1;
         state.carts.push(arr);
+        // Swal.fire({
+        //   title: "Success!",
+        //   text: "Successfully added to your Cart",
+        //   icon: "success",
+        //   imageWidth: 200,
+        //   width: '450px',
+        //   // height: '50px', 
+        //   showConfirmButton: false,
+        //   timer: 1000,
+        //   position: "bottom-end"
+        // });
         Swal.fire({
           title: "Success!",
           text: "Successfully added to your Cart",
           icon: "success",
+          width: '300px',
           showConfirmButton: false,
-          timer: 2500,
+          timer: 1500,
+          position: "bottom-end",
+          customClass: {
+            popup: 'custom-popup',
+            closeButton: 'custom-close-button',
+          },
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showCloseButton: true,
+          closeButtonHtml: '&times;', // Custom HTML for the close button (uses the "times" symbol)
         });
+
+     
 
         //Saving Carts To localStorage
         localStorage.setItem("cartItems", JSON.stringify(state.carts));
@@ -152,11 +204,21 @@ const productSlice = createSlice({
         Swal.fire({
           title: "Failed!",
           text: "This product is already added in your Cart",
-          imageUrl: item.img,
+          icon: "failed",
           imageWidth: 200,
+          width: '450px',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showCloseButton: true,
+          closeButtonHtml: '&times;', 
+          customClass: {
+            closeButton: 'custom-close-button',
+          },
           imageAlt: item.title,
           showConfirmButton: false,
-          timer: 5000,
+          timer: 1500,
+          position: "bottom-end"
         });
       }
     },
@@ -187,8 +249,19 @@ const productSlice = createSlice({
           title: "Success!",
           text: "Successfully Deleted From your Cart",
           icon: "success",
+          width: '450px',
           showConfirmButton: false,
-          timer: 2500,
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showCloseButton: true,
+          closeButtonHtml: '&times;', 
+          customClass: {
+            popup: 'custom-popup',
+            closeButton: 'custom-close-button',
+          },
+          timer: 1500,
+          position: "bottom-end"
         });
       }
     },
@@ -202,8 +275,19 @@ const productSlice = createSlice({
           title: "Success!",
           text: "Successfully Clear your Cart",
           icon: "success",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          showCloseButton: true,
+          closeButtonHtml: '&times;', 
+          customClass: {
+            popup: 'custom-popup',
+            closeButton: 'custom-close-button',
+          },
+          width: '450px',
           showConfirmButton: false,
-          timer: 2500,
+          timer: 1500,
+          position: "bottom-end"
         });
       }
     },

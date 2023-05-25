@@ -8,8 +8,7 @@ import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
-import { getAdminProduct } from "../../app/slices/products";
-import { getAllPincodes, getAllSizes } from "../../app/slices/utils";
+import { getAllPincodes } from "../../Redux/slices/utilsSlice";
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -40,13 +39,7 @@ const ProductList = ({ history }) => {
       minWidth: 350,
       flex: 1,
     },
-    {
-      field: "status",
-      headerName: "Status",
-      type: "number",
-      minWidth: 150,
-      flex: 0.3,
-    },
+   
     {
       field: "actions",
       flex: 0.3,
@@ -72,10 +65,9 @@ const ProductList = ({ history }) => {
   const rows = [];
 
   pincodes &&
-    pincodes.forEach((item, index) => {
+  pincodes.forEach((item, index) => {
       rows.push({
         id: item._id,
-        status: "Active",
         pincode: item.pincode,
       });
     });

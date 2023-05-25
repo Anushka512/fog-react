@@ -20,6 +20,12 @@ function Cart({ toggleCart, setToggleCart }) {
   const [address, setAddress] = useState("");
   const [addressContainer, setAddressContainer] = useState(false);
 
+  const cartTotal = () => {
+    return carts?.reduce(function (total, item) {
+      return total + (item.quantity || 1) * item.price;
+    }, 0);
+  };
+
   const handleChangeComp = () => {
     setSecondComp(!secondComp);
   };
@@ -137,7 +143,7 @@ function Cart({ toggleCart, setToggleCart }) {
           </div>
 
           <div onClick={handleChangeComp} className="place__order">
-            <h5>{carts.length} Items . $130</h5>
+            <h5>{carts.length} Items . {cartTotal()}</h5>
             <h5>Proceed</h5>
           </div>
         </div>

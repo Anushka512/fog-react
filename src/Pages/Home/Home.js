@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Banner from "../../Assets/Images/hero-img-new.png";
-import CardImg from "../../Assets/Images/3.jpg.png";
+// import CardImg from "../../Assets/Images/3.jpg.png";
 import logoSec from "../../Assets/Images/logo__sec.png";
 import aboutBanner from "../../Assets/Images/all.png";
 import catImg1 from "../../Assets/Images/cat-img-1.png";
@@ -16,7 +16,7 @@ import { FiTruck } from "react-icons/fi";
 import { MdOutlineSupportAgent, MdPayments } from "react-icons/md";
 import { BiTimer } from "react-icons/bi";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
-import { ProductData } from "../../Data/productsData.js";
+// import { ProductData } from "../../Data/productsData.js";//
 import "./Home.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,7 @@ import {
   getAllCategories,
   getAllProducts,
 } from "../../Redux/slices/productSlice";
+import { getHeaderTagLine } from "../../Redux/slices/utilsSlice";
 
 function Home() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function Home() {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
+    dispatch(getHeaderTagLine());
   }, [dispatch]);
 
   const HorizontalScroll1 = useRef();
@@ -93,18 +95,6 @@ function Home() {
       <div className="banner">
         <div className=" hero__container">
           <img src={Banner} alt="HERO__IMG" />
-          {/* <div className="home__h-img">
-            <img src={Banner} alt="HERO__IMG" />
-          </div>
-          <div className="home__h-info">
-            <h1>
-              <span>It’s not a dream. </span>Gluten Free is finally real!
-            </h1>
-            <p className="p-text">
-              lorem ipsum ld{" "}
-            </p>
-            <button className="btn cart">Shop Now</button>
-          </div> */}
         </div>
       </div>
 
@@ -191,13 +181,6 @@ function Home() {
                 isAddedOnCart={item.isOnCard ? true : false}
               />
             ))}
-            {/* <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} />
-            <Card imgUrl={CardImg} name={"Veg. Pasta Arabia"} price={"350"} salePrice={"300"} category={"Breads"} /> */}
           </div>
           <div className="scroll__buttons">
             <AiFillCaretRight
@@ -292,25 +275,29 @@ function Home() {
 
       {/* text section  */}
 
-      <div className="lifestyle">
-        <h1>It's not just </h1>
-        <h1 className="food">food,</h1>
-        <br />
-        <h1 className="life1">It's a</h1>
-        <h1 className="life">lifestyle!</h1>
-      </div>
+      <h1 className="lifestyle">
+        <div>
+          It's not just
+          <span className="food"> Food,</span>
+        </div>
+        <div>
+          It's a<span className="life"> Lifestyle!</span>
+        </div>
+      </h1>
 
       {/* {---------------------TESTIMONIALS SECTION START----------------------------} */}
 
       <div className="Testimonials1">
-        <h2>We Serve - they </h2>
-        <h2 className="enjoy1">enjoy</h2>
-        <h2 className="every1">every</h2>
-        <br />
-        <br />
-        <h2>minute of their</h2>
-        <img src={arrow} alt="" />
-        <h2 className="live1">lives</h2>
+        <h1>
+          We Serve - they
+          <span className="enjoy1"> Enjoy</span>
+          every
+        </h1>
+        <h1>
+          minute of their
+          {/* <img src={arrow} alt="" /> */}
+          <span className="live1"> Lives</span>
+        </h1>
       </div>
 
       <div className="test">
