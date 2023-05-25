@@ -24,6 +24,7 @@ import {
   getAllCategories,
   getAllProducts,
 } from "../../Redux/slices/productSlice";
+import { getHeaderTagLine } from "../../Redux/slices/utilsSlice";
 
 function Home() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function Home() {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
+    dispatch(getHeaderTagLine());
   }, [dispatch]);
 
   const HorizontalScroll1 = useRef();
@@ -279,8 +281,7 @@ function Home() {
           <span className="food"> Food,</span>
         </div>
         <div>
-          It's a
-          <span className="life"> Lifestyle!</span>
+          It's a<span className="life"> Lifestyle!</span>
         </div>
       </h1>
 

@@ -196,6 +196,13 @@ const Sidebar = () => {
           </li>
         </Link>
 
+        <Link to="/admin/header" style={{ color: "white" }}>
+          <li className="option">
+            <span><FontAwesomeIcon icon={faStar} /></span>
+            Header Promotion
+          </li>
+        </Link>
+
         <Link to="/admin/reviews" style={{ color: "white" }}>
           <li className="option">
             <span><FontAwesomeIcon icon={faStar} /></span>

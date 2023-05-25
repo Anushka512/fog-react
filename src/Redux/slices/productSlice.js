@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import { ProductData } from "../../Data/productsData";
 import { axiosClient } from "../../utils/axios/axios";
-// import { setLoading } from "./appConfigSlice";
+import { setLoading } from "./appConfigSlice";
 import Swal from "sweetalert2";
 
 // import { positions, Provider } from "react-alert";
@@ -29,13 +29,17 @@ export const getAllProducts = createAsyncThunk(
 
 export const getProductDetail = createAsyncThunk(
   "/api/v1/product/:id",
-  async (body) => {
+  async (body,thunkAPI) => {
     try {
+      thunkAPI.dispatch(setLoading(true));
       const response = await axiosClient.get(`/api/v1/product/${body.id}`);
       return response.data;
     } catch (e) {
       console.log(e);
       return Promise.reject(e);
+    }
+    finally{
+      thunkAPI.dispatch(setLoading(false));
     }
   }
 );
@@ -71,7 +75,7 @@ export const createProduct = createAsyncThunk(
   "/api/v1/product/admin/new",
   async (body, thunkAPI) => {
     try {
-      console.log(body);
+      thunkAPI.dispatch(setLoading(true));
       const { data } = await axiosClient.post(
         "/api/v1/admin/product/new",
         body
@@ -80,6 +84,27 @@ export const createProduct = createAsyncThunk(
       return data;
     } catch (error) {
       return error;
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
+    }
+  }
+);
+//create Product
+export const updateProduct = createAsyncThunk(
+  "/api/v1/product/admin/:id",
+  async (body, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      const { data } = await axiosClient.put(
+        `/api/v1/admin/product/${body._id}`,
+        body
+      );
+      console.log("This is Updated Product", data);
+      return data;
+    } catch (error) {
+      return error;
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
     }
   }
 );

@@ -10,15 +10,21 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 
 import SideBar from "./Sidebar";
-import { getCategories } from "../../Redux/slices/categories";
+import {
+  deleteCategory,
+  getCategories,
+  setStatusResponse,
+} from "../../Redux/slices/categories";
 
-const ProductList = ({ history }) => {
+const ProductList = () => {
   const dispatch = useDispatch();
 
-  const { error, categories } = useSelector((state) => state.categories);
+  const { error, categories, success } = useSelector(
+    (state) => state.categories
+  );
 
   const deleteProductHandler = (id) => {
-    // dispatch(deleteProduct(id));
+    dispatch(deleteCategory({ id }));
   };
 
   useEffect(() => {
@@ -26,11 +32,20 @@ const ProductList = ({ history }) => {
       swal2.fire({
         title: "Error",
         timer: 2500,
+        text: error,
       });
+      dispatch(setStatusResponse());
+    }
+    if (success) {
+      swal2.fire({
+        icon: "success",
+        title: "Category Deleted",
+      });
+      dispatch(setStatusResponse());
     }
 
     dispatch(getCategories());
-  }, [dispatch]);
+  }, [dispatch, error, success]);
 
   const columns = [
     {
@@ -82,7 +97,7 @@ const ProductList = ({ history }) => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.id}`}>
+            <Link to={`/admin/category/${params.id}`}>
               <EditIcon />
             </Link>
             <Button onClick={() => deleteProductHandler(params.id)}>
@@ -105,7 +120,6 @@ const ProductList = ({ history }) => {
         name: item.name,
       });
     });
-  // console.log("This is category Id", categories[0]._id);
   return (
     <Fragment>
       <div className="dashboard">
