@@ -3,17 +3,35 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosClient } from "../../utils/axios/axios";
 // import { setLoading } from "./appConfigSlice";
 import Swal from "sweetalert2";
+
 // import { positions, Provider } from "react-alert";
 // import AlertTemplate from "react-alert-template-basic";
 // import axios from "axios";
 import "./product.css";
 
+
 export const getAllProducts = createAsyncThunk(
   "/api/v1/auth/products",
   async (body) => {
     try {
-      const response = await axiosClient.get("/api/v1/products");
-      console.log("This is Product Data", response);
+      let link = `/api/v1/products`;
+      if (body?.category) {
+        link = `/api/v1/products?category=${body.category}`;
+      }
+      const response = await axiosClient.get(link);
+      return response.data;
+    } catch (e) {
+      console.log(e);
+      return Promise.reject(e);
+    }
+  }
+);
+
+export const getProductDetail = createAsyncThunk(
+  "/api/v1/product/:id",
+  async (body) => {
+    try {
+      const response = await axiosClient.get(`/api/v1/product/${body.id}`);
       return response.data;
     } catch (e) {
       console.log(e);
@@ -27,11 +45,23 @@ export const getAdminProducts = createAsyncThunk(
   async (body) => {
     try {
       const response = await axiosClient.get("/api/v1/admin/products");
-      console.log("This is Product Data", response);
       return response.data;
     } catch (e) {
       console.log(e);
       return Promise.reject(e);
+    }
+  }
+);
+
+export const getAllCategories = createAsyncThunk(
+  "/api/v1/categoires",
+  async () => {
+    try {
+      const response = await axiosClient.get("/api/v1/categories");
+      return response.data;
+    } catch (e) {
+      console.log(e);
+      return Promise.reject(e.message);
     }
   }
 );
@@ -78,23 +108,13 @@ const productSlice = createSlice({
     message: "",
     error: false,
     isDeleted: false,
+    categories: [],
     products: [],
+    product: {},
+    cartProduct: [],
     carts: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
-      : [
-          {
-            id: 2,
-            labels: "45% OFF",
-            category: "fashion",
-            // img: img2,
-            hover_img: "img",
-            title: "T-Shirt For Men",
-            price: 72,
-            description: `Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-               Proin eget tortor risus. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus.`,
-            quantity: 1,
-          },
-        ],
+      : [],
   },
 
   reducers: {
@@ -114,6 +134,11 @@ const productSlice = createSlice({
 
       if (!item) {
         let arr = state.products.find((item) => item._id == id);
+        let productIndex = state.products.findIndex((item) => item._id == id);
+        if (productIndex > -1) {
+          state.products[productIndex].isOnCard = true;
+        }
+
         arr.quantity = 1;
         state.carts.push(arr);
         // Swal.fire({
@@ -186,7 +211,7 @@ const productSlice = createSlice({
 
       localStorage.setItem("cartItems", JSON.stringify(state.carts));
     },
-    
+
     // Remove Cart
     removeCart: (state, action) => {
       let { id } = action.payload;
@@ -241,12 +266,21 @@ const productSlice = createSlice({
         });
       }
     },
+
+    //CartProduct
+    cartProduct: (state, action) => {
+      let { id } = action.payload;
+      let arr = state.carts.find((item) => item._id === id);
+      if (arr) {
+        state.cartProduct.push(id);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getAllProducts.fulfilled, (state, action) => {
         if (action.payload.statusCode === 200) {
-          state.products = action.payload.result;
+          state.products = action.payload.result.products;
         }
       })
       .addCase(createProduct.fulfilled, (state, action) => {
@@ -267,6 +301,20 @@ const productSlice = createSlice({
           state.isDeleted = true;
         } else {
           state.isDeleted = false;
+          state.error = action.payload?.message;
+        }
+      })
+      .addCase(getAllCategories.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.categories = action.payload.result;
+        } else {
+          state.error = action.payload?.message;
+        }
+      })
+      .addCase(getProductDetail.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.product = action.payload.result;
+        } else {
           state.error = action.payload?.message;
         }
       });

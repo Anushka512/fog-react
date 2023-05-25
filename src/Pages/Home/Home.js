@@ -4,15 +4,12 @@ import Banner from "../../Assets/Images/hero-img-new.png";
 // import CardImg from "../../Assets/Images/3.jpg.png";
 import logoSec from "../../Assets/Images/logo__sec.png";
 import aboutBanner from "../../Assets/Images/all.png";
-// import rowIMG from "../../Assets/Images/div.row.png";
 import catImg1 from "../../Assets/Images/cat-img-1.png";
 import catImg2 from "../../Assets/Images/cat-img-2.png";
 import catImg3 from "../../Assets/Images/cat-img-3.png";
 import catImg4 from "../../Assets/Images/cat-img-4.png";
 import Card from "../../Components/Card/Card.js";
 import TestimonialCard from "../../Components/TestimonialCard/TestimonialCard.js";
-// import userImg from "../../Assets/Images/Ellipse 6.png";
-// import Stars from "../../Assets/Images/Star.png";
 import bread from "../../Assets/Images/bread.png";
 import arrow from "../../Assets/Images/arrow.png";
 import { FiTruck } from "react-icons/fi";
@@ -23,14 +20,18 @@ import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import "./Home.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../Redux/slices/productSlice";
+import {
+  getAllCategories,
+  getAllProducts,
+} from "../../Redux/slices/productSlice";
 
 function Home() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products, categories } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProducts());
+    dispatch(getAllCategories());
   }, [dispatch]);
 
   const HorizontalScroll1 = useRef();
@@ -139,10 +140,12 @@ function Home() {
             <h1>Categories</h1>
           </div>
           <div className="cat_card_wrapper">
-            <img src={catImg4} alt="cat-img" />
-            <img src={catImg1} alt="cat-img" />
+            {categories.map((category) => (
+              <img src={catImg4} alt="cat-img" />
+            ))}
+            {/* <img src={catImg1} alt="cat-img" />
             <img src={catImg2} alt="cat-img" />
-            <img src={catImg3} alt="cat-img" />
+            <img src={catImg3} alt="cat-img" /> */}
           </div>
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">
@@ -173,6 +176,7 @@ function Home() {
                 salePrice={item.price - "20"}
                 category={"Breads"}
                 id={item._id}
+                isAddedOnCart={item.isOnCard ? true : false}
               />
             ))}
           </div>
