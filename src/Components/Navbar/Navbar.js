@@ -35,7 +35,6 @@ export default function Navbar({ setToggleCart }) {
           </ul>
           <div className="right">
             <AiOutlineSearch />
-            <AiOutlineHeart />
             <AiOutlineShoppingCart onClick={setToggleCart} />
             <Link to="/auth">
               <AiOutlineUser />

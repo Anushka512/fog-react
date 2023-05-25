@@ -56,7 +56,7 @@ function CreateCategory() {
                     className="add_product_form"
                     onSubmit={handleSubmitForm}
                   >
-                    <div className="row">
+                    <div className="row">``
                       <div className="col-lg-12">
                         <div className="fotm-group">
                           <label htmlFor="product_price">

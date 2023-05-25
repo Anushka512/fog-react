@@ -64,7 +64,6 @@ function Login() {
       setEmail("");
       setPassword("");
       setUserName("");
-
       navigate("/");
     }
 

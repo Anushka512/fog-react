@@ -21,35 +21,14 @@
     font-size: 19px;
     
   }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-
-    .social__icon {
-      margin-top: 10px;
-
-      svg {
-        margin-bottom: 10px;
-      }
-    }
-
-    p {
-      margin-top: 10px;
-      font-size: 16px;
-    }
-  }
 }
 
 nav {
-  // height: 5rem;
   background-color: #ffffff;
   padding: 10px 0px;
   position: sticky;
   z-index: 10;
   top: 0;
-  // box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
 
   .nav__container {
     display: flex;
@@ -89,30 +68,57 @@ nav {
       }
     }
   }
-
-  @media (max-width: 768px) {
-    padding: 10px;
-
-    .nav__container {
-      flex-direction: column;
-      align-items: flex-start;
-
-      .logo {
-        margin-bottom: 10px;
-      }
-
-      ul {
-        gap: 20px;
-
-        li {
-          a {
-            font-size: 16px;
-          }
-        }
-      }
-      .right {
-        margin-top: 10px;
-      }
-    }
-  }
 }
+
+// @media (max-width: 768px) {
+//   /* Tablet/iPad and below */
+  
+//   .nav__container {
+//     flex-direction: column;
+//     align-items: flex-start;
+//   }
+
+//   .logo {
+//     margin-bottom: 10px;
+//   }
+
+//   ul {
+//     display: none; /* Hide the regular navigation links */
+//   }
+
+//   .right {
+//     margin-top: 10px;
+//   }
+
+//   /* Show the hamburger icon */
+//   .hamburger {
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
+//   }
+
+//   .hamburger-icon {
+//     color: var(--secondary-black);
+//     font-size: 25px;
+//   }
+
+//   /* Hide the navigation menu by default */
+//   .nav__list {
+//     display: none;
+//   }
+
+//   /* Show the navigation menu when the hamburger icon is clicked */
+//   .hamburger:checked + .nav__list {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     gap: 20px;
+//   }
+
+//   /* Style the individual navigation links */
+//   .nav__list a {
+//     text-decoration: none;
+//     color: black;
+//     font-size: 16px;
+//   }
+// }
