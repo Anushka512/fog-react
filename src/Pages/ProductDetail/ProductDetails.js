@@ -57,13 +57,13 @@ function ProductDetails() {
               </div>
 
               <div className="weight__badge">
-                <span className="active-badge">50g</span>
-                <span>150g</span>
-                <span>250g</span>
+              <span className="active-badge">{product.weight}g</span>
+                {/* <span>150g</span>
+                <span>250g</span> */}
               </div>
 
               <div className="prize">
-                <h5>{product?.price}Rs</h5>
+                <h5>₹{product?.price}</h5>
               </div>
 
               <div className="submit__btn">
