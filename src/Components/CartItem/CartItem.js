@@ -43,7 +43,7 @@ function CartItem({ name, imgUrl, quantity, price, id }) {
         <p className="p-text">{quantity}g</p>
 
         <div className="price__functions">
-          <h5>${price}</h5>
+          <h5>₹{price * quantity || 1}</h5>
 
           <div className="function">
             <span onClick={() => updateCart(id)}>-</span>

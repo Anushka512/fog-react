@@ -24,7 +24,7 @@ import {
   getAllCategories,
   getAllProducts,
 } from "../../Redux/slices/productSlice";
-import { getHeaderTagLine } from "../../Redux/slices/utilsSlice";
+import { getUserDetail } from "../../Redux/slices/user";
 
 function Home() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function Home() {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllCategories());
-    dispatch(getHeaderTagLine());
+    dispatch(getUserDetail());
   }, [dispatch]);
 
   const HorizontalScroll1 = useRef();

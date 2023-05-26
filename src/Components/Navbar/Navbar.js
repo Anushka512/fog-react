@@ -8,10 +8,18 @@ import {
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getHeaderTagLine } from "../../Redux/slices/utilsSlice";
 
 export default function Navbar({ setToggleCart }) {
+  const dispatch = useDispatch();
   const { headerTagLine } = useSelector((state) => state.utils);
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAdmin } = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(getHeaderTagLine());
+  }, []);
 
   return (
     <div className="wrapper__nav">
@@ -22,7 +30,9 @@ export default function Navbar({ setToggleCart }) {
           <BsTwitter />
         </div>
 
-        <p>{headerTagLine ? headerTagLine : "Sale: 20% off on orders above ₹999"}</p>
+        <p>
+          {headerTagLine ? headerTagLine : "Sale: 20% off on orders above ₹999"}
+        </p>
       </div>
       <nav className="navbar-items">
         <div className="container nav__container">
@@ -39,9 +49,16 @@ export default function Navbar({ setToggleCart }) {
           <div className="right">
             <AiOutlineSearch />
             <AiOutlineShoppingCart onClick={setToggleCart} />
-            <Link to="/auth">
-              <AiOutlineUser />
-            </Link>
+            {!isAdmin && (
+              <Link to={isAuthenticated ? "/account" : "/auth"}>
+                <AiOutlineUser />
+              </Link>
+            )}
+            {isAdmin && (
+              <Link to="/admin">
+                <AiOutlineUser />
+              </Link>
+            )}
           </div>
         </div>
       </nav>

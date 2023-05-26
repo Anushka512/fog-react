@@ -27,6 +27,7 @@ import CreateCategory from "./Pages/Admin/CreateCategory";
 import UserList from "./Pages/Admin/UserList";
 import UpdateCategory from "./Pages/Admin/UpdateCategory";
 import HeaderOffer from "./Pages/Admin/HeaderOffer";
+import RequireUser from "./utils/RequireUser";
 
 function App() {
   const [toggleCart, setToggleCart] = useState(false);
@@ -37,6 +38,23 @@ function App() {
   return (
     <div className="App">
       <Navbar setToggleCart={handleToggleCart} />
+
+      <Routes>
+        <Route element={<RequireUser />}>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/products" element={<ProductList />} />
+          <Route path="/admin/product/:id" element={<UpdateProduct />} />
+          <Route path="/admin/categories" element={<Categories />} />
+          <Route path="/admin/category/:id" element={<UpdateCategory />} />
+          <Route path="/admin/categories/create" element={<CreateCategory />} />
+          <Route path="/admin/createproject" element={<CreateProduct />} />
+          <Route path="/admin/users" element={<UserList />} />
+          <Route path="/admin/pincodes" element={<Pincodes />} />
+          <Route path="/admin/pincodes/create" element={<CreatePincode />} />
+          <Route path="/admin/header" element={<HeaderOffer />} />
+        </Route>
+      </Routes>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Login />} />
@@ -47,17 +65,6 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/about" element={<About />} />
         <Route path="/reach" element={<Contact />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/products" element={<ProductList />} />
-        <Route path="/admin/product/:id" element={<UpdateProduct />} />
-        <Route path="/admin/categories" element={<Categories />} />
-        <Route path="/admin/category/:id" element={<UpdateCategory />} />
-        <Route path="/admin/categories/create" element={<CreateCategory />} />
-        <Route path="/admin/createproject" element={<CreateProduct />} />
-        <Route path="/admin/users" element={<UserList />} />
-        <Route path="/admin/pincodes" element={<Pincodes />} />
-        <Route path="/admin/pincodes/create" element={<CreatePincode />} />
-        <Route path="/admin/header" element={<HeaderOffer />} />
       </Routes>
       <Cart toggleCart={toggleCart} setToggleCart={handleToggleCart} />
       <Footer />
