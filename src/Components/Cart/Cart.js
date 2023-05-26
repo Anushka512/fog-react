@@ -7,18 +7,21 @@ import { ProductData } from "../../Data/productsData";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Cart.scss";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ toggleCart, setToggleCart }) {
   const dispatch = useDispatch();
 
   const { carts } = useSelector((state) => state.products);
-  const { addresses } = useSelector((state) => state.user);
+  const { addresses, isAuthenticated } = useSelector((state) => state.user);
   const [secondComp, setSecondComp] = useState(false);
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
   const [HNo, setHNO] = useState("");
   const [address, setAddress] = useState("");
   const [addressContainer, setAddressContainer] = useState(false);
+  const navigate = useNavigate();
 
   const cartTotal = () => {
     return carts?.reduce(function (total, item) {
@@ -27,7 +30,16 @@ function Cart({ toggleCart, setToggleCart }) {
   };
 
   const handleChangeComp = () => {
-    setSecondComp(!secondComp);
+    if (isAuthenticated) {
+      setSecondComp(!secondComp);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You Need To Login To Proceed Further",
+      });
+      navigate("/auth");
+    }
   };
 
   const handleAddressOpener = () => {
@@ -143,7 +155,9 @@ function Cart({ toggleCart, setToggleCart }) {
           </div>
 
           <div onClick={handleChangeComp} className="place__order">
-            <h5>{carts.length} Items . {cartTotal()}</h5>
+            <h5>
+              {carts.length} Items . {cartTotal()}
+            </h5>
             <h5>Proceed</h5>
           </div>
         </div>

@@ -105,6 +105,13 @@ function NewProduct() {
                         <div className="row">
                           <div className="col-lg-12">
                             <div className="image-input">
+                              {images && (
+                                <img
+                                  src={images[0]}
+                                  className="image-preview"
+                                  alt="img"
+                                />
+                              )}
                               <input
                                 onChange={createProductImagesChange}
                                 type="file"
