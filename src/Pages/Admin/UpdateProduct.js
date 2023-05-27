@@ -3,7 +3,7 @@ import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getProductDetail,
-  resetStatusError,
+  setStatusResponse,
   updateProduct,
 } from "../../Redux/slices/productSlice";
 import SideBar from "./Sidebar";
@@ -40,7 +40,7 @@ function UpdateProduct() {
         name,
         price,
         description,
-        images,
+        // images,
         longDescription,
         category,
         discountedPrice,
@@ -66,14 +66,16 @@ function UpdateProduct() {
       setStock(product.Stock);
       setLongDescription(product.longDescription);
       setImages(product.images);
+      setImagesPreview(product.images);
     }
 
     if (success) {
       Swal.fire("Success", message, "success");
-      dispatch(resetStatusError());
+      dispatch(setStatusResponse());
       navigate("/");
     } else if (error) {
       Swal.fire("Error", error, "error");
+      dispatch(setStatusResponse());
     }
   }, [dispatch, success, error, product]);
 
@@ -118,6 +120,13 @@ function UpdateProduct() {
                         <div className="row">
                           <div className="col-lg-12">
                             <div className="image-input">
+                              {images?.length > 0 && (
+                                <img
+                                  src={images[0].url}
+                                  className="image-preview"
+                                  alt="img"
+                                />
+                              )}
                               <input
                                 onChange={createProductImagesChange}
                                 type="file"
@@ -287,10 +296,10 @@ function UpdateProduct() {
                           </div>
 
                           <div id="createProductFormImage">
-                            {imagesPreview.map((image, index) => (
+                            {imagesPreview?.map((image, index) => (
                               <img
                                 key={index}
-                                src={image}
+                                src={image.url}
                                 alt="Product Preview"
                               />
                             ))}

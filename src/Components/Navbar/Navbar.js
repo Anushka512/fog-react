@@ -20,7 +20,7 @@ export default function Navbar({ setToggleCart }) {
   const { isAdmin } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getHeaderTagLine());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="wrapper__nav">

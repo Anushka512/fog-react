@@ -3,13 +3,11 @@ import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   createProduct,
-  resetStatusError,
+  setStatusResponse,
 } from "../../Redux/slices/productSlice";
 // import Loader from "../..//loader/index";
 import { useTheme } from "@mui/material/styles";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import OutlinedInput from "@mui/material/OutlinedInput";
+
 import SideBar from "./Sidebar";
 import Swal from "sweetalert2";
 import { getCategories } from "../../Redux/slices/categories";
@@ -19,7 +17,6 @@ import Loader from "../../Components/Loader/Loader";
 function NewProduct() {
   const navigate = useNavigate();
 
-  const theme = useTheme();
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -56,13 +53,14 @@ function NewProduct() {
   useEffect(() => {
     if (success) {
       Swal.fire("Success", message, "success");
-      dispatch(resetStatusError());
+      dispatch(setStatusResponse());
       navigate("/");
     } else if (error) {
       Swal.fire("Error", error, "error");
+      dispatch(setStatusResponse());
     }
     dispatch(getCategories());
-  }, [dispatch, success, error]);
+  }, [dispatch, success, error, navigate, message]);
 
   const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
@@ -105,7 +103,7 @@ function NewProduct() {
                         <div className="row">
                           <div className="col-lg-12">
                             <div className="image-input">
-                              {images && (
+                              {images.length > 0 && (
                                 <img
                                   src={images[0]}
                                   className="image-preview"
