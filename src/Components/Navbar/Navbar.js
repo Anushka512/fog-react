@@ -4,6 +4,7 @@ import {
   AiOutlineHeart,
   AiOutlineUser,
   AiOutlineSearch,
+  AiFillDashboard,
 } from "react-icons/ai";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import "./Navbar.scss";
@@ -19,7 +20,7 @@ export default function Navbar({ setToggleCart }) {
   const { isAdmin } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getHeaderTagLine());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="wrapper__nav">
@@ -56,7 +57,7 @@ export default function Navbar({ setToggleCart }) {
             )}
             {isAdmin && (
               <Link to="/admin">
-                <AiOutlineUser />
+                <AiFillDashboard />
               </Link>
             )}
           </div>
