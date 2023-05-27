@@ -95,13 +95,17 @@ function NewProduct() {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="add_product_wrapper">
-                      <h4>Create Product</h4>
+                      {/* heading  */}
+                      <h2>Create Product</h2>
+                      {/* form  */}
                       <form
                         className="add_product_form"
                         onSubmit={createProductSubmitHandler}
                       >
                         <div className="row">
                           <div className="col-lg-12">
+
+                            {/* image here  */}
                             <div className="image-input">
                               {images.length > 0 && (
                                 <img
@@ -125,11 +129,11 @@ function NewProduct() {
                               </label>
                             </div>
                           </div>
-
-                          <div className="col-lg-6">
+                          {/* product name  */}
+                          <div className="col-lg-5">
                             <div className="fotm-group">
                               <label htmlFor="product_price">
-                                Product Name *
+                                Product Name
                                 <span className="text-danger">*</span>
                               </label>
                               <input
@@ -143,75 +147,8 @@ function NewProduct() {
                             </div>
                           </div>
 
-                          <div className="col-lg-6">
-                            <div className="fotm-group">
-                              <label htmlFor="product_price">
-                                Price
-                                <span className="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                id="product_price"
-                                className="form-control"
-                                placeholder="Product Price"
-                                required
-                                onChange={(e) => setPrice(e.target.value)}
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-lg-6">
-                            <div className="fotm-group">
-                              <label htmlFor="product_price">
-                                Discounted Price
-                                <span className="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                id="product_price"
-                                className="form-control"
-                                placeholder="Product Discounted Price"
-                                required
-                                onChange={(e) =>
-                                  setDiscountedPrice(e.target.value)
-                                }
-                              />
-                            </div>
-                          </div>
-
-                          <div className="col-lg-6">
-                            <div className="fotm-group">
-                              <label htmlFor="product_weight">
-                                Weight
-                                <span className="text-danger">*</span>
-                              </label>
-                              <input
-                                type="number"
-                                id="product_weight"
-                                className="form-control"
-                                placeholder="Product Weight"
-                                required
-                                onChange={(e) => setWeight(e.target.value)}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
-                            <div className="fotm-group">
-                              <label htmlFor="product_price">
-                                Short Description
-                                <span className="text-danger">*</span>
-                              </label>
-                              <input
-                                type="text"
-                                id="product_price"
-                                className="form-control"
-                                placeholder="Product Description"
-                                required
-                                onChange={(e) => setDescription(e.target.value)}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-6">
+                          {/* product stock */}
+                          <div className="col-lg-3">
                             <div className="fotm-group">
                               <label htmlFor="product_price">
                                 Stock
@@ -227,7 +164,9 @@ function NewProduct() {
                               </select>
                             </div>
                           </div>
-                          <div className="col-lg-6">
+
+                          {/* product categories  */}
+                          <div className="col-lg-3">
                             <div className="fotm-group">
                               <label htmlFor="product_price">
                                 Category
@@ -247,6 +186,103 @@ function NewProduct() {
                             </div>
                           </div>
 
+      {/* Product weight  */}
+                          <div className="col-lg-3">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Weight
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_price"
+                                className="form-control"
+                                placeholder="Product weight"
+                                required
+                                onChange={(e) => setPrice(e.target.value)}
+                              />
+                            </div>
+                          </div>
+
+      {/* Product price  */}
+                          <div className="col-lg-3">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                 Price
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input  
+                                type="number"
+                                id="product_price"
+                                className="form-control"
+                                placeholder="Product Discounted Price"
+                                required
+                                onChange={(e) =>
+                                  setDiscountedPrice(e.target.value)
+                                }
+                              />
+                            </div>
+                          </div>
+
+                {/* add price and weight btn  */}
+                          <div className="col-lg-3 add_price-btn ">
+                            <div className="form-group">
+                              <button className="theme-btn-one  btn_sm">
+                                Add Weight
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="col-lg-12 add_price-screen ">
+                            <span>
+                              500g
+                              {/* icon here  */}
+                              <p>i</p>
+                              </span>
+                            <span>
+                              600g
+                                {/* icon here  */}
+                              <p>i</p>
+                            </span>
+                          </div>
+
+                          {/* <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_weight">
+                                Weight
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_weight"
+                                className="form-control"
+                                placeholder="Product Weight"
+                                required
+                                onChange={(e) => setWeight(e.target.value)}
+                              />
+                            </div>
+                          </div> */}
+
+                          {/* short des  */}
+                          <div className="col-lg-6">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Short Description
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                id="product_price"
+                                className="form-control"
+                                placeholder="Product Description"
+                                required
+                                onChange={(e) => setDescription(e.target.value)}
+                              />
+                            </div>
+                          </div>
+
+
+
                           <div className="col-lg-6">
                             <div
                               className="fotm-group"
@@ -260,8 +296,8 @@ function NewProduct() {
                                 <span className="text-danger">*</span>
                               </label>
                               <textarea
-                                rows={10}
-                                cols={52}
+                                rows={5}
+                                cols={12}
                                 placeholder="Enter Long Description"
                                 onChange={(e) =>
                                   setLongDescription(e.target.value)
