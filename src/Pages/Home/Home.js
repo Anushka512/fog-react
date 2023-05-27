@@ -190,8 +190,8 @@ function Home() {
                   key={item.name + index}
                   imgUrl={item?.images[0]?.url}
                   name={item.name}
-                  price={item.price}
-                  salePrice={item.price - "20"}
+                  price={item.weightPrice[0].price}
+                  salePrice={item.weightPrice[0].price}
                   category={"Breads"}
                   id={item._id}
                   isAddedOnCart={item.isOnCard ? true : false}
@@ -236,8 +236,8 @@ function Home() {
                   key={item.name + index}
                   imgUrl={item?.images[0]?.url}
                   name={item.name}
-                  price={item.price}
-                  salePrice={item.price - "20"}
+                  price={item.weightPrice[0].price}
+                  salePrice={item.weightPrice[0].price}
                   category={"Breads"}
                   id={item._id}
                   isAddedOnCart={item.isOnCard ? true : false}

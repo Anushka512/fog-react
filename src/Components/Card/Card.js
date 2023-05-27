@@ -7,15 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart }) {
   const dispatch = useDispatch();
-  const {cart} = useSelector((state) => state.products);
+  const { cart } = useSelector((state) => state.products);
   const [quantity, setQuantity] = useState(0);
-  if(isAddedOnCart){
-    cart?.map((product)=>{
-      if(product._id===id){
-        setQuantity(product.quantity)
+  if (isAddedOnCart) {
+    cart?.map((product) => {
+      if (product._id === id) {
+        setQuantity(product.quantity);
       }
-    })
+    });
   }
+  console.log("This is price of pRoduct", price);
   const addToCart = (id) => {
     dispatch({
       type: "ProductSlice/addToCart",
@@ -48,7 +49,7 @@ function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart }) {
 
         <div className="card__footer">
           <span className="card__price">
-            <p className="price">₹{price}</p>
+            <p className="price">s</p>
             <p className="sale__price">₹{salePrice}</p>
           </span>
 

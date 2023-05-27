@@ -96,7 +96,6 @@ function ProductDetails() {
                     onClick={handleNext}
                     disabled={activeStep === maxSteps - 1}
                   >
-                    Next
                     {theme.direction === "rtl" ? (
                       <KeyboardArrowLeft />
                     ) : (
@@ -115,7 +114,6 @@ function ProductDetails() {
                     ) : (
                       <KeyboardArrowLeft />
                     )}
-                    Back
                   </Button>
                 }
               />
@@ -129,13 +127,15 @@ function ProductDetails() {
               </div>
 
               <div className="weight__badge">
-              <span className="active-badge">{product.weight}g</span>
-                {/* <span>150g</span>
-                <span>250g</span> */}
+                {product?.weightPrice?.map((weight, i) => (
+                  <span className="active-badge">{weight.weight}g</span>
+                ))}
               </div>
 
               <div className="prize">
-                <h5>₹{product?.price}</h5>
+                {product?.weightPrice?.map((price, i) => (
+                  <h5>₹{price?.price}</h5>
+                ))}
               </div>
 
               <div className="submit__btn">
