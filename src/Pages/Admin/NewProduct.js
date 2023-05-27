@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import { getCategories } from "../../Redux/slices/categories";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
+import { RxCross1 } from "react-icons/rx";
 
 function NewProduct() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function NewProduct() {
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
+  const [weightPrice, setWeightPrice] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
   const { success, error, message } = useSelector((state) => state.products);
   const { isLoading } = useSelector((state) => state.app);
@@ -39,13 +41,12 @@ function NewProduct() {
         name,
         Stock,
         name,
-        price,
+        weightPrice: weightPrice,
         description,
         images,
         longDescription,
         category,
         discountedPrice,
-        weight,
       })
     );
   };
@@ -61,6 +62,23 @@ function NewProduct() {
     }
     dispatch(getCategories());
   }, [dispatch, success, error, navigate, message]);
+
+  const addWeightPrice = (e) => {
+    const newField = {
+      weight: weight,
+      price: price,
+      id: new Date(),
+    };
+    const newArr = [...weightPrice, newField];
+    setWeightPrice(newArr);
+    setPrice("");
+    setWeight("");
+  };
+
+  const removeWeightPrice = (id) => {
+    const newArr = weightPrice.filter((item) => item.id !== id);
+    setWeightPrice(newArr);
+  };
 
   const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
@@ -104,7 +122,6 @@ function NewProduct() {
                       >
                         <div className="row">
                           <div className="col-lg-12">
-
                             {/* image here  */}
                             <div className="image-input">
                               {images.length > 0 && (
@@ -186,7 +203,7 @@ function NewProduct() {
                             </div>
                           </div>
 
-      {/* Product weight  */}
+                          {/* Product weight  */}
                           <div className="col-lg-3">
                             <div className="fotm-group">
                               <label htmlFor="product_price">
@@ -197,53 +214,52 @@ function NewProduct() {
                                 type="number"
                                 id="product_price"
                                 className="form-control"
+                                value={weight}
                                 placeholder="Product weight"
-                                required
+                                onChange={(e) => setWeight(e.target.value)}
+                              />
+                            </div>
+                          </div>
+
+                          {/* Product price  */}
+                          <div className="col-lg-3">
+                            <div className="fotm-group">
+                              <label htmlFor="product_price">
+                                Price
+                                <span className="text-danger">*</span>
+                              </label>
+                              <input
+                                type="number"
+                                id="product_price"
+                                className="form-control"
+                                value={price}
+                                placeholder="Product Discounted Price"
                                 onChange={(e) => setPrice(e.target.value)}
                               />
                             </div>
                           </div>
 
-      {/* Product price  */}
-                          <div className="col-lg-3">
-                            <div className="fotm-group">
-                              <label htmlFor="product_price">
-                                 Price
-                                <span className="text-danger">*</span>
-                              </label>
-                              <input  
-                                type="number"
-                                id="product_price"
-                                className="form-control"
-                                placeholder="Product Discounted Price"
-                                required
-                                onChange={(e) =>
-                                  setDiscountedPrice(e.target.value)
-                                }
-                              />
-                            </div>
-                          </div>
-
-                {/* add price and weight btn  */}
+                          {/* add price and weight btn  */}
                           <div className="col-lg-3 add_price-btn ">
                             <div className="form-group">
-                              <button className="theme-btn-one  btn_sm">
+                              <button
+                                className="theme-btn-one  btn_sm"
+                                onClick={addWeightPrice}
+                              >
                                 Add Weight
                               </button>
                             </div>
                           </div>
 
                           <div className="col-lg-12 add_price-screen ">
-                            <span>
-                              500g
-                              {/* icon here  */}
-                              <p>i</p>
+                            {weightPrice?.map((item, index) => (
+                              <span key={index}>
+                                {item.price}₹ - {item.weight}g{/* icon here  */}
+                                <RxCross1
+                                  onClick={() => removeWeightPrice(item.id)}
+                                />
                               </span>
-                            <span>
-                              600g
-                                {/* icon here  */}
-                              <p>i</p>
-                            </span>
+                            ))}
                           </div>
 
                           {/* <div className="col-lg-6">
@@ -280,8 +296,6 @@ function NewProduct() {
                               />
                             </div>
                           </div>
-
-
 
                           <div className="col-lg-6">
                             <div
