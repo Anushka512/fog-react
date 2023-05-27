@@ -6,7 +6,11 @@ import signup from "../../Assets/Images/signup.png";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 // import { getRegisterUser } from "../../Redux/Slices/user"
-import { createUser, getLoggedInrUser } from "../../Redux/slices/user";
+import {
+  createUser,
+  getLoggedInrUser,
+  clearError,
+} from "../../Redux/slices/user";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -15,20 +19,27 @@ function Login() {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
 
   const { status, isAuthenticated, error } = useSelector((state) => state.user);
 
   const handleSignup = (e) => {
     e.preventDefault();
-
-    dispatch(
-      createUser({
-        name: userName,
-        password,
-        email,
-      })
-    );
+    if (password !== confirmpassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Password And Confirm Password Doesn't Matched",
+      });
+    } else {
+      dispatch(
+        createUser({
+          name: userName,
+          password,
+          email,
+        })
+      );
+    }
   };
 
   const handleSignIn = (e) => {
@@ -53,6 +64,7 @@ function Login() {
       setEmail("");
       setPassword("");
       setUserName("");
+      dispatch(clearError());
     }
     if (isAuthenticated) {
       Swal.fire({
@@ -65,6 +77,7 @@ function Login() {
       setPassword("");
       setUserName("");
       navigate("/");
+      dispatch(clearError());
     }
 
     if (error) {
@@ -73,10 +86,7 @@ function Login() {
         title: error,
         icon: "error",
       });
-
-      dispatch({
-        type: "user/clearError",
-      });
+      dispatch(clearError());
     }
   }, [status, isAuthenticated, error]);
 
@@ -158,7 +168,8 @@ function Login() {
               <i className="fas fa-lock"></i>
               <input
                 type="password"
-                value={password}
+                value={confirmpassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
               />
             </div>

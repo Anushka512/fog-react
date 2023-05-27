@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.scss";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 // import { AiOutlineHeart, AiFillCheckCircle } from "react-icons/ai";
 
-function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart }) {
+function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart ,weight}) {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.products);
   const [quantity, setQuantity] = useState(0);
+
   if (isAddedOnCart) {
     cart?.map((product) => {
       if (product._id === id) {
@@ -20,7 +21,7 @@ function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart }) {
   const addToCart = (id) => {
     dispatch({
       type: "ProductSlice/addToCart",
-      payload: { id },
+      payload: { id, price ,weight},
     });
   };
 
