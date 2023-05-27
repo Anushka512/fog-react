@@ -76,10 +76,12 @@
   position: relative;
   border: 1px solid black;
 }
-.add_price-screen span p{
-  background-color: red;
+.add_price-screen span svg{
+  background-color: #f4f4f8;
   border-radius: 5px;
   position: absolute;
+  color: red;
+  cursor: pointer;
   top: 0px;
   right: 0px;
   transform: translate(50%, -50%);
