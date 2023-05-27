@@ -144,14 +144,14 @@ function Home() {
             <h1>Categories</h1>
           </div>
           <div className="cat_card_wrapper">
-            {isLoading ? (
-              <MinLoader />
-            ) : (
-              categories.map((category) => <img src={catImg4} alt="cat-img" />)
-            )}
-            {/* <img src={catImg1} alt="cat-img" />
-            <img src={catImg2} alt="cat-img" />
-            <img src={catImg3} alt="cat-img" /> */}
+            
+                {isLoading ? (
+                  <MinLoader />
+                ) : (
+                  categories.map((category) => <img src={catImg4} alt="cat-img" />)
+                )}
+            
+
           </div>
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">

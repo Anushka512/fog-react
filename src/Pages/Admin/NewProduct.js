@@ -235,12 +235,12 @@ function NewProduct() {
 
                           <div className="col-lg-12 add_price-screen ">
                             <span>
-                              500g
+                              500g - $300
                               {/* icon here  */}
                               <p>i</p>
                               </span>
                             <span>
-                              600g
+                              600g - $400
                                 {/* icon here  */}
                               <p>i</p>
                             </span>
