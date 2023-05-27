@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 // import axios from "axios";
 import "./product.css";
 
-
 export const getAllProducts = createAsyncThunk(
   "/api/v1/auth/products",
   async (body) => {
@@ -29,7 +28,7 @@ export const getAllProducts = createAsyncThunk(
 
 export const getProductDetail = createAsyncThunk(
   "/api/v1/product/:id",
-  async (body,thunkAPI) => {
+  async (body, thunkAPI) => {
     try {
       thunkAPI.dispatch(setLoading(true));
       const response = await axiosClient.get(`/api/v1/product/${body.id}`);
@@ -37,8 +36,7 @@ export const getProductDetail = createAsyncThunk(
     } catch (e) {
       console.log(e);
       return Promise.reject(e);
-    }
-    finally{
+    } finally {
       thunkAPI.dispatch(setLoading(false));
     }
   }
@@ -91,7 +89,7 @@ export const createProduct = createAsyncThunk(
 );
 //create Product
 export const updateProduct = createAsyncThunk(
-  "/api/v1/product/admin/:id",
+  "/api/v1/product/admin/update/:id",
   async (body, thunkAPI) => {
     try {
       thunkAPI.dispatch(setLoading(true));
@@ -172,7 +170,7 @@ const productSlice = createSlice({
         //   icon: "success",
         //   imageWidth: 200,
         //   width: '450px',
-        //   // height: '50px', 
+        //   // height: '50px',
         //   showConfirmButton: false,
         //   timer: 1000,
         //   position: "bottom-end"
@@ -181,22 +179,20 @@ const productSlice = createSlice({
           title: "Success!",
           text: "Successfully added to your Cart",
           icon: "success",
-          width: '300px',
+          width: "300px",
           showConfirmButton: false,
           timer: 1500,
           position: "bottom-end",
           customClass: {
-            popup: 'custom-popup',
-            closeButton: 'custom-close-button',
+            popup: "custom-popup",
+            closeButton: "custom-close-button",
           },
           allowOutsideClick: false,
           allowEscapeKey: false,
           allowEnterKey: false,
           showCloseButton: true,
-          closeButtonHtml: '&times;', // Custom HTML for the close button (uses the "times" symbol)
+          closeButtonHtml: "&times;", // Custom HTML for the close button (uses the "times" symbol)
         });
-
-     
 
         //Saving Carts To localStorage
         localStorage.setItem("cartItems", JSON.stringify(state.carts));
@@ -206,19 +202,19 @@ const productSlice = createSlice({
           text: "This product is already added in your Cart",
           icon: "failed",
           imageWidth: 200,
-          width: '450px',
+          width: "450px",
           allowOutsideClick: false,
           allowEscapeKey: false,
           allowEnterKey: false,
           showCloseButton: true,
-          closeButtonHtml: '&times;', 
+          closeButtonHtml: "&times;",
           customClass: {
-            closeButton: 'custom-close-button',
+            closeButton: "custom-close-button",
           },
           imageAlt: item.title,
           showConfirmButton: false,
           timer: 1500,
-          position: "bottom-end"
+          position: "bottom-end",
         });
       }
     },
@@ -249,19 +245,19 @@ const productSlice = createSlice({
           title: "Success!",
           text: "Successfully Deleted From your Cart",
           icon: "success",
-          width: '450px',
+          width: "450px",
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
           allowEnterKey: false,
           showCloseButton: true,
-          closeButtonHtml: '&times;', 
+          closeButtonHtml: "&times;",
           customClass: {
-            popup: 'custom-popup',
-            closeButton: 'custom-close-button',
+            popup: "custom-popup",
+            closeButton: "custom-close-button",
           },
           timer: 1500,
-          position: "bottom-end"
+          position: "bottom-end",
         });
       }
     },
@@ -279,15 +275,15 @@ const productSlice = createSlice({
           allowEscapeKey: false,
           allowEnterKey: false,
           showCloseButton: true,
-          closeButtonHtml: '&times;', 
+          closeButtonHtml: "&times;",
           customClass: {
-            popup: 'custom-popup',
-            closeButton: 'custom-close-button',
+            popup: "custom-popup",
+            closeButton: "custom-close-button",
           },
-          width: '450px',
+          width: "450px",
           showConfirmButton: false,
           timer: 1500,
-          position: "bottom-end"
+          position: "bottom-end",
         });
       }
     },
@@ -299,6 +295,12 @@ const productSlice = createSlice({
       if (arr) {
         state.cartProduct.push(id);
       }
+    },
+
+    setStatusResponse: (state) => {
+      state.success = false;
+      state.error = "";
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -342,10 +344,18 @@ const productSlice = createSlice({
         } else {
           state.error = action.payload?.message;
         }
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.success = true;
+          state.message = "Product Is Updated Succesfully ";
+        } else {
+          state.error = action.payload?.message;
+        }
       });
   },
 });
 
 export const productsReducer = productSlice.reducer;
-export const { resetStatusError } = productSlice.actions;
+export const { resetStatusError, setStatusResponse } = productSlice.actions;
 export default productsReducer;
