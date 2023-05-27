@@ -114,7 +114,7 @@ const userSlice = createSlice({
           state.user = action.payload.user;
           state.isAuthenticated = true;
           state.status = true;
-          if (action.payload.result.isAdmin) {
+          if (action.payload.user?.isAdmin) {
             state.isAdmin = true;
           }
         }
