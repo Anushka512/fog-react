@@ -19,6 +19,8 @@ import Categories from "./Pages/Admin/CategoryList";
 import Pincodes from "./Pages/Admin/PinCodeList";
 import CreatePincode from "./Pages/Admin/CreatePincode";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
+import CreateCoupon from "./Pages/Admin/CreateCoupon";
+import CouponList from "./Pages/Admin/CouponsList";
 
 import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
 import { useState, useEffect } from "react";
@@ -53,6 +55,8 @@ function App() {
           <Route path="/admin/pincodes" element={<Pincodes />} />
           <Route path="/admin/pincodes/create" element={<CreatePincode />} />
           <Route path="/admin/header" element={<HeaderOffer />} />
+          <Route path="/admin/coupons" element={<CouponList />} />
+          <Route path="/admin/coupon/create" element={<CreateCoupon />} />
         </Route>
       </Routes>
 

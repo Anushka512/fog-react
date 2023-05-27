@@ -25,10 +25,12 @@ import {
   getAllProducts,
 } from "../../Redux/slices/productSlice";
 import { getUserDetail } from "../../Redux/slices/user";
+import MinLoader from "../../Components/Loader/MinLoader";
 
 function Home() {
   const dispatch = useDispatch();
   const { products, categories } = useSelector((state) => state.products);
+  const { isLoading } = useSelector((state) => state.app);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -142,9 +144,11 @@ function Home() {
             <h1>Categories</h1>
           </div>
           <div className="cat_card_wrapper">
-            {categories.map((category) => (
-              <img src={catImg4} alt="cat-img" />
-            ))}
+            {isLoading ? (
+              <MinLoader />
+            ) : (
+              categories.map((category) => <img src={catImg4} alt="cat-img" />)
+            )}
             {/* <img src={catImg1} alt="cat-img" />
             <img src={catImg2} alt="cat-img" />
             <img src={catImg3} alt="cat-img" /> */}
@@ -169,18 +173,31 @@ function Home() {
             </div>
           </div>
           <div className="products__cards" ref={HorizontalScroll1}>
-            {products.map((item, index) => (
-              <Card
-                key={item.name + index}
-                imgUrl={item?.images[0]?.url}
-                name={item.name}
-                price={item.price}
-                salePrice={item.price - "20"}
-                category={"Breads"}
-                id={item._id}
-                isAddedOnCart={item.isOnCard ? true : false}
-              />
-            ))}
+            {isLoading ? (
+              <div
+                style={{
+                  width: "90vw",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <MinLoader />
+              </div>
+            ) : (
+              products.map((item, index) => (
+                <Card
+                  key={item.name + index}
+                  imgUrl={item?.images[0]?.url}
+                  name={item.name}
+                  price={item.price}
+                  salePrice={item.price - "20"}
+                  category={"Breads"}
+                  id={item._id}
+                  isAddedOnCart={item.isOnCard ? true : false}
+                />
+              ))
+            )}
           </div>
           <div className="scroll__buttons">
             <AiFillCaretRight
@@ -196,24 +213,37 @@ function Home() {
           <div className="feature__product product__heading">
             <div>
               <h1>
-                {" "}
                 Our <span className="g-text">Best Selling Products</span>
               </h1>
               <span>View all -</span>
             </div>
           </div>
           <div className="products__cards" ref={HorizontalScroll2}>
-            {products.map((item, index) => (
-              <Card
-                key={item.name + index}
-                imgUrl={item?.images[0]?.url}
-                name={item.name}
-                price={item.price}
-                salePrice={item.price - "20"}
-                category={"Breads"}
-                id={item._id}
-              />
-            ))}
+            {isLoading ? (
+              <div
+                style={{
+                  width: "90vw",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <MinLoader />
+              </div>
+            ) : (
+              products.map((item, index) => (
+                <Card
+                  key={item.name + index}
+                  imgUrl={item?.images[0]?.url}
+                  name={item.name}
+                  price={item.price}
+                  salePrice={item.price - "20"}
+                  category={"Breads"}
+                  id={item._id}
+                  isAddedOnCart={item.isOnCard ? true : false}
+                />
+              ))
+            )}
           </div>
           <div className="scroll__buttons-2">
             <AiFillCaretRight

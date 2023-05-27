@@ -11,8 +11,9 @@ import "./product.css";
 
 export const getAllProducts = createAsyncThunk(
   "/api/v1/auth/products",
-  async (body) => {
+  async (body, thunkAPI) => {
     try {
+      thunkAPI.dispatch(setLoading(true));
       let link = `/api/v1/products`;
       if (body?.category) {
         link = `/api/v1/products?category=${body.category}`;
@@ -22,6 +23,8 @@ export const getAllProducts = createAsyncThunk(
     } catch (e) {
       console.log(e);
       return Promise.reject(e);
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
     }
   }
 );

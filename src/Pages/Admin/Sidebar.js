@@ -117,44 +117,65 @@ const Sidebar = () => {
       <ul>
         <Link to="/admin" style={{ color: "white" }}>
           <li className="option active">
-            <span> <FontAwesomeIcon icon={faChartBar} /> </span>
+            <span>
+              {" "}
+              <FontAwesomeIcon icon={faChartBar} />{" "}
+            </span>
             Dashboard
           </li>
         </Link>
 
         <Link to="/admin/orders" style={{ color: "white" }}>
           <li className="option">
-            <span><FontAwesomeIcon icon={faShoppingCart} /></span>
+            <span>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </span>
             All Orders
           </li>
         </Link>
 
         <Link to="/admin/products" style={{ color: "white" }}>
           <li>
-            <span><FontAwesomeIcon icon={faList} /></span>
+            <span>
+              <FontAwesomeIcon icon={faList} />
+            </span>
             All Products
           </li>
         </Link>
 
         <Link to="/admin/createproject" style={{ color: "white" }}>
           <li>
-            <span><FontAwesomeIcon icon={faBox} /></span>
+            <span>
+              <FontAwesomeIcon icon={faBox} />
+            </span>
             Create Products
           </li>
         </Link>
 
-
         <Link to="/admin/categories" style={{ color: "white" }}>
           <li>
-            <span><FontAwesomeIcon icon={faList} /></span>
+            <span>
+              <FontAwesomeIcon icon={faList} />
+            </span>
             All Categories
           </li>
         </Link>
 
         <Link to="/admin/categories/create" style={{ color: "white" }}>
           <li>
-            <span><FontAwesomeIcon icon={faList} /></span>
+            <span>
+              <FontAwesomeIcon icon={faList} />
+            </span>
             Create Category
+          </li>
+        </Link>
+
+        <Link to="/admin/coupons" style={{ color: "white" }}>
+          <li>
+            <span>
+              <FontAwesomeIcon icon={faList} />
+            </span>
+            Coupons Manager
           </li>
         </Link>
 
@@ -175,37 +196,45 @@ const Sidebar = () => {
 
         <Link to="/admin/pincodes" style={{ color: "white" }}>
           <li>
-            <span><FontAwesomeIcon icon={faList} /></span>
+            <span>
+              <FontAwesomeIcon icon={faList} />
+            </span>
             Pincodes Manager
           </li>
         </Link>
 
-
-
         <Link to="/admin/users" style={{ color: "white" }}>
           <li className="option">
-            <span><FontAwesomeIcon icon={faUsers} /></span>
+            <span>
+              <FontAwesomeIcon icon={faUsers} />
+            </span>
             All Users
           </li>
         </Link>
 
         <Link to="/admin/reviews" style={{ color: "white" }}>
           <li className="option">
-            <span><FontAwesomeIcon icon={faStar} /></span>
+            <span>
+              <FontAwesomeIcon icon={faStar} />
+            </span>
             Reviews
           </li>
         </Link>
 
         <Link to="/admin/header" style={{ color: "white" }}>
           <li className="option">
-            <span><FontAwesomeIcon icon={faStar} /></span>
+            <span>
+              <FontAwesomeIcon icon={faStar} />
+            </span>
             Header Promotion
           </li>
         </Link>
 
         <Link to="/admin/reviews" style={{ color: "white" }}>
           <li className="option">
-            <span><FontAwesomeIcon icon={faStar} /></span>
+            <span>
+              <FontAwesomeIcon icon={faStar} />
+            </span>
             Logout
           </li>
         </Link>
