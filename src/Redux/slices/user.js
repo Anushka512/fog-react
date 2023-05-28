@@ -62,6 +62,22 @@ export const getUserDetail = createAsyncThunk(
   }
 );
 
+export const getLoggedoutUser = createAsyncThunk(
+  "/api/v1/auth/logout",
+  async (_, thunkApi) => {
+    try {
+      thunkApi.dispatch(setLoading(true));
+      const response = await axiosClient.get("/api/v1/auth/logout");
+      console.log("This is Response from our APi", response);
+      return response.data;
+    } catch (error) {
+      return Promise.reject(error.message);
+    } finally {
+      thunkApi.dispatch(setLoading(false));
+    }
+  }
+);
+
 // User Slice
 const userSlice = createSlice({
   name: "user",
@@ -96,6 +112,7 @@ const userSlice = createSlice({
 
     clearError: (state) => {
       state.error = null;
+      state.status = false;
     },
   },
   extraReducers: (builder) => {
@@ -137,9 +154,16 @@ const userSlice = createSlice({
             state.isAdmin = true;
           }
         }
+      })
+      .addCase(getLoggedoutUser.fulfilled, (state, action) => {
+        if (action.payload.statusCode === 200) {
+          state.isAdmin = false;
+          state.isAuthenticated = false;
+        }
       });
   },
 });
 
 const userReducer = userSlice.reducer;
+export const { clearError } = userSlice.actions;
 export default userReducer;

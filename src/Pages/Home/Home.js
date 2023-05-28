@@ -66,6 +66,8 @@ function Home() {
     message: "",
   });
 
+  console.log("THis is product", products);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -191,6 +193,7 @@ function Home() {
                   imgUrl={item?.images[0]?.url}
                   name={item.name}
                   price={item.weightPrice[0].price}
+                  weight={item.weightPrice[0].weight}
                   salePrice={item.weightPrice[0].price}
                   category={"Breads"}
                   id={item._id}
@@ -231,12 +234,13 @@ function Home() {
                 <MinLoader />
               </div>
             ) : (
-              products.map((item, index) => (
+              products?.map((item, index) => (
                 <Card
                   key={item.name + index}
                   imgUrl={item?.images[0]?.url}
                   name={item.name}
                   price={item.weightPrice[0].price}
+                  weight={item.weightPrice[0].weight}
                   salePrice={item.weightPrice[0].price}
                   category={"Breads"}
                   id={item._id}

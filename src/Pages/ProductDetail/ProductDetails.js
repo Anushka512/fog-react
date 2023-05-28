@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetail } from "../../Redux/slices/productSlice";
 import Loader from "../../Components/Loader/Loader";
+import Swal from "sweetalert2";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -22,6 +23,8 @@ function ProductDetails() {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.app);
   const { product } = useSelector((state) => state.products);
+  const [price, setPrice] = useState("");
+  const [weight, setWeight] = useState("");
   const images = product?.images;
 
   //Carousel Code
@@ -41,15 +44,32 @@ function ProductDetails() {
     setActiveStep(step);
   };
 
+  const handleSelectPrice = (info) => {
+    const itemPrice = product?.weightPrice?.find(
+      (price) => price.id === info.id
+    );
+    console.log("This is ItemPrice and info", itemPrice, info);
+    setPrice(itemPrice?.price);
+    setWeight(itemPrice?.weight);
+  };
+
   useEffect(() => {
     dispatch(getProductDetail({ id }));
   }, [dispatch, id]);
 
   const addToCart = () => {
-    dispatch({
-      type: "ProductSlice/addToCart",
-      payload: { id: product._id },
-    });
+    if (!price.length) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please select a price",
+      });
+    } else {
+      dispatch({
+        type: "ProductSlice/addToCart",
+        payload: { id: product._id, price, weight },
+      });
+    }
   };
 
   return (
@@ -128,14 +148,17 @@ function ProductDetails() {
 
               <div className="weight__badge">
                 {product?.weightPrice?.map((weight, i) => (
-                  <span className="active-badge">{weight.weight}g</span>
+                  <span
+                    onClick={() => handleSelectPrice(weight)}
+                    className="active-badge"
+                  >
+                    {weight.weight}g
+                  </span>
                 ))}
               </div>
 
               <div className="prize">
-                {product?.weightPrice?.map((price, i) => (
-                  <h5>₹{price?.price}</h5>
-                ))}
+                <p>{price}Rs</p>
               </div>
 
               <div className="submit__btn">

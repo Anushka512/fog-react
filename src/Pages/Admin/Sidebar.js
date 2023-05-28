@@ -98,7 +98,7 @@
 
 // export default Sidebar;
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -110,8 +110,21 @@ import {
   faUsers,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { getLoggedoutUser } from "../../Redux/slices/user";
+import Swal from "sweetalert2";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(getLoggedoutUser());
+    Swal.fire({
+      icon: "success",
+      title: "Logged Out Successfully",
+    });
+  };
+
   return (
     <div className="sidebar">
       <ul>
@@ -230,14 +243,14 @@ const Sidebar = () => {
           </li>
         </Link>
 
-        <Link to="/admin/reviews" style={{ color: "white" }}>
+        <div onClick={handleLogout} style={{ color: "white" }}>
           <li className="option">
             <span>
               <FontAwesomeIcon icon={faStar} />
             </span>
             Logout
           </li>
-        </Link>
+        </div>
       </ul>
     </div>
   );
