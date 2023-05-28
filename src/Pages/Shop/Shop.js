@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import rowIMG from "../../Assets/Images/div.row.png";
+// import rowIMG from "../../Assets/Images/div.row.png";
 import Card from "../../Components/Card/Card.js";
 import CardImg from "../../Assets/Images/3.jpg.png";
 import "./Shop.scss";
@@ -32,9 +32,9 @@ function Shop() {
 
   return (
     <div>
-      <div className="div__row-img">
+      {/* <div className="div__row-img">
         <img src={rowIMG} alt="ROW__IMG" />
-      </div>
+      </div> */}
 
       <main>
         <div className="Menu">

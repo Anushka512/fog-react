@@ -33,35 +33,46 @@
     }
   }
 
-  .f__md {
+  .ft-rtt{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-right: 4rem;
-    margin-left: 4rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 
-    ul {
-      li {
-        list-style: none;
-        margin: 8px 0px;
-
-        a {
-          text-decoration: none;
-          color: #75797f;
+    .f__md {
+      // border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-right: 4rem;
+      margin-left: 4rem;
+      min-width: 200px;
+  
+      ul {
+        li {
+          list-style: none;
+          margin: 8px 0px;
+  
+          a {
+            text-decoration: none;
+            color: #75797f;
+          }
         }
       }
     }
-  }
-
-  .f__rt {
-    .cont {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 18px;
-      align-items: center;
+  
+    .f__rt {
+      .cont {
+        // border: 1px solid black;
+        display: flex;
+        gap: 16px;
+        margin-bottom: 18px;
+        align-items: center;
+      }
     }
   }
+ 
   
 .icon {
   background-color: #8BC54B;
@@ -90,8 +101,8 @@
     .f__md {
       margin-right: 0;
       margin-left: 0;
-      align-items: center;
-      text-align: center;
+      // align-items: center;
+      // text-align: center;
       margin-top: 1.5rem;
 
       ul {
@@ -100,10 +111,10 @@
     }
 
     .f__rt {
-      align-items: center;
-        text-align: center;
+      // align-items: center;
+      //   text-align: center;
       .cont {
-        justify-content: center;
+        // justify-content: center;
         margin-bottom: 12px;
         
       }
@@ -114,11 +125,22 @@
 /* Media query for mobiles */
 @media (max-width: 768px) {
   .footer__wrapper {
+    .ft-rtt{
+      flex-direction: column-reverse;
+      h4{
+        margin-top: 30px;
+        text-align: center;
+      }
+      .f__md{
+        display: none !important;
+      }
+    }
     .f__md {
-      align-items: center;
-      text-align: center;
+      // align-items: center;
+      // text-align: center;
       margin-top: 1.5rem;
     }
+    
   }
 }
 

@@ -1,61 +1,67 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap";
 
 .contact-page {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 2000px;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: flex-start;
+	// align-items: center;
 	background-color: #ffffff;
 
 	.container1{
-		margin-bottom: 100px;
-		width: 1518px;
-		margin-top: -280px;
+		padding: 0px 0px;
+		// margin-bottom: 100px;
+		// width: 1518px;
+		// margin-top: -280px;
 	}
 
-	.quote{
-		margin-bottom: 300px;
-		margin-left: 540px;
-		margin-top: -350px;
-		color: #ffffff;
-		font-size: 50px;
-		font-family: Georgia, 'Times New Roman', Times, serif;
-	}
+	// .quote{
+	// 	margin-bottom: 300px;
+	// 	margin-left: 540px;
+	// 	margin-top: -350px;
+	// 	color: #ffffff;
+	// 	font-size: 50px;
+	// 	font-family: Georgia, 'Times New Roman', Times, serif;
+	// }
 
 	.contact-form-container {
 	  display: flex;
-	  padding: 50px;
-	  background-color: #E8F3DB;
-	  border-radius: 10px 10px 10px 10px;
-	  margin-left: 20px;
-	  width: 1400px;
-	  height: 700px;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  padding: 50px 20px;
+	  background-color: #38AAB5;
+	//   margin-left: 20px;
+	//   width: 1400px;
+	//   height: 700px;
+	// border: 1px solid black;
 
 	  h1 {
 		margin-top: 0;
 		margin-bottom: 30px;
 		font-size: 36px;
 		font-weight: bold;
-		justify-content: center;
-		align-items: center;
-		display: flex;
+		text-align: center;
 	  }
   
 	  form {
+		// border: 1px solid black	;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		width: 100%;
+		padding: 0px 20px !important;
   
 		.form-field {
 		  display: flex;
 		  flex-direction: column;
-		  width: 600px;
+		  justify-content: flex-start;
+		  width: 100%;
+		  max-width: 500px;
   
 		  label {
 			margin-bottom: 5px;
 			font-size: 18px;
-			font-weight: bold;
+			// font-weight: bold;
 		  }
   
 		  input,
@@ -64,6 +70,7 @@
 			border: none;
 			border-radius: 5px;
 			font-size: 16px;
+			outline: none;
 		  }
   
 		  textarea {
@@ -78,7 +85,7 @@
 		  border: none;
 		  border-radius: 5px;
 		  font-size: 16px;
-		  font-weight: bold;
+		//   font-weight: bold;
 		  cursor: pointer;
 		  transition: background-color 0.3s ease-in-out;
   

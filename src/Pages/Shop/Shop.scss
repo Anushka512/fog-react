@@ -26,11 +26,15 @@
       }
   
       .menu__items {
-        gap: 35px;
+        gap: 20px;
         background-color: #ececec;
-        width: 50vmax;
+        // width: 50vmax;
+        padding: 2px 5px;
         margin: 0 auto 35px auto; //For Centering
         border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
   
         //Removing Marign From Class p-text
         .p-text {

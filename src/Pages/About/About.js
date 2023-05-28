@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 
 import aboutBanner from "../../Assets/Images/all.png";
 // import arrow from "../../Assets/Images/carasole.png";
-import vision from "../../Assets/Images/vision.png";
-import mission from "../../Assets/Images/mission.png";
-import csr from "../../Assets/Images/csr.png";
-import trust from "../../Assets/Images/trust.png";
-import integrity from "../../Assets/Images/integrity.png";
-import innovation from "../../Assets/Images/innovation.png";
-import quality from "../../Assets/Images/quality.png";
-import customer from "../../Assets/Images/customer_focus.png";
-import founder from "../../Assets/Images/founder.png";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+// import vision from "../../Assets/Images/vision.png";
+// import mission from "../../Assets/Images/mission.png";
+// import csr from "../../Assets/Images/csr.png";
+// import trust from "../../Assets/Images/trust.png";
+// import integrity from "../../Assets/Images/integrity.png";
+// import innovation from "../../Assets/Images/innovation.png";
+// import quality from "../../Assets/Images/quality.png";
+// import customer from "../../Assets/Images/customer_focus.png";
+// import founder from "../../Assets/Images/founder.png";
+// import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 function About() {
   // Animation variants
@@ -67,7 +67,7 @@ function About() {
 
       {/* Our Story Section */}
 
-      <div className="About__Banner">
+      {/* <div className="About__Banner">
         <div className="container about__banner flex__center">
           <div className="left">
             <div className="about__banner-info">
@@ -87,27 +87,62 @@ function About() {
         <div className="right">
           <img src={aboutBanner} alt="banner" />
         </div>
+      </div> */}
+      <div className="container about__banner">
+        <div className="ab-left">
+          <h3 className="ab-head-first">Why to choose us ?</h3>
+          <h3 className="ab-head-sec">
+            Why Free of Gluten?
+          </h3>
+          <p className="p-text">
+            Gluten, a protein found in wheat and several other grains. It
+            means only eating only whole foods with no gluten. A gluten-free
+            diet is also popular among people who haven’t been diagnosed. It
+            means only eating only whole foods with no gluten. A gluten-free
+            diet is also popular among people who haven’t been diagnosed.
+          </p>
+          <span>
+            <button className="btn bl-btn">Go to Shop</button>
+            <button className="btn bl-btn outline-btn">Reach Us</button>
+          </span>
+
+        </div>
+
+        <span className="ab-right">
+          <img src={aboutBanner} alt="aboutbanner" />
+        </span>
       </div>
 
       {/* Vision and Mission Section */}
       <section className="vision-mission-section">
-        {/* <div className="section-title">
-          <h2>Vision and Mission</h2>
-        </div> */}
-        <div className="images">
-          <img src={vision} alt="" />
-          <img src={mission} alt="" />
-          <img src={csr} alt="" />
-        </div>
+
         <div className="vision-mission-content">
           <div className="vision">
-            <h3>VISION</h3>
+            <h1>Our Vision & Mission</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Since its inception, Free of Gluten dreamt of ideating a legacy
+              worth remembering.
+              At Free of Gluten, our vision is to create a world where
+              gluten-free food is healthy and delicious and accessible to
+              everyone. We believe that people with gluten intolerance and
+              celiac disease should have access to a diverse range of food
+              options that are safe and also tasty cum enjoyable.
+              Our mission is to make this vision a reality. We are committed to
+              using our expertise and creativity to craft new and innovative
+              gluten-free products that cater to the needs and desires of our
+              customers. We understand that gluten-free food can often be
+              bland and unappetising, and we dedicated ourselves to changing
+              this perception by offering products that are not only gluten-free
+              but also delicious and full of flavour.
+              We believe that our customers deserve the best - therefore, we
+              ensure that every product we make is of the highest quality. We
+              use only the finest ingredients, sourced from the best suppliers,
+              and adhere to strict manufacturing and production processes to
+              ensure that our products are safe, healthy, and free from gluten
+              contamination.
             </p>
           </div>
-          <div className="mission">
+          {/* <div className="mission">
             <h3>MISSION</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -115,17 +150,17 @@ function About() {
             </p>
           </div>
           <div className="csr">
-            <h3>CSR</h3>
+            <h3>Our Values</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Vision and Mission Section */}
-      <section className="values-section">
+      {/* <section className="values-section">
         <div className="section-title">
           <h2>Our Values</h2>
         </div>
@@ -149,10 +184,10 @@ function About() {
           <img class="one" src={quality} alt="" />
           <img class="one" src={customer} alt="" />
         </div>
-      </section>
+      </section> */}
 
       {/* Founder */}
-      <div className="section-container">
+      {/* <div className="section-container">
         <div className="section-content">
           <h2 className="section-heading">Our Founder</h2>
           <p className="section-paragraph">
@@ -171,11 +206,11 @@ function About() {
         <div className="section-photo">
           <img src={founder} alt="section__pic" />
         </div>
-      </div>
+      </div> */}
 
       {/* Contact Us */}
 
-      <div className="contact-us-container">
+      {/* <div className="contact-us-container">
         <h2 className="contact-us-heading">Contact Us</h2>
         <div className="contact-item">
           <FaPhone className="contact-icon" />
@@ -189,7 +224,7 @@ function About() {
           <FaMapMarkerAlt className="contact-icon" />
           <span>A-30 road, Old city, new delhi, India</span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

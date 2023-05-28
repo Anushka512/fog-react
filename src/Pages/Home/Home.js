@@ -1,17 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import Banner from "../../Assets/Images/hero-img-new.png";
+import webHeader from "../../Assets/Images/web_header.jpg";
 // import CardImg from "../../Assets/Images/3.jpg.png";
-import logoSec from "../../Assets/Images/logo__sec.png";
+// import logoSec from "../../Assets/Images/logo__sec.png";
 import aboutBanner from "../../Assets/Images/all.png";
-import catImg1 from "../../Assets/Images/cat-img-1.png";
-import catImg2 from "../../Assets/Images/cat-img-2.png";
-import catImg3 from "../../Assets/Images/cat-img-3.png";
+// import catImg1 from "../../Assets/Images/cat-img-1.png";
+// import catImg2 from "../../Assets/Images/cat-img-2.png";
+// import catImg3 from "../../Assets/Images/cat-img-3.png";
 import catImg4 from "../../Assets/Images/cat-img-4.png";
 import Card from "../../Components/Card/Card.js";
 import TestimonialCard from "../../Components/TestimonialCard/TestimonialCard.js";
 import bread from "../../Assets/Images/bread.png";
-import arrow from "../../Assets/Images/arrow.png";
+// import arrow from "../../Assets/Images/arrow.png";
 import { FiTruck } from "react-icons/fi";
 import { MdOutlineSupportAgent, MdPayments } from "react-icons/md";
 import { BiTimer } from "react-icons/bi";
@@ -98,7 +98,7 @@ function Home() {
 
       <div className="banner">
         <div className=" hero__container">
-          <img src={Banner} alt="HERO__IMG" />
+          <img src={webHeader} alt="HERO__IMG" />
         </div>
       </div>
 
@@ -117,20 +117,20 @@ function Home() {
           <div className="ser ser-1">
             <BiTimer />
 
-            <h4>Free Delivery</h4>
-            <p className="desc">on orders above ₹999</p>
+            <h4>Quick Delivery</h4>
+            <p className="desc">We always Deliver on time</p>
           </div>
 
           <div className="ser ser-2">
             <MdPayments />
-            <h4>Free Delivery</h4>
-            <p className="desc">on orders above ₹999</p>
+            <h4>Safe transaction</h4>
+            <p className="desc">100% safe and secure payments</p>
           </div>
 
           <div className="ser ser-3">
             <MdOutlineSupportAgent />
-            <h4>Free Delivery</h4>
-            <p className="desc">on orders above ₹999</p>
+            <h4>24*7 Support</h4>
+            <p className="desc">We are Always there for you</p>
           </div>
         </div>
       </div>
@@ -297,9 +297,11 @@ function Home() {
       {/* Yess section */}
 
       <div className="ysection">
+        <div className="y-top">
         <h2 className="yess">Yesssssss!!!!!!</h2>
         <h1 className="its">It’s Healthy & Tasty</h1>
-        <div className="right">
+        </div>
+        <div className="y-btm">
           <img src={bread} alt="bread" />
         </div>
       </div>
@@ -387,18 +389,20 @@ function Home() {
             <h3 className="first">Join our community</h3>
             <h2 className="sec">YOU ARE NOT ALONE</h2>
             <p className="para">
-              Gluten, a protein found in wheat and several other grains. It
-              means only eating only whole foods with no gluten. A gluten-free
-              diet is also popular among people who haven’t been diagnosed. It
-              means only eating only whole foods with no gluten. A gluten-free
-              diet is also popular among people who haven’t been diagnosed.
+            We invite you to be a part of our community FOGHEADS of Gluten sensitive 
+            individuals where your unique dietary needs are understood and 
+            celebrated. By joining our community you get access to valuable 
+            insights, resources and connections with the individuals with a 
+            shared sensitivity Together, let's 
+            embrace a gluten-free lifestyle and embark on a journey of shared 
+            inspiration and empowerment.
             </p>
           </div>
           <div className="cta-right">
 
           <form onSubmit={handleSubmit} >
             <div className="form-field">
-              <label htmlFor="email">Email</label>
+              {/* <label htmlFor="email">Email</label> */}
               <input
                 type="email"
                 id="email"
@@ -407,8 +411,9 @@ function Home() {
                 onChange={handleChange}
                 required
               />
+              <button type="submit">Submit</button>
             </div>
-            <div className="form-field">
+            {/* <div className="form-field">
               <label htmlFor="message">Message</label>
               <textarea
                 id="message"
@@ -418,8 +423,8 @@ function Home() {
                 onChange={handleChange}
                 required
               ></textarea>
-            </div>
-            <button type="submit">Send Message</button>
+            </div> */}
+            {/* <button type="submit">Submit</button> */}
           </form>
           </div>
         </div>

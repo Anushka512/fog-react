@@ -34,7 +34,7 @@ export default function Navbar({ setToggleCart }) {
           <BsTwitter />
         </div>
 
-        <p>
+        <p className="header-promo">
           {headerTagLine ? headerTagLine : "Sale: 20% off on orders above ₹999"}
         </p>
       </div>

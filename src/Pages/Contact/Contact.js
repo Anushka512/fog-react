@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import contact from "../../Assets/Images/contact.png";
-import phn from "../../Assets/Images/phone.png";
+// import contact from "../../Assets/Images/contact.png";
+// import phn from "../../Assets/Images/phone.png";
 import "./Contact.scss";
 
 const Contact = () => {
@@ -37,12 +37,10 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      <div className="container1">
+      {/* <div className="container1">
         <img src={phn} alt="" />
-        <h2 className="quote">Get in touch with us</h2>
-      </div>
+      </div> */}
       <div className="contact-form-container">
-        <div>
           <h1>LET'S HAVE A TALK !!</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-field">
@@ -53,6 +51,7 @@ const Contact = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                placeholder="Your name"
                 required
               />
             </div>
@@ -64,6 +63,7 @@ const Contact = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="yourmail@gmail.com"
                 required
               />
             </div>
@@ -74,18 +74,20 @@ const Contact = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                placeholder="Type your message here"
                 required
               ></textarea>
             </div>
             <button type="submit">Send Message</button>
           </form>
-        </div>
-        <div className="contact-image-container">
+        
+        
+        {/* <div className="contact-image-container">
           <img src={contact} alt="Contact" />
-        </div>
+        </div> */}
       </div>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      <div className="container3">
+      {/* <div className="container3">
         <h2 className="left">Contact</h2>
         <h4 className="left1">freeofgluten@gmail.com</h4>
         <h4 className="left2">9876543210</h4>
@@ -97,7 +99,7 @@ const Contact = () => {
         <a href="#" class="fa fa-facebook"></a>
         <a href="#" class="fa fa-twitter" ></a>
         <a href="#" class="fa fa-instagram"></a>
-      </div> 
+      </div>  */}
     </div>
   );
 };
