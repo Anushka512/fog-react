@@ -252,9 +252,10 @@ function NewProduct() {
                           </div>
 
                           <div className="col-lg-12 add_price-screen ">
+
                             {weightPrice?.map((item, index) => (
                               <span key={index}>
-                                {item.price}₹ - {item.weight}g{/* icon here  */}
+                                {item.price}₹ - {item.weight}g
                                 <RxCross1
                                   onClick={() => removeWeightPrice(item.id)}
                                 />

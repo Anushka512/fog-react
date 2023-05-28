@@ -1,31 +1,26 @@
 .testimonial__card {
-  width: 350px;
-  height: 200px;
+  
+  width: 500px;
+  height: 250px;
   text-align: center;
-  gap: 5px;
   background-color: rgb(230, 230, 230);
-  padding: 1vmax;
-  border-radius: 18px;
-  // box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #FFF8EF;
+  border-radius: 10px;
   flex-direction: column;
+  padding: 20px;
 
-  .userIMg {
-    border-radius: 50%;
-  }
-
-  img {
-    width: 45px;
-    height: 45px;
-  }
   .stars{
-    width: 160px;
-    height: 25px;
+    width: 100px;
   }
   .name{
-    margin-left: -220px;
+    font-size: 24px;
+    text-align: center;
   }
   .p-text{
-    justify-content: left;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3d3d3c;
   }
   
 }
