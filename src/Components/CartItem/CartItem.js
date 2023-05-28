@@ -4,7 +4,7 @@ import "./CarItem.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { MdDeleteOutline } from "react-icons/md";
 
-function CartItem({ name, imgUrl, quantity, price, id }) {
+function CartItem({ name, imgUrl, quantity, price, id ,weight}) {
   const dispatch = useDispatch();
 
   const addToCart = (id) => {
@@ -40,7 +40,7 @@ function CartItem({ name, imgUrl, quantity, price, id }) {
 
           <MdDeleteOutline onClick={() => removeCart(id)} />
         </h5>
-        <p className="p-text">{quantity}g</p>
+        <p className="p-text">{weight}g</p>
 
         <div className="price__functions">
           <h5>₹{price * quantity || 1}</h5>

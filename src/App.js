@@ -31,6 +31,7 @@ import UpdateCategory from "./Pages/Admin/UpdateCategory";
 import HeaderOffer from "./Pages/Admin/HeaderOffer";
 import RequireUser from "./utils/RequireUser";
 import ScrollToTop from "./utils/ScrollToTop";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   const [toggleCart, setToggleCart] = useState(false);
@@ -83,10 +84,17 @@ function App() {
             </>
           }
         />
-        <Route path="/account" element={<Account />} />
         <Route path="/about" element={<About />} />
         <Route path="/reach" element={<Contact />} />
       </Routes>
+
+      {/* User Protected Routes */}
+      <Routes>
+        <Route element={<ProtectedRoute />}>
+          <Route exact path="/account" element={<Account />} />
+        </Route>
+      </Routes>
+
       <Cart toggleCart={toggleCart} setToggleCart={handleToggleCart} />
       <Footer />
     </div>

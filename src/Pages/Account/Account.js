@@ -4,12 +4,27 @@ import "./Account.scss";
 import profile from "../../Assets/Images/profile.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { AiOutlineLogout } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Components/Loader/Loader";
+import { getLoggedoutUser } from "../../Redux/slices/user";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AccountPage = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const { isLoading } = useSelector((state) => state.app);
+  const navigate = useNavigate();
+  const handlLogout = () => {
+    dispatch(getLoggedoutUser());
+    Swal.fire({
+      icon: "success",
+      title: "Logged Out Successfully",
+    });
+    navigate("/");
+  };
+
   const userData = {
     name: user?.name,
     email: user?.email,
@@ -28,6 +43,16 @@ const AccountPage = () => {
         <Loader />
       ) : (
         <div className="account-page">
+          <AiOutlineLogout
+            style={{
+              position: "absolute",
+              top: "0",
+              right: "0",
+              cursor: "pointer",
+              fontSize: "2rem",
+            }}
+            onClick={handlLogout}
+          />
           <div className="profile">
             <div className="profile-photo">
               <img src={profile} alt="Profile" />

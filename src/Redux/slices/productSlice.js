@@ -152,7 +152,7 @@ const productSlice = createSlice({
       state.isDeleted = false;
     },
     addToCart: (state, action) => {
-      let { id } = action.payload;
+      let { id, price, weight } = action.payload;
       console.log("This is Payload", id);
 
       //check Existance
@@ -160,24 +160,11 @@ const productSlice = createSlice({
 
       if (!item) {
         let arr = state.products.find((item) => item._id == id);
-        let productIndex = state.products.findIndex((item) => item._id == id);
-        if (productIndex > -1) {
-          state.products[productIndex].isOnCard = true;
-        }
-
         arr.quantity = 1;
+        arr.price = price;
+        arr.weight = weight;
         state.carts.push(arr);
-        // Swal.fire({
-        //   title: "Success!",
-        //   text: "Successfully added to your Cart",
-        //   icon: "success",
-        //   imageWidth: 200,
-        //   width: '450px',
-        //   // height: '50px',
-        //   showConfirmButton: false,
-        //   timer: 1000,
-        //   position: "bottom-end"
-        // });
+
         Swal.fire({
           title: "Success!",
           text: "Successfully added to your Cart",

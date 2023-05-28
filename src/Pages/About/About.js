@@ -2,6 +2,7 @@ import React from "react";
 import "./About.scss";
 import aboutus from "../../Assets/Images/aboutus.png";
 import { motion } from "framer-motion";
+
 import aboutBanner from "../../Assets/Images/all.png";
 // import arrow from "../../Assets/Images/carasole.png";
 import vision from "../../Assets/Images/vision.png";

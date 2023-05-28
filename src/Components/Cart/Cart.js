@@ -146,6 +146,7 @@ function Cart({ toggleCart, setToggleCart }) {
                 imgUrl={product.images[0].url}
                 price={product.price}
                 quantity={product.quantity}
+                weight = {product.weight}
               />
             ))}
 
