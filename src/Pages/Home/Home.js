@@ -144,13 +144,13 @@ function Home() {
             <h1>Categories</h1>
           </div>
           <div className="cat_card_wrapper">
-            
-                {isLoading ? (
-                  <MinLoader />
-                ) : (
-                  categories.map((category) => <img src={catImg4} alt="cat-img" />)
-                )}
-            
+
+            {isLoading ? (
+              <MinLoader />
+            ) : (
+              categories.map((category) => <img src={catImg4} alt="cat-img" />)
+            )}
+
 
           </div>
           <div className="cat-btn">
@@ -262,33 +262,30 @@ function Home() {
 
       {/* {---------------------BANNER SECTION START----------------------------} */}
 
-      <div className="About__Banner">
-        <div className="container about__banner flex__center">
-          <div className="left">
-            <div className="about__logo">
-              <img src={logoSec} alt="Company__logo" />
-            </div>
 
-            <div className="about__banner-info">
-              <h3 className="ab-head-first">Why to choose us ?</h3>
-              <h2 className="ab-head-sec">
-                Why <span style={{ fontWeight: "bold" }}>Free of Gluten?</span>
-              </h2>
-              <p className="p-text">
-                Gluten, a protein found in wheat and several other grains. It
-                means only eating only whole foods with no gluten. A gluten-free
-                diet is also popular among people who haven’t been diagnosed. It
-                means only eating only whole foods with no gluten. A gluten-free
-                diet is also popular among people who haven’t been diagnosed.
-              </p>
-              <button className="btn1">Go to Shop</button>
-              <button className="btn2">Reach Us</button>
-            </div>
-          </div>
+      <div className="container about__banner">
+        <div className="ab-left">
+          <h3 className="ab-head-first">Why to choose us ?</h3>
+          <h3 className="ab-head-sec">
+            Why Free of Gluten?
+          </h3>
+          <p className="p-text">
+            Gluten, a protein found in wheat and several other grains. It
+            means only eating only whole foods with no gluten. A gluten-free
+            diet is also popular among people who haven’t been diagnosed. It
+            means only eating only whole foods with no gluten. A gluten-free
+            diet is also popular among people who haven’t been diagnosed.
+          </p>
+          <span>
+            <button className="btn bl-btn">Go to Shop</button>
+            <button className="btn bl-btn outline-btn">Reach Us</button>
+          </span>
+
         </div>
-        <div className="right">
-          <img src={aboutBanner} alt="banner" />
-        </div>
+
+        <span className="ab-right">
+          <img src={aboutBanner} alt="aboutbanner" />
+        </span>
       </div>
 
       {/* {---------------------BANNER SECTION END----------------------------} */}
@@ -304,66 +301,85 @@ function Home() {
       </div>
 
       {/* text section  */}
+      <div className="lifestyle">
+        <h1 className="lifestyle">
+          <div>
+            It's not just
+            <span className="food"> Food,</span>
+          </div>
+          <div>
+            It's a<span className="life"> Lifestyle!</span>
+          </div>
+        </h1>
+      </div>
 
-      <h1 className="lifestyle">
-        <div>
-          It's not just
-          <span className="food"> Food,</span>
-        </div>
-        <div>
-          It's a<span className="life"> Lifestyle!</span>
-        </div>
-      </h1>
 
       {/* {---------------------TESTIMONIALS SECTION START----------------------------} */}
+      <section className="test-wrapper">
 
-      <div className="Testimonials1">
-        <h1>
-          We Serve - they
-          <span className="enjoy1"> Enjoy</span>
-          every
-        </h1>
-        <h1>
-          minute of their
-          {/* <img src={arrow} alt="" /> */}
-          <span className="live1"> Lives</span>
-        </h1>
-      </div>
+        <div className=" container testimonials">
+          <h1>
+            We Serve - they
+            <span className="enjoy1"> Enjoy </span> <br />
+            Every minute of their
+            <span className="live1"> Lives</span>
+          </h1>
 
-      <div className="test">
-        <p>
-          We don’t accept half-measures and shortcuts, because what we care
-          about is the WOW effect. And all the lucl that our efforts{" "}
-          <p className="centre">
-            are not in vain. we know this because we closely follow the opinions
-            of our cusumers.
+          <p className="test-text">
+            We passionately cater our customers with gluten sensitivities,
+            allowing them to relish every moment without worry, while indulging
+            in our mouthwatering and completely Gluten-Free products. Experience the joy
+            of gluten-free living and embrace a life filled with flavorful delights.
           </p>
-        </p>
-      </div>
 
-      <div className="cards">
-        <div className="testimonials__container flex__center">
-          <TestimonialCard
-            name="Deepak"
-            desc="The generated Lorem Ipsum is therefore always free from a dummy text, generated text."
-          />
+          <div className="test-cards flex__center">
 
-          <TestimonialCard
-            name="Deepak"
-            desc="The generated Lorem Ipsum is therefore always free from a dummy text, generated text."
-          />
+            <TestimonialCard
+              name="Abhinav Gupta"
+              desc="Ordered a gluten free cake & I was so happily pleased 
+              with everything. My go to place for gluten free food. Thanks for such amazing food."
+            />
 
-          <TestimonialCard
-            name="Deepak"
-            desc="The generated Lorem Ipsum is therefore always free from a dummy text, generated text."
-          />
+            <TestimonialCard
+              name="Vishal Bachani"
+              desc="The gluten free pineapple cake was the best ! Reminded me of 
+              the cake we used to get in our school days, with the quality maintained really well."
+            />
+
+            <TestimonialCard
+              name="Shalu Singh"
+              desc="Being a parent of a celiac child, I am so glad there is a gluten free facility in Delhi which fulfills all our 
+              gf bakery needs. Had ordered a birthday cake for my daughter recently… she loved it!"
+            />
+
+            <TestimonialCard
+              name="Aman Kabir"
+              desc="This store is a life saver. Certified gluten free as I've tried it personally and I suffer from celiacs.
+                    I'm just sad it took me so long to find it."
+            />
+            <TestimonialCard
+              name="Neetu Mishra"
+              desc="It is really difficult to find a good celiac friendly Baker. But thank you Chocolate temptations for such an appetizing cake.
+              Also other stuffs on the menu are an added on bonus."
+            />
+
+            <TestimonialCard
+              name="Mahima Seth"
+              desc="The best place to have gluten free food! Yummy & 
+              Delicious. My favourite is Pineapple Pastry. They have a 
+              gluten free dedicated kitchen which is a saviour for all the celiacs."
+            />
+
+          </div>
         </div>
-      </div>
+      </section>
+
 
       {/* {---------------------TESTIMONIALS SECTION END----------------------------} */}
-      <div className="last">
-        <div className="contact">
-          <div className="us">
+      <section className="cta">
+        <div className="cta-wrapper container">
+
+          <div className="cta-left">
             <h3 className="first">Join our community</h3>
             <h2 className="sec">YOU ARE NOT ALONE</h2>
             <p className="para">
@@ -374,7 +390,9 @@ function Home() {
               diet is also popular among people who haven’t been diagnosed.
             </p>
           </div>
-          <form onSubmit={handleSubmit}>
+          <div className="cta-right">
+
+          <form onSubmit={handleSubmit} >
             <div className="form-field">
               <label htmlFor="email">Email</label>
               <input
@@ -391,6 +409,7 @@ function Home() {
               <textarea
                 id="message"
                 name="message"
+                placeholder="Type your words here"
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -398,9 +417,9 @@ function Home() {
             </div>
             <button type="submit">Send Message</button>
           </form>
+          </div>
         </div>
-        <div className="white"></div>
-      </div>
+      </section>
     </div>
   );
 }
