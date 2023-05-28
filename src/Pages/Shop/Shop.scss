@@ -1,73 +1,72 @@
-
 .div__row-img {
-    padding: 5vmax 0 0 0;
-    margin-top: -75px;
+  padding: 5vmax 0 0 0;
+  margin-top: -75px;
+}
+
+.Menu {
+  padding-top: 5vmax;
+  background-color: #fef4fb;
+  padding-bottom: 5vmax;
+
+  .menu__container > h2 {
+    text-align: center;
+    margin-bottom: 10px;
   }
-  
-  .Menu {
-    padding-top: 5vmax;
-    background-color: #fef4fb;
-    padding-bottom: 5vmax;
-  
-    .menu__container > h2 {
-      text-align: center;
-      margin-bottom: 10px;
+
+  .menu__container {
+    .menu__head-sec {
+      font-weight: 400;
     }
-  
-    .menu__container {
-      .menu__head-sec {
-        font-weight: 400;
+
+    .menu__head {
+      font-size: 50px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .menu__items {
+      gap: 35px;
+      background-color: #ececec;
+      width: 50vmax;
+      margin: 0 auto 35px auto; //For Centering
+      border-radius: 25px;
+
+      //Removing Marign From Class p-text
+      .p-text {
+        margin: 0;
       }
-  
-      .menu__head {
-        font-size: 50px;
-        font-weight: 500;
-        margin-bottom: 30px;
+
+      div {
+        padding: 0.6vmax 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        text-align: center;
       }
-  
-      .menu__items {
-        gap: 35px;
-        background-color: #ececec;
-        width: 50vmax;
-        margin: 0 auto 35px auto; //For Centering
+
+      //Active Item Will Have this property
+      .item-active {
+        background-color: #8bc54b;
+        color: white;
         border-radius: 25px;
-  
-        //Removing Marign From Class p-text
-        .p-text {
-          margin: 0;
-        }
-  
-        div {
-          padding: 0.6vmax 0;
-          cursor: pointer;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-        }
-  
-        //Active Item Will Have this property
-        .item-active {
-          background-color: #8bc54b;
-          color: white;
-          border-radius: 25px;
-          padding: 0.6vmax 10px;
-        }
+        padding: 0.6vmax 10px;
       }
-  
-      .menu__cards-container {
-        flex-wrap: wrap;
-        gap: 45px;
-  
-        .Card {
-          &:hover {
-            transform: scale(1.05);
-          }
+    }
+
+    .menu__cards-container {
+      flex-wrap: wrap;
+      gap: 45px;
+
+      .Card {
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }
   }
-  
-  /* Tablets/iPad */
+}
+
+/* Tablets/iPad */
 @media (max-width: 1024px) {
   .div__row-img {
     padding: 5vmax 0;
@@ -118,5 +117,45 @@
   .Menu .menu__container .menu__items {
     width: 80vmax;
     margin: 0 auto 20px auto;
+  }
+}
+
+.app__work-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  margin: 4rem 1rem;
+
+  .app__work-filter-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: #000;
+    font-weight: 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+
+    &:hover {
+      background-color: #313bac;
+      color: #fff;
+    }
+
+    @media screen and (min-width: 2000px) {
+      padding: 1rem 2rem;
+      border-radius: 0.85rem;
+    }
+  }
+  .item-active {
+    background-color: #313bac;
+    color: #fff;
+  }
+
+  @media screen and (max-width: 970px) {
+    justify-content: flex-start;
   }
 }
