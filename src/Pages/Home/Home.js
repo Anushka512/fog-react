@@ -26,6 +26,45 @@ import {
 } from "../../Redux/slices/productSlice";
 import { getUserDetail } from "../../Redux/slices/user";
 import MinLoader from "../../Components/Loader/MinLoader";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+var settings = {
+  arrows: true,
+  // dots: true,
+  margin: 30,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 
 function Home() {
   const dispatch = useDispatch();
@@ -145,16 +184,18 @@ function Home() {
             <h2>Shop By</h2>
             <h1>Categories</h1>
           </div>
-          <div className="cat_card_wrapper">
-            {isLoading ? (
-              <MinLoader />
-            ) : (
-              categories.map((category) => <img src={catImg4} alt="cat-img" />)
-            )}
-            {/* <img src={catImg1} alt="cat-img" />
+          {isLoading ? (
+            <MinLoader />
+          ) : (
+            <Slider {...settings}>
+              {categories.map((category) => (
+                <img src={catImg4} alt="cat-img" />
+              ))}
+            </Slider>
+          )}
+          {/* <img src={catImg1} alt="cat-img" />
             <img src={catImg2} alt="cat-img" />
             <img src={catImg3} alt="cat-img" /> */}
-          </div>
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">
               Go to Shop
@@ -174,20 +215,20 @@ function Home() {
               <span>View all -</span>
             </div>
           </div>
-          <div className="products__cards" ref={HorizontalScroll1}>
-            {isLoading ? (
-              <div
-                style={{
-                  width: "90vw",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MinLoader />
-              </div>
-            ) : (
-              products.map((item, index) => (
+          {isLoading ? (
+            <div
+              style={{
+                width: "90vw",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <MinLoader />
+            </div>
+          ) : (
+            <Slider {...settings}>
+              {products?.map((item, index) => (
                 <Card
                   key={item.name + index}
                   imgUrl={item?.images[0]?.url}
@@ -195,14 +236,14 @@ function Home() {
                   price={item.weightPrice[0].price}
                   weight={item.weightPrice[0].weight}
                   salePrice={item.weightPrice[0].price}
-                  category={"Breads"}
+                  category={item.category}
                   id={item._id}
                   isAddedOnCart={item.isOnCard ? true : false}
                 />
-              ))
-            )}
-          </div>
-          <div className="scroll__buttons">
+              ))}
+            </Slider>
+          )}
+          {/* <div className="scroll__buttons">
             <AiFillCaretRight
               className="right__btn"
               onClick={handleTransformLeft1}
@@ -211,7 +252,7 @@ function Home() {
               className="left__btn"
               onClick={handleTransformRight1}
             />
-          </div>
+          </div> */}
 
           <div className="feature__product product__heading">
             <div>
@@ -221,20 +262,20 @@ function Home() {
               <span>View all -</span>
             </div>
           </div>
-          <div className="products__cards" ref={HorizontalScroll2}>
-            {isLoading ? (
-              <div
-                style={{
-                  width: "90vw",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MinLoader />
-              </div>
-            ) : (
-              products?.map((item, index) => (
+          {isLoading ? (
+            <div
+              style={{
+                width: "90vw",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <MinLoader />
+            </div>
+          ) : (
+            <Slider {...settings}>
+              {products?.map((item, index) => (
                 <Card
                   key={item.name + index}
                   imgUrl={item?.images[0]?.url}
@@ -242,23 +283,13 @@ function Home() {
                   price={item.weightPrice[0].price}
                   weight={item.weightPrice[0].weight}
                   salePrice={item.weightPrice[0].price}
-                  category={"Breads"}
+                  category={item.category}
                   id={item._id}
                   isAddedOnCart={item.isOnCard ? true : false}
                 />
-              ))
-            )}
-          </div>
-          <div className="scroll__buttons-2">
-            <AiFillCaretRight
-              className="right__btn"
-              onClick={handleTransformLeft2}
-            />
-            <AiFillCaretLeft
-              className="left__btn"
-              onClick={handleTransformRight2}
-            />
-          </div>
+              ))}
+            </Slider>
+          )}
         </div>
       </article>
 
