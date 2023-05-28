@@ -21,6 +21,7 @@ import CreatePincode from "./Pages/Admin/CreatePincode";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
 import CreateCoupon from "./Pages/Admin/CreateCoupon";
 import CouponList from "./Pages/Admin/CouponsList";
+import Demo from "./Demo.js"
 
 import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
 import { useState, useEffect } from "react";
@@ -86,6 +87,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/reach" element={<Contact />} />
+        <Route path="/demo" element={<Demo />} />
       </Routes>
 
       {/* User Protected Routes */}

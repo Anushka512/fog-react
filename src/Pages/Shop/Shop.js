@@ -42,7 +42,7 @@ function Shop() {
             <h2 className="menu__head-sec">Fresh from Free of Gluten</h2>
             <h2 className="menu__head">OUR SPECIAL MENU</h2>
 
-            <div className="menu__items flex__center">
+            {/* <div className="menu__items flex__center">
               <div
                 onClick={handleAllProduct}
                 className={`menu__item-filter-item flex__center p-text ${
@@ -58,6 +58,28 @@ function Shop() {
                     activeFilter === category.name ? "item-active" : ""
                   }`}
                   key={category - id}
+                >
+                  {category.name}
+                </div>
+              ))}
+            </div> */}
+
+            <div className="app__work-filter">
+              <div
+                onClick={handleAllProduct}
+                className={`app__work-filter-item app__flex p-text ${
+                  activeFilter === "All" ? "item-active" : ""
+                }`}
+              >
+                All
+              </div>
+              {categories.map((category, index) => (
+                <div
+                  key={index}
+                  onClick={() => categoryChangeHandler(category.name)}
+                  className={`app__work-filter-item app__flex p-text ${
+                    activeFilter === category.name ? "item-active" : ""
+                  }`}
                 >
                   {category.name}
                 </div>
