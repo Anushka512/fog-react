@@ -2,13 +2,21 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import webHeader from "../../Assets/Images/web_header.jpg";
 // import CardImg from "../../Assets/Images/3.jpg.png";
+import logoSec from "../../Assets/Images/logo__sec.png";
 import aboutBanner from "../../Assets/Images/all.png";
+import catImg1 from "../../Assets/Images/cat-img-1.png";
+import catImg2 from "../../Assets/Images/cat-img-2.png";
+import catImg3 from "../../Assets/Images/cat-img-3.png";
+import catImg4 from "../../Assets/Images/cat-img-4.png";
 import Card from "../../Components/Card/Card.js";
 import TestimonialCard from "../../Components/TestimonialCard/TestimonialCard.js";
 import bread from "../../Assets/Images/bread.png";
+import arrow from "../../Assets/Images/arrow.png";
 import { FiTruck } from "react-icons/fi";
 import { MdOutlineSupportAgent, MdPayments } from "react-icons/md";
 import { BiTimer } from "react-icons/bi";
+import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+
 // import { ProductData } from "../../Data/productsData.js";//
 import "./Home.scss";
 import { Link } from "react-router-dom";
@@ -20,32 +28,6 @@ import {
 import { getUserDetail } from "../../Redux/slices/user";
 import MinLoader from "../../Components/Loader/MinLoader";
 
-//SwiperSLider
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-SwiperCore.use([Autoplay, Navigation, Pagination]);
-
-
-
-const breakpoints = {
-  320: {
-    slidesPerView: 1, // 1 slide per view for screens up to 320px wide
-  },
-  480: {
-    slidesPerView: 2, // 2 slides per view for screens up to 480px wide
-  },
-  768: {
-    slidesPerView: 4, // 3 slides per view for screens up to 768px wide
-  },
-  1024: {
-    slidesPerView: 5, // 4 slides per view for screens up to 1024px wide
-  },
-};
-
-
 function Home() {
   const dispatch = useDispatch();
   const { products, categories } = useSelector((state) => state.products);
@@ -56,6 +38,28 @@ function Home() {
     dispatch(getAllCategories());
     dispatch(getUserDetail());
   }, [dispatch]);
+
+  const HorizontalScroll1 = useRef();
+  const HorizontalScroll2 = useRef();
+  // const [activeFilter, setActiveFilter] = useState("All");
+
+  const handleTransformLeft1 = (e) => {
+    console.log(e);
+    HorizontalScroll1.current.scrollLeft += 120;
+  };
+
+  const handleTransformRight1 = () => {
+    HorizontalScroll1.current.scrollLeft -= 120;
+  };
+
+  const handleTransformLeft2 = (e) => {
+    console.log(e);
+    HorizontalScroll2.current.scrollLeft += 120;
+  };
+
+  const handleTransformRight2 = () => {
+    HorizontalScroll2.current.scrollLeft -= 120;
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -142,39 +146,16 @@ function Home() {
             <h2>Shop By</h2>
             <h1>Categories</h1>
           </div>
+          <div className="cat_card_wrapper">
+
+            {isLoading ? (
+              <MinLoader />
+            ) : (
+              categories.map((category) => <img src={catImg4} alt="cat-img" />)
+            )}
 
 
-          {isLoading ? (
-            <MinLoader />
-          ) : (
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={3}
-              navigation={true} // Add navigation prop to show prev and next buttons
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log("slide change")}
-              breakpoints={breakpoints}
-              autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable autoplay with 2-second delay between slides
-              // loop
-            >
-              {categories.map((category) => (
-                <SwiperSlide>
-                  <img
-                    src={category?.image.url}
-                    alt="category"
-                    style={{
-                      minWidth: 230,
-                      minHeight: 230,
-                      maxWidth: 230,
-                      maxHeight: 230,
-                    }}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
-
-
+          </div>
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">
               Go to Shop
@@ -193,30 +174,21 @@ function Home() {
               </h1>
               <span>View all -</span>
             </div>
-            {isLoading ? (
-              <div
-                style={{
-                  width: "90vw",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MinLoader />
-              </div>
-            ) : (
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={3}
-                navigation // Enable navigation
-                autoplay={{ delay: 2000, disableOnInteraction: false }}
-                // pagination={{ clickable: true }}
-                // onSwiper={(swiper) => console.log(swiper)}
-                // onSlideChange={() => console.log("slide change")}
-                breakpoints={breakpoints}
-              >
-                {products?.map((item, index) => (
-                  <SwiperSlide>
+            <div className="card-wrapper">
+              <div className="products__cards" ref={HorizontalScroll1}>
+                {isLoading ? (
+                  <div
+                    style={{
+                      width: "90vw",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <MinLoader />
+                  </div>
+                ) : (
+                  products.map((item, index) => (
                     <Card
                       key={item.name + index}
                       imgUrl={item?.images[0]?.url}
@@ -224,14 +196,14 @@ function Home() {
                       price={item.weightPrice[0].price}
                       weight={item.weightPrice[0].weight}
                       salePrice={item.weightPrice[0].price}
-                      category={item.category}
+                      category={"Breads"}
                       id={item._id}
                       isAddedOnCart={item.isOnCard ? true : false}
                     />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
+                  ))
+                )}
+              </div>
+            </div>
           </div>
 
           <div className="popular_product">
@@ -242,44 +214,36 @@ function Home() {
               <span>View all -</span>
             </div>
 
-            {isLoading ? (
-              <div
-                style={{
-                  width: "90vw",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MinLoader />
-              </div>
-            ) : (
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={3}
-                navigation
-                autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable navigation
-                // onSwiper={(swiper) => console.log(swiper)}
-                // onSlideChange={() => console.log("slide change")}
-                breakpoints={breakpoints}
-              >
-                {products?.map((item, index) => (
-                  <SwiperSlide >
+            <div className="card-wrapper">
+              <div className="products__cards" ref={HorizontalScroll2}>
+                {isLoading ? (
+                  <div
+                    style={{
+                      width: "90vw",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <MinLoader />
+                  </div>
+                ) : (
+                  products?.map((item, index) => (
                     <Card
                       key={item.name + index}
                       imgUrl={item?.images[0]?.url}
                       name={item.name}
-                      // price={item.weightPrice[0].price}
+                      price={item.weightPrice[0].price}
                       weight={item.weightPrice[0].weight}
                       salePrice={item.weightPrice[0].price}
-                      category={item.category}
+                      category={"Breads"}
                       id={item._id}
                       isAddedOnCart={item.isOnCard ? true : false}
                     />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
+                  ))
+                )}
+              </div>
+            </div>
 
           </div>
         </div>
@@ -362,70 +326,7 @@ function Home() {
             of gluten-free living and embrace a life filled with flavorful delights.
           </p>
 
-
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={3}
-            navigation // Enable navigation
-            // onSwiper={(swiper) => console.log(swiper)}
-            // onSlideChange={() => console.log("slide change")}
-            breakpoints={breakpoints}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
-            loop
-          >
-
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-
-
-          </Swiper>
-
-          {/* <div className="test-cards flex__center">
+          <div className="test-cards flex__center">
 
             <TestimonialCard
               name="Abhinav Gupta"
@@ -463,8 +364,7 @@ function Home() {
               gluten free dedicated kitchen which is a saviour for all the celiacs."
             />
 
-
-          </div> */}
+          </div>
         </div>
       </section>
 

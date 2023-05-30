@@ -86,17 +86,16 @@
         padding: 0.6vmax 10px;
 
       }
-    } 
-  }
-  .spr-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px 20px;
-    .Card {
-      &:hover {
-        transform: scale(1.05);
+    }
+
+    .menu__cards-container {
+      flex-wrap: wrap;
+      gap: 45px;
+
+      .Card {
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }

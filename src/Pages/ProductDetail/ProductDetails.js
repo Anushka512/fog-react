@@ -151,14 +151,13 @@ function ProductDetails() {
                   <span
                     onClick={() => handleSelectPrice(weight)}
                     className="active-badge"
-                  >
-                    {weight.weight}g
+                  >{weight.weight}g
                   </span>
                 ))}
               </div>
 
               <div className="prize">
-                <p>{price}Rs</p>
+                <p>₹{product?.price}</p>
               </div>
 
               <div className="submit__btn">
@@ -172,8 +171,7 @@ function ProductDetails() {
             <div className="product__desc">
               <h3>Product Description</h3>
               <p className="p-text">{product?.longDescription}</p>
-            </div>
-
+            </div><br></br>
             <div className="manu__detail">
               <h3>Manufacturer Details</h3>
               <p className="p-text">
@@ -186,26 +184,7 @@ function ProductDetails() {
                 product small note about the product small note about the
                 product small note about the product
               </p>
-            </div>
-            <div className="product__About-container">
-              <div className="product__desc">
-                <h3>Product Description</h3>
-                <p className="p-text">{product.longDescription}</p>
-              </div>
-              <div className="manu__detail">
-                <h3>Manufacturer Details</h3>
-                <p className="p-text">
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                  small note about the product small note about the product
-                </p>
-              </div>
-
+            </div><br></br>
               <div className="disclaimer">
                 <h3>Disclaimer</h3>
                 <p className="p-text">
@@ -219,7 +198,6 @@ function ProductDetails() {
                   small note about the product small note about the product
                 </p>
               </div>
-            </div>
           </div>
         </div>
       )}
