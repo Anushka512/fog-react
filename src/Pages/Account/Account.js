@@ -19,8 +19,20 @@ const AccountPage = () => {
   const handlLogout = () => {
     dispatch(getLoggedoutUser());
     Swal.fire({
-      icon: "success",
-      title: "Logged Out Successfully",
+      title: "See you soon",
+      timer: 1500,
+      showConfirmButton: false,
+      position: "bottom-end",
+      customClass: {
+      popup: "custom-popup",
+      closeButton: "custom-close-button",
+      title: "s-title",
+      },
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      showCloseButton: true,
+      closeButtonHtml: "&times;",
     });
     navigate("/");
   };

@@ -144,6 +144,7 @@ const productSlice = createSlice({
   },
 
   reducers: {
+
     //Clear Error State
     resetStatusError: (state) => {
       state.error = "";
@@ -166,16 +167,17 @@ const productSlice = createSlice({
         state.carts.push(arr);
 
         Swal.fire({
-          title: "Success!",
-          text: "Successfully added to your Cart",
-          icon: "success",
-          width: "300px",
+          title: "Added to your Cart",
+          // text: "Successfully added to your Cart",
+          // icon: "success",
+          // width: "300px",
           showConfirmButton: false,
           timer: 1500,
           position: "bottom-end",
           customClass: {
             popup: "custom-popup",
             closeButton: "custom-close-button",
+            title: "s-title",
           },
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -188,22 +190,24 @@ const productSlice = createSlice({
         localStorage.setItem("cartItems", JSON.stringify(state.carts));
       } else {
         Swal.fire({
-          title: "Failed!",
-          text: "This product is already added in your Cart",
-          icon: "failed",
-          imageWidth: 200,
-          width: "450px",
-          allowOutsideClick: false,
+          title: "Already added",
+          // text: "This product is already added in your Cart",
+          // icon: "failed",
+          // imageWidth: 200,
+          // width: "450px",
+          allowOutsideClick: true,
           allowEscapeKey: false,
           allowEnterKey: false,
           showCloseButton: true,
           closeButtonHtml: "&times;",
           customClass: {
+            popup: "custom-popup",
             closeButton: "custom-close-button",
+            title: "s-title",
           },
           imageAlt: item.title,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 4500,
           position: "bottom-end",
         });
       }
@@ -232,10 +236,10 @@ const productSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.carts));
       if (arr) {
         Swal.fire({
-          title: "Success!",
-          text: "Successfully Deleted From your Cart",
-          icon: "success",
-          width: "450px",
+          title: "Removed",
+          // text: "Successfully Deleted From your Cart",
+          // icon: "success",
+          // width: "450px",
           showConfirmButton: false,
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -245,6 +249,7 @@ const productSlice = createSlice({
           customClass: {
             popup: "custom-popup",
             closeButton: "custom-close-button",
+            title: "s-title",
           },
           timer: 1500,
           position: "bottom-end",
@@ -258,9 +263,9 @@ const productSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify([]));
       if (state.carts.length === 0) {
         Swal.fire({
-          title: "Success!",
-          text: "Successfully Clear your Cart",
-          icon: "success",
+          title: "Cart Cleared",
+          // text: "Successfully Clear your Cart",
+          // icon: "success",
           allowOutsideClick: false,
           allowEscapeKey: false,
           allowEnterKey: false,
@@ -269,8 +274,8 @@ const productSlice = createSlice({
           customClass: {
             popup: "custom-popup",
             closeButton: "custom-close-button",
+            title: "s-title",
           },
-          width: "450px",
           showConfirmButton: false,
           timer: 1500,
           position: "bottom-end",

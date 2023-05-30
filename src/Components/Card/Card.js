@@ -34,10 +34,10 @@ function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart ,wei
   return (
     <div className="Card">
       <div className="card__top">
-        <p>
+        {/* <p>
           <span>20%</span>
           <span>OFF</span>
-        </p>
+        </p> */}
         <Link to={`/product/${id}`} className="card__img flex__center">
           <img src={imgUrl} alt="product" />
         </Link>
@@ -50,7 +50,7 @@ function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart ,wei
 
         <div className="card__footer">
           <span className="card__price">
-            <p className="price">s</p>
+            {/* <p className="price">s</p> */}
             <p className="sale__price">₹{salePrice}</p>
           </span>
 
