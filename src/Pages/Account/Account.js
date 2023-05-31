@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 // import { useSelector } from 'react-redux';
 import "./Account.scss";
-// import profile from "../../Assets/Images/profile.png";
+import profile from "../../Assets/Images/profile.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -16,7 +16,7 @@ const AccountPage = () => {
   const { user } = useSelector((state) => state.user);
   const { isLoading } = useSelector((state) => state.app);
   const navigate = useNavigate();
-  const [profilePhoto, setProfilePhoto] = useState('');
+  const [profilePhoto, setProfilePhoto] = useState(profile);
 
   // for profile photo
   const handlePhotoChange = (event) => {
@@ -42,8 +42,10 @@ const AccountPage = () => {
     ],
   };
 
-  // for phn and address edit 
-  const [editedPhoneNumber, setEditedPhoneNumber] = useState(userData1.phoneNumber);
+  // for phn and address edit
+  const [editedPhoneNumber, setEditedPhoneNumber] = useState(
+    userData1.phoneNumber
+  );
   const [editedAddress, setEditedAddress] = useState(userData1.address);
 
   const handleEditPhoneNumber = () => {
@@ -75,7 +77,8 @@ const AccountPage = () => {
         <Loader />
       ) : (
         <div className="account-page">
-          <AiOutlineLogout className="logout"
+          <AiOutlineLogout
+            className="logout"
             style={{
               position: "absolute",
               top: "0",
@@ -86,10 +89,18 @@ const AccountPage = () => {
             onClick={handlLogout}
           />
           <div className="profile">
-            <div className="profile-photo">
-              <img src={profilePhoto || '../../Assets/Images/profile.png'} alt="Profile" />
-              <label htmlFor="photo-input" className="photo-input-label">
-                <input type="file" id="photo-input" accept="image/*" onChange={handlePhotoChange} /> Choose Photo </label>
+            <div className="userImg">
+              <label htmlFor="imgLabel" className="inputLabel">
+                <img className="inputLabel" src={profilePhoto} alt="labelImg" />
+              </label>
+
+              <input
+                id="imgLabel"
+                className="inputImg"
+                type="file"
+                accept="image/*"
+                onChange = {handlePhotoChange}
+              />
             </div>
             <div className="profile-details">
               <h2>{userData1.name}</h2>
@@ -109,12 +120,18 @@ const AccountPage = () => {
               <p>
                 <b>Phone: </b>
                 {editedPhoneNumber}&nbsp;&nbsp;
-                <a className="fa fa-edit" onClick={()=> handleEditPhoneNumber()}></a>
+                <a
+                  className="fa fa-edit"
+                  onClick={() => handleEditPhoneNumber()}
+                ></a>
               </p>
               <p>
                 <b>Address: </b>
                 {editedAddress}&nbsp;&nbsp;
-                <a className="fa fa-edit" onClick={()=> handleEditAddress()}></a>
+                <a
+                  className="fa fa-edit"
+                  onClick={() => handleEditAddress()}
+                ></a>
               </p>
             </div>
           </div>
@@ -134,9 +151,9 @@ const AccountPage = () => {
             <FontAwesomeIcon icon={faDownload} className="download-icon" />
             Download
           </button>
-        </div >
+        </div>
       )}
-    </Fragment >
+    </Fragment>
   );
 };
 

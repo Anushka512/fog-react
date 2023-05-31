@@ -162,11 +162,11 @@ function Cart() {
         </div>
       )}
 
-      {/* {secondComp && (
+      {secondComp && (
         <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
           <div className="top__cart-section">
             <h5>My Address</h5>
-            <RxCross1 onClick={() => setCartOpen(false)} />
+            <RxCross1 onClick={() => dispatch(setCartOpen(false))} />
           </div>
           <div className="address comp2">
             <span onClick={handleAddressOpener}>+</span>
@@ -190,79 +190,11 @@ function Cart() {
             </div>
           </div>
 
-          <div onClick={handleChangeComp} className="place__order">
-            <h5>Checkout</h5>
+          <div onClick={handleChangeComp} className="place__order submit">
+            <h5>Back to Cart</h5>
           </div>
         </div>
       )}
-
-      {secondComp && (
-       <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
-    <div className="top__cart-section">
-      <h5>Checkout</h5>
-      <RxCross1 onClick={() => setCartOpen(false)} />
-    </div>
-    <div className="address comp2">
-      <div className="add__adress">
-        <h5>Hello world</h5>
-      </div>
-    </div>  
-
-    <div onClick={handleChangeComp} className="place__order submit">
-      <h5>Back To Cart</h5>
-    </div>
-  </div>
-      )} */}
-
-
-{secondComp ? (
-  <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
-    <div className="top__cart-section">
-      <h5>Checkout</h5>
-      <RxCross1 onClick={() => setCartOpen(false)} />
-    </div>
-    <div className="address comp2">
-      <div className="add__adress">
-        <h5>Hello world</h5>
-      </div>
-    </div>
-    <div onClick={handleChangeComp} className="place__order submit">
-      <h5>Back To Cart</h5>
-    </div>
-  </div>
-) : (
-  <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
-    <div className="top__cart-section">
-      <h5>My Address</h5>
-      <RxCross1 onClick={() => setCartOpen(false)} />
-    </div>
-    <div className="address comp2">
-      <span onClick={handleAddressOpener}>+</span>
-      <div className="add__adress">
-        <h5>Add A New Address</h5>
-      </div>
-    </div>
-    <div className="address__selection">
-      <p className="p-text">Choose Delivery Address</p>
-
-      <div className="address__selection-container">
-        {addresses?.map((info, index) => (
-          <AddressBox
-            key={index - info.HNO}
-            name={info.name}
-            HNO={info.HNO}
-            title={info.title}
-            address={info.address}
-          />
-        ))}
-      </div>
-    </div>
-    <div onClick={handleChangeComp} className="place__order">
-      <h5>Checkout</h5>
-    </div>
-  </div>
-)}
-
   </>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./Login.scss";
-import login from "../../Assets/Images/login.png";
-import signup from "../../Assets/Images/signup.png";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 // import { getRegisterUser } from "../../Redux/Slices/user"
@@ -194,11 +192,6 @@ function Login() {
         <div className="panel left-panel">
           <div className="content">
             <h3>New here?</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia
-              deserunt sequi soluta adipisci molestiae minima pariatur sapiente
-              ipsum ab vitae!
-            </p>
             <button
               className="btn cart transparent"
               id="sign-up-btn"
@@ -207,18 +200,12 @@ function Login() {
               Sign Up
             </button>
           </div>
-
-          <img src={signup} alt="" className="image" />
         </div>
 
         <div className="panel right-panel">
           <div className="content">
             <h3>One of us?</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia
-              deserunt sequi soluta adipisci molestiae minima pariatur sapiente
-              ipsum ab vitae!
-            </p>
+          
             <button
               className="btn cart transparent"
               onClick={handleSignInClick}
@@ -227,7 +214,6 @@ function Login() {
             </button>
           </div>
 
-          <img src={login} alt="" className="image" />
         </div>
       </div>
     </div>
