@@ -32,16 +32,44 @@ function Shop() {
 
   return (
     <div>
+      {/* <div className="div__row-img">
+        <img src={rowIMG} alt="ROW__IMG" />
+      </div> */}
+
       <main>
         <div className="Menu">
           <div className="container menu__container">
             <h2 className="menu__head-sec">Fresh from Free of Gluten</h2>
             <h2 className="menu__head">OUR SPECIAL MENU</h2>
+
+            {/* <div className="menu__items flex__center">
+              <div
+                onClick={handleAllProduct}
+                className={`menu__item-filter-item flex__center p-text ${
+                  activeFilter === "All" ? "item-active" : ""
+                }`}
+              >
+                All
+              </div>
+              {categories.map((category, id) => (
+                <div
+                  onClick={() => categoryChangeHandler(category.name)}
+                  className={`menu__item-filter-item flex__center p-text ${
+                    activeFilter === category.name ? "item-active" : ""
+                  }`}
+                  key={category - id}
+                >
+                  {category.name}
+                </div>
+              ))}
+            </div> */}
+
             <div className="app__work-filter">
               <div
                 onClick={handleAllProduct}
-                className={`app__work-filter-item app__flex p-text ${activeFilter === "All" ? "item-active" : ""
-                  }`}
+                className={`app__work-filter-item app__flex p-text ${
+                  activeFilter === "All" ? "item-active" : ""
+                }`}
               >
                 All
               </div>
@@ -49,27 +77,33 @@ function Shop() {
                 <div
                   key={index}
                   onClick={() => categoryChangeHandler(category.name)}
-                  className={`app__work-filter-item app__flex p-text ${activeFilter === category.name ? "item-active" : ""
-                    }`}
+                  className={`app__work-filter-item app__flex p-text ${
+                    activeFilter === category.name ? "item-active" : ""
+                  }`}
                 >
                   {category.name}
                 </div>
               ))}
             </div>
 
-            <div className="spr-wrapper">
+            <div className="menu__cards-container flex__center">
               {products.map((item, index) => (
                 <Card
                   key={item.name + index}
                   imgUrl={item?.images[0]?.url}
                   name={item.name}
-                  price={item.weightPrice[0].price}
-                  weight={item.weightPrice[0].weight}
-                  salePrice={item.weightPrice[0].price}
-                  category={item.category}
+                  price={item.price}
+                  salePrice={item.price - "20"}
+                  category={"Breads"}
                   id={item._id}
                 />
               ))}
+              {/* <Card name="Makkhan" price="120" imgUrl={CardImg} />
+      <Card name="Makkhan" price="120" imgUrl={CardImg} />
+      <Card name="Makkhan" price="120" imgUrl={CardImg} />
+      <Card name="Makkhan" price="120" imgUrl={CardImg} />
+      <Card name="Makkhan" price="120" imgUrl={CardImg} />
+      <Card name="Makkhan" price="120" imgUrl={CardImg} /> */}
             </div>
           </div>
         </div>

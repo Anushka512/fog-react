@@ -8,7 +8,7 @@
     padding: 90px 8rem;
 
     .product__img {
-      width: 450px;
+      width: 650px;
       background-color: white;
       border-radius: 12px;
       display: flex;
@@ -16,16 +16,17 @@
       align-items: center;
 
       img{
-        width: 85%;
+        width: 100%;
       }
     }
 
     .product__details {
       .product__sm-desc {
-        max-width: 70%;
+        max-width: 90%;
       }
 
       .weight__badge {
+        margin-top: 20px;
         span {
           background-color: transparent;
           border: 1px solid #6c757d;
@@ -65,7 +66,6 @@
 
     .product__details > h3 {
       font-size: 40px;
-
       margin-bottom: 8px;
     }
   }
@@ -80,9 +80,11 @@
   .ProductDetail {
   .product__detail-container {
     padding: 70px 6rem;
+    flex-direction: row;
+    gap: 30px;
 
     .product__img {
-      width: 350px;
+      width: 80%;
     }
 
     .product__details {
@@ -103,6 +105,11 @@
   .ProductDetail {
   .product__detail-container {
     padding: 90px 10rem;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .product__img {
+    width: 100%;
   }
 
   .product__About-container {
@@ -116,16 +123,16 @@
   .product__detail-container {
     flex-direction: column;
     gap: 30px;
-    padding: 50px 2rem;
+    padding: 50px 6rem;
 
     .product__img {
-      margin-left: 30px;
-      width: 80%;
+      width: 100%;
+      
     }
   }
 
   .product__About-container {
-    padding: 2rem;
+    padding: 3rem;
   }
 }
 }

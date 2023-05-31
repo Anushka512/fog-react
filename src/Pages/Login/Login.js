@@ -56,21 +56,9 @@ function Login() {
   useEffect(() => {
     if (status) {
       Swal.fire({
-        timer: 1500,
-        title: "Welcome to to family",
-        showConfirmButton: false,
-        position: "bottom-end",
-        customClass: {
-          popup: "custom-popup",
-          closeButton: "custom-close-button",
-          title: "s-title",
-        },
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        showCloseButton: true,
-        closeButtonHtml: "&times;",
-        // icon: "success",
+        timer: 2500,
+        title: "Succesfully Registered",
+        icon: "success",
       });
 
       setEmail("");
@@ -80,21 +68,9 @@ function Login() {
     }
     if (isAuthenticated) {
       Swal.fire({
-        timer: 1500,
-        title: "Welcome Back",
-        // icon: "success",
-        showConfirmButton: false,
-        position: "bottom-end",
-        customClass: {
-          popup: "custom-popup",
-          closeButton: "custom-close-button",
-          title: "s-title",
-        },
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        showCloseButton: true,
-        closeButtonHtml: "&times;",
+        timer: 2500,
+        title: "Succesfully Logged In",
+        icon: "success",
       });
 
       setEmail("");
@@ -106,20 +82,9 @@ function Login() {
 
     if (error) {
       Swal.fire({
-        timer: 1500,
-        title: "Something Went Wrong",
-        showConfirmButton: false,
-        position: "bottom-end",
-        customClass: {
-          popup: "custom-popup",
-          closeButton: "custom-close-button",
-          title: "s-title",
-        },
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false,
-        showCloseButton: true,
-        closeButtonHtml: "&times;",
+        timer: 2500,
+        title: error,
+        icon: "error",
       });
       dispatch(clearError());
     }

@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 // import { useSelector } from 'react-redux';
 import "./Account.scss";
-import profile from "../../Assets/Images/profile.png";
+// import profile from "../../Assets/Images/profile.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -16,25 +16,26 @@ const AccountPage = () => {
   const { user } = useSelector((state) => state.user);
   const { isLoading } = useSelector((state) => state.app);
   const navigate = useNavigate();
+  const [profilePhoto, setProfilePhoto] = useState('');
+  
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      setProfilePhoto(e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
   const handlLogout = () => {
     dispatch(getLoggedoutUser());
     Swal.fire({
-      title: "See you soon",
-      timer: 1500,
-      showConfirmButton: false,
-      position: "bottom-end",
-      customClass: {
-      popup: "custom-popup",
-      closeButton: "custom-close-button",
-      title: "s-title",
-      },
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      allowEnterKey: false,
-      showCloseButton: true,
-      closeButtonHtml: "&times;",
+      icon: "success",
+      title: "Logged Out Successfully",
     });
-    navigate("/");
+    navigate("/");    
   };
 
   const userData = {
@@ -49,13 +50,14 @@ const AccountPage = () => {
     ],
   };
 
+
   return (
     <Fragment>
       {isLoading ? (
         <Loader />
       ) : (
         <div className="account-page">
-          <AiOutlineLogout
+          <AiOutlineLogout className="logout"
             style={{
               position: "absolute",
               top: "0",
@@ -67,7 +69,9 @@ const AccountPage = () => {
           />
           <div className="profile">
             <div className="profile-photo">
-              <img src={profile} alt="Profile" />
+              <img src={profilePhoto || '../../Assets/Images/profile.png'} alt="Profile" />
+              <label htmlFor="photo-input" className="photo-input-label">
+              <input type="file" id="photo-input" accept="image/*" onChange={handlePhotoChange} /> Choose Photo </label>
             </div>
             <div className="profile-details">
               <h2>{userData.name}</h2>
