@@ -9,10 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Cart.scss";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { setCartOpen } from "../../Redux/slices/appConfigSlice";
 
-function Cart({ toggleCart, setToggleCart }) {
+function Cart() {
   const dispatch = useDispatch();
-
+  const { isCartOpen } = useSelector((state) => state.app);
   const { carts } = useSelector((state) => state.products);
   const { addresses, isAuthenticated } = useSelector((state) => state.user);
   const [secondComp, setSecondComp] = useState(false);
@@ -116,10 +117,10 @@ function Cart({ toggleCart, setToggleCart }) {
       )}
 
       {!secondComp && (
-        <div className={`Cart flex__center ${toggleCart ? "active" : ""}`}>
+        <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
           <div className="top__cart-section">
             <h5>My Cart</h5>
-            <RxCross1 onClick={setToggleCart} />
+            <RxCross1 onClick={() => dispatch(setCartOpen(false))} />
           </div>
 
           <div className="cart__del-info">
@@ -146,7 +147,7 @@ function Cart({ toggleCart, setToggleCart }) {
                 imgUrl={product.images[0].url}
                 price={product.price}
                 quantity={product.quantity}
-                weight = {product.weight}
+                weight={product.weight}
               />
             ))}
 
@@ -164,10 +165,10 @@ function Cart({ toggleCart, setToggleCart }) {
         </div>
       )}
       {secondComp && (
-        <div className={`Cart flex__center ${toggleCart ? "active" : ""}`}>
+        <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
           <div className="top__cart-section">
             <h5>My Address</h5>
-            <RxCross1 onClick={setToggleCart} />
+            <RxCross1 onClick={() => setCartOpen(false)} />
           </div>
           <div className="address comp2">
             <span onClick={handleAddressOpener}>+</span>
