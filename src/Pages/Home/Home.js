@@ -36,7 +36,7 @@ const breakpoints = {
     slidesPerView: 2, // 2 slides per view for screens up to 480px wide
   },
   768: {
-    slidesPerView: 4, // 3 slides per view for screens up to 768px wide
+    slidesPerView: 3, // 3 slides per view for screens up to 768px wide
   },
   1024: {
     slidesPerView: 5, // 4 slides per view for screens up to 1024px wide
@@ -144,36 +144,38 @@ function Home() {
             <h2>Shop By</h2>
             <h1>Categories</h1>
           </div>
-
-          {isLoading ? (
-            <MinLoader />
-          ) : (
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={3}
-              navigation={true} // Add navigation prop to show prev and next buttons
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log("slide change")}
-              breakpoints={breakpoints}
-              autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable autoplay with 2-second delay between slides
+          <div className="cat-wrapper">
+            {isLoading ? (
+              <MinLoader />
+            ) : (
+              <Swiper
+                className="swiper"
+                spaceBetween={40}
+                slidesPerView={3}
+                navigation={true} // Add navigation prop to show prev and next buttons
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}
+                breakpoints={breakpoints}
+                autoplay={{ delay: 600000, disableOnInteraction: false }} // Enable autoplay with 2-second delay between slides
               // loop
-            >
-              {categories.map((category) => (
-                <SwiperSlide>
-                  <img
-                    src={category?.image.url}
-                    alt="category"
-                    style={{
-                      minWidth: 230,
-                      minHeight: 230,
-                      maxWidth: 230,
-                      maxHeight: 230,
-                    }}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
+              >
+                {categories.map((category) => (
+                  <SwiperSlide>
+                    <img
+                      src={category?.image.url}
+                      alt="category"
+                      style={{
+                        minWidth: 230,
+                        minHeight: 230,
+                        maxWidth: 230,
+                        maxHeight: 230,
+                      }}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </div>
 
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">
@@ -189,9 +191,9 @@ function Home() {
           <div className="popular_product">
             <div className="p-head-wrapper">
               <h1 className="p-head">
-                Supersaver <span className="g-text">Up to 50% off</span>
+                Our <span className="g-text">Newly Added</span>
               </h1>
-              <span>View all -</span>
+              <span className="view">View all</span>
             </div>
             {isLoading ? (
               <div
@@ -238,50 +240,95 @@ function Home() {
           <div className="popular_product">
             <div className="p-head-wrapper">
               <h1 className="p-head">
-                Supersaver <span className="g-text">Up to 50% off</span>
+                Our <span className="g-text">Best selling</span>
               </h1>
-              <span>View all -</span>
+              <span className="view">View all</span>
+            </div>
+            <div className="pp-wrapper">
+              <div className="pp-row">
+                {isLoading ? (
+                  <div
+                    style={{
+                      width: "90vw",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <MinLoader />
+                  </div>
+                ) : (
+                  <Swiper
+                    spaceBetween={20}
+                    slidesPerView={3}
+                    navigation
+                    autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable navigation
+                    // onSwiper={(swiper) => console.log(swiper)}
+                    // onSlideChange={() => console.log("slide change")}
+                    breakpoints={breakpoints}
+                  >
+                    {products?.map((item, index) => (
+                      <SwiperSlide>
+                        <Card
+                          isOnCart={isInCart(item._id) ? true : false}
+                          key={item.name + index}
+                          imgUrl={item?.images[0]?.url}
+                          name={item.name}
+                          // price={item.weightPrice[0].price}
+                          weight={item.weightPrice[0].weight}
+                          salePrice={item.weightPrice[0].price}
+                          category={item.category}
+                          id={item._id}
+                          isAddedOnCart={item.isOnCard ? true : false}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )}
+              </div>
+              <div className="pp-row">
+                {isLoading ? (
+                  <div
+                    style={{
+                      width: "90vw",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <MinLoader />
+                  </div>
+                ) : (
+                  <Swiper
+                    spaceBetween={20}
+                    slidesPerView={3}
+                    navigation
+                    autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable navigation
+                    // onSwiper={(swiper) => console.log(swiper)}
+                    // onSlideChange={() => console.log("slide change")}
+                    breakpoints={breakpoints}
+                  >
+                    {products?.map((item, index) => (
+                      <SwiperSlide>
+                        <Card
+                          isOnCart={isInCart(item._id) ? true : false}
+                          key={item.name + index}
+                          imgUrl={item?.images[0]?.url}
+                          name={item.name}
+                          // price={item.weightPrice[0].price}
+                          weight={item.weightPrice[0].weight}
+                          salePrice={item.weightPrice[0].price}
+                          category={item.category}
+                          id={item._id}
+                          isAddedOnCart={item.isOnCard ? true : false}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )}
+              </div>
             </div>
 
-            {isLoading ? (
-              <div
-                style={{
-                  width: "90vw",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MinLoader />
-              </div>
-            ) : (
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={3}
-                navigation
-                autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable navigation
-                // onSwiper={(swiper) => console.log(swiper)}
-                // onSlideChange={() => console.log("slide change")}
-                breakpoints={breakpoints}
-              >
-                {products?.map((item, index) => (
-                  <SwiperSlide>
-                    <Card
-                      isOnCart={isInCart(item._id) ? true : false}
-                      key={item.name + index}
-                      imgUrl={item?.images[0]?.url}
-                      name={item.name}
-                      // price={item.weightPrice[0].price}
-                      weight={item.weightPrice[0].weight}
-                      salePrice={item.weightPrice[0].price}
-                      category={item.category}
-                      id={item._id}
-                      isAddedOnCart={item.isOnCard ? true : false}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            )}
           </div>
         </div>
       </article>
