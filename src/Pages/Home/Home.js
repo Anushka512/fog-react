@@ -2,21 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import webHeader from "../../Assets/Images/web_header.jpg";
 // import CardImg from "../../Assets/Images/3.jpg.png";
-import logoSec from "../../Assets/Images/logo__sec.png";
 import aboutBanner from "../../Assets/Images/all.png";
-import catImg1 from "../../Assets/Images/cat-img-1.png";
-import catImg2 from "../../Assets/Images/cat-img-2.png";
-import catImg3 from "../../Assets/Images/cat-img-3.png";
-import catImg4 from "../../Assets/Images/cat-img-4.png";
 import Card from "../../Components/Card/Card.js";
 import TestimonialCard from "../../Components/TestimonialCard/TestimonialCard.js";
 import bread from "../../Assets/Images/bread.png";
-import arrow from "../../Assets/Images/arrow.png";
 import { FiTruck } from "react-icons/fi";
 import { MdOutlineSupportAgent, MdPayments } from "react-icons/md";
 import { BiTimer } from "react-icons/bi";
-import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
-
 // import { ProductData } from "../../Data/productsData.js";//
 import "./Home.scss";
 import { Link } from "react-router-dom";
@@ -27,7 +19,6 @@ import {
 } from "../../Redux/slices/productSlice";
 import { getUserDetail } from "../../Redux/slices/user";
 import MinLoader from "../../Components/Loader/MinLoader";
-
 
 //SwiperSLider
 
@@ -52,7 +43,6 @@ const breakpoints = {
   },
 };
 
-
 function Home() {
   const dispatch = useDispatch();
   const { products, categories, carts } = useSelector(
@@ -65,28 +55,6 @@ function Home() {
     dispatch(getAllCategories());
     dispatch(getUserDetail());
   }, [dispatch]);
-
-  const HorizontalScroll1 = useRef();
-  const HorizontalScroll2 = useRef();
-  // const [activeFilter, setActiveFilter] = useState("All");
-
-  const handleTransformLeft1 = (e) => {
-    console.log(e);
-    HorizontalScroll1.current.scrollLeft += 120;
-  };
-
-  const handleTransformRight1 = () => {
-    HorizontalScroll1.current.scrollLeft -= 120;
-  };
-
-  const handleTransformLeft2 = (e) => {
-    console.log(e);
-    HorizontalScroll2.current.scrollLeft += 120;
-  };
-
-  const handleTransformRight2 = () => {
-    HorizontalScroll2.current.scrollLeft -= 120;
-  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -176,17 +144,7 @@ function Home() {
             <h2>Shop By</h2>
             <h1>Categories</h1>
           </div>
-          <div className="cat_card_wrapper">
 
-
-            {isLoading ? (
-              <MinLoader />
-            ) : (
-              categories.map((category) => <img src={catImg4} alt="cat-img" />)
-            )}
-
-
-          </div>
           {isLoading ? (
             <MinLoader />
           ) : (
@@ -217,7 +175,6 @@ function Home() {
             </Swiper>
           )}
 
-
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">
               Go to Shop
@@ -236,21 +193,30 @@ function Home() {
               </h1>
               <span>View all -</span>
             </div>
-            <div className="card-wrapper">
-              <div className="products__cards" ref={HorizontalScroll1}>
-                {isLoading ? (
-                  <div
-                    style={{
-                      width: "90vw",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <MinLoader />
-                  </div>
-                ) : (
-                  products.map((item, index) => (
+            {isLoading ? (
+              <div
+                style={{
+                  width: "90vw",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <MinLoader />
+              </div>
+            ) : (
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={3}
+                navigation // Enable navigation
+                autoplay={{ delay: 2000, disableOnInteraction: false }}
+                // pagination={{ clickable: true }}
+                // onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={() => console.log("slide change")}
+                breakpoints={breakpoints}
+              >
+                {products?.map((item, index) => (
+                  <SwiperSlide>
                     <Card
                       isOnCart={isInCart(item._id) ? true : false}
                       key={item.name + index}
@@ -259,14 +225,14 @@ function Home() {
                       price={item.weightPrice[0].price}
                       weight={item.weightPrice[0].weight}
                       salePrice={item.weightPrice[0].price}
-                      category={"Breads"}
+                      category={item.category}
                       id={item._id}
                       isAddedOnCart={item.isOnCard ? true : false}
                     />
-                  ))
-                )}
-              </div>
-            </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
           </div>
 
           <div className="popular_product">
@@ -277,22 +243,6 @@ function Home() {
               <span>View all -</span>
             </div>
 
-
-            <div className="card-wrapper">
-              <div className="products__cards" ref={HorizontalScroll2}>
-                {isLoading ? (
-                  <div
-                    style={{
-                      width: "90vw",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <MinLoader />
-                  </div>
-                ) : (
-                  products?.map((item, index) => (
             {isLoading ? (
               <div
                 style={{
@@ -316,30 +266,22 @@ function Home() {
               >
                 {products?.map((item, index) => (
                   <SwiperSlide>
-
                     <Card
                       isOnCart={isInCart(item._id) ? true : false}
                       key={item.name + index}
                       imgUrl={item?.images[0]?.url}
                       name={item.name}
-                      price={item.weightPrice[0].price}
+                      // price={item.weightPrice[0].price}
                       weight={item.weightPrice[0].weight}
                       salePrice={item.weightPrice[0].price}
-                      category={"Breads"}
+                      category={item.category}
                       id={item._id}
                       isAddedOnCart={item.isOnCard ? true : false}
                     />
-
-                  ))
-                )}
-              </div>
-            </div>
-
                   </SwiperSlide>
                 ))}
               </Swiper>
             )}
-
           </div>
         </div>
       </article>
@@ -416,9 +358,6 @@ function Home() {
             flavorful delights.
           </p>
 
-
-          <div className="test-cards flex__center">
-
           <Swiper
             spaceBetween={20}
             slidesPerView={3}
@@ -477,7 +416,6 @@ function Home() {
 
           {/* <div className="test-cards flex__center">
 
-
             <TestimonialCard
               name="Abhinav Gupta"
               desc="Ordered a gluten free cake & I was so happily pleased 
@@ -514,7 +452,8 @@ function Home() {
               gluten free dedicated kitchen which is a saviour for all the celiacs."
             />
 
-          </div>
+
+          </div> */}
         </div>
       </section>
 
