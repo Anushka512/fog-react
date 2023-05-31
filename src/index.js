@@ -10,13 +10,24 @@ import "./Assets/css/color.css";
 import "./Assets/css/responsive.css";
 import "./Assets/css/animate.min.css";
 
+import { positions, transitions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  timeout: 5000,
+  position: positions.TOP_RIGHT,
+  transition: transitions.SCALE,
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AlertProvider>
     </Provider>
   </React.StrictMode>
 );

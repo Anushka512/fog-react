@@ -28,8 +28,6 @@ import "swiper/css/navigation";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
-
-
 const breakpoints = {
   320: {
     slidesPerView: 1, // 1 slide per view for screens up to 320px wide
@@ -45,10 +43,11 @@ const breakpoints = {
   },
 };
 
-
 function Home() {
   const dispatch = useDispatch();
-  const { products, categories } = useSelector((state) => state.products);
+  const { products, categories, carts } = useSelector(
+    (state) => state.products
+  );
   const { isLoading } = useSelector((state) => state.app);
 
   useEffect(() => {
@@ -63,7 +62,10 @@ function Home() {
     message: "",
   });
 
-  console.log("THis is product", products);
+  const isInCart = (productId) => {
+    console.log(typeof productId);
+    return carts?.some((item) => item._id === productId);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -143,7 +145,6 @@ function Home() {
             <h1>Categories</h1>
           </div>
 
-
           {isLoading ? (
             <MinLoader />
           ) : (
@@ -173,7 +174,6 @@ function Home() {
               ))}
             </Swiper>
           )}
-
 
           <div className="cat-btn">
             <Link to="/shop" className="btn bl-btn">
@@ -218,6 +218,7 @@ function Home() {
                 {products?.map((item, index) => (
                   <SwiperSlide>
                     <Card
+                      isOnCart={isInCart(item._id) ? true : false}
                       key={item.name + index}
                       imgUrl={item?.images[0]?.url}
                       name={item.name}
@@ -264,8 +265,9 @@ function Home() {
                 breakpoints={breakpoints}
               >
                 {products?.map((item, index) => (
-                  <SwiperSlide >
+                  <SwiperSlide>
                     <Card
+                      isOnCart={isInCart(item._id) ? true : false}
                       key={item.name + index}
                       imgUrl={item?.images[0]?.url}
                       name={item.name}
@@ -280,7 +282,6 @@ function Home() {
                 ))}
               </Swiper>
             )}
-
           </div>
         </div>
       </article>
@@ -289,25 +290,21 @@ function Home() {
 
       {/* {---------------------BANNER SECTION START----------------------------} */}
 
-
       <div className="container about__banner">
         <div className="ab-left">
           <h3 className="ab-head-first">Why to choose us ?</h3>
-          <h3 className="ab-head-sec">
-            Why Free of Gluten?
-          </h3>
+          <h3 className="ab-head-sec">Why Free of Gluten?</h3>
           <p className="p-text">
-            Gluten, a protein found in wheat and several other grains. It
-            means only eating only whole foods with no gluten. A gluten-free
-            diet is also popular among people who haven’t been diagnosed. It
-            means only eating only whole foods with no gluten. A gluten-free
-            diet is also popular among people who haven’t been diagnosed.
+            Gluten, a protein found in wheat and several other grains. It means
+            only eating only whole foods with no gluten. A gluten-free diet is
+            also popular among people who haven’t been diagnosed. It means only
+            eating only whole foods with no gluten. A gluten-free diet is also
+            popular among people who haven’t been diagnosed.
           </p>
           <span>
             <button className="btn bl-btn">Go to Shop</button>
             <button className="btn bl-btn outline-btn">Reach Us</button>
           </span>
-
         </div>
 
         <span className="ab-right">
@@ -343,10 +340,8 @@ function Home() {
         </h1>
       </div>
 
-
       {/* {---------------------TESTIMONIALS SECTION START----------------------------} */}
       <section className="test-wrapper">
-
         <div className=" container testimonials">
           <h1>
             We Serve - they
@@ -358,22 +353,18 @@ function Home() {
           <p className="test-text">
             We passionately cater our customers with gluten sensitivities,
             allowing them to relish every moment without worry, while indulging
-            in our mouthwatering and completely Gluten-Free products. Experience the joy
-            of gluten-free living and embrace a life filled with flavorful delights.
+            in our mouthwatering and completely Gluten-Free products. Experience
+            the joy of gluten-free living and embrace a life filled with
+            flavorful delights.
           </p>
-
 
           <Swiper
             spaceBetween={20}
             slidesPerView={3}
             navigation // Enable navigation
-            // onSwiper={(swiper) => console.log(swiper)}
-            // onSlideChange={() => console.log("slide change")}
             breakpoints={breakpoints}
             autoplay={{ delay: 2000, disableOnInteraction: false }}
-            loop
           >
-
             <SwiperSlide>
               <TestimonialCard
                 name="Abhinav Gupta"
@@ -421,8 +412,6 @@ function Home() {
               with everything. My go to place for gluten free food. Thanks for such amazing food."
               />
             </SwiperSlide>
-
-
           </Swiper>
 
           {/* <div className="test-cards flex__center">
@@ -468,27 +457,24 @@ function Home() {
         </div>
       </section>
 
-
       {/* {---------------------TESTIMONIALS SECTION END----------------------------} */}
       <section className="cta">
         <div className="cta-wrapper container">
-
           <div className="cta-left">
             <h3 className="first">Join our community</h3>
             <h2 className="sec">YOU ARE NOT ALONE</h2>
             <p className="para">
-              We invite you to be a part of our community FOGHEADS of Gluten sensitive
-              individuals where your unique dietary needs are understood and
-              celebrated. By joining our community you get access to valuable
-              insights, resources and connections with the individuals with a
-              shared sensitivity Together, let's
-              embrace a gluten-free lifestyle and embark on a journey of shared
+              We invite you to be a part of our community FOGHEADS of Gluten
+              sensitive individuals where your unique dietary needs are
+              understood and celebrated. By joining our community you get access
+              to valuable insights, resources and connections with the
+              individuals with a shared sensitivity Together, let's embrace a
+              gluten-free lifestyle and embark on a journey of shared
               inspiration and empowerment.
             </p>
           </div>
           <div className="cta-right">
-
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
               <div className="form-field">
                 {/* <label htmlFor="email">Email</label> */}
                 <input
