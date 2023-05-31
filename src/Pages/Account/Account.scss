@@ -7,27 +7,28 @@
   margin-right: 650px;
   position: relative;
 
-  
+
   .profile-photo {
-    // display: block;
-    // flex-direction: row;
-    // align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   
     img {
       width: 200px;
       height: 200px;
-      object-fit: cover;
+      object-fit:cover;
       border-radius: 50%;
       margin-bottom: 10px;
     }
   
     .photo-input-label {
-      background-color: #ccc;
+      background-color: #38aab5;
       color: #fff;
       padding: 10px 20px;
       cursor: pointer;
       border-radius: 4px;
       width: 150px;
+      margin-bottom: 30px;
     }
 
     input[type='file'] {
@@ -36,8 +37,8 @@
 
     .profile-details {
       h2 {
-        margin-top: 0;
         font-size: 24px;
+        
       }
 
       p {
@@ -90,7 +91,7 @@
   }
   .download-button {
     display: flex;
-    background-color: #00c4bb;
+    background-color: #38aab5;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -109,6 +110,22 @@
     }
   }
 }
+
+// styles.scss
+
+.userData {
+  margin-bottom: 20px;
+
+  p {
+    margin-bottom: 10px;
+
+    b {
+      font-weight: bold;
+    }
+  }
+}
+
+
 /* Mobile Devices */
 @media (max-width: 767px) {
   .account-page {

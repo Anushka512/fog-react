@@ -14,16 +14,20 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { getHeaderTagLine } from "../../Redux/slices/utilsSlice";
+import { setCartOpen } from "../../Redux/slices/appConfigSlice";
 
-export default function Navbar({ setToggleCart }) {
+export default function Navbar() {
   const dispatch = useDispatch();
   const { headerTagLine } = useSelector((state) => state.utils);
+  const { isCartOpen } = useSelector((state) => state.app);
   const { isAuthenticated } = useSelector((state) => state.user);
   const [toggle, setToggle] = useState(false);
   const { isAdmin } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getHeaderTagLine());
   }, [dispatch]);
+
+  console.log("is Cart Open", isCartOpen);
 
   return (
     <div className="wrapper__nav">
@@ -52,7 +56,9 @@ export default function Navbar({ setToggleCart }) {
           </ul>
           <div className="right">
             <AiOutlineSearch />
-            <AiOutlineShoppingCart onClick={setToggleCart} />
+            <AiOutlineShoppingCart
+              onClick={() => dispatch(setCartOpen(true))}
+            />
             {!isAdmin && (
               <Link to={isAuthenticated ? "/account" : "/auth"}>
                 <AiOutlineUser />
@@ -60,15 +66,18 @@ export default function Navbar({ setToggleCart }) {
             )}
             {isAdmin && (
               <Link to="/admin">
-                <AiFillDashboard  />
-                
+                <AiFillDashboard />
               </Link>
             )}
           </div>
         </div>
 
         <div className="responsive__menu">
-          <AiOutlineShoppingCart onClick={setToggleCart} size={25} style={{ marginRight: "10px" }} />
+          <AiOutlineShoppingCart
+            onClick={() => dispatch(setCartOpen(true))}
+            size={25}
+            style={{ marginRight: "10px" }}
+          />
 
           {!isAdmin && (
             <Link to={isAuthenticated ? "/account" : "/auth"}>

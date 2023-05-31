@@ -35,14 +35,10 @@ import ScrollToTop from "./utils/ScrollToTop";
 import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
-  const [toggleCart, setToggleCart] = useState(false);
-  function handleToggleCart() {
-    console.log("Run", toggleCart);
-    setToggleCart(!toggleCart);
-  }
+  
   return (
     <div className="App">
-      <Navbar setToggleCart={handleToggleCart} />
+      <Navbar  />
 
       <Routes>
         <Route element={<RequireUser />}>
@@ -97,7 +93,7 @@ function App() {
         </Route>
       </Routes>
 
-      <Cart toggleCart={toggleCart} setToggleCart={handleToggleCart} />
+      <Cart  />
       <Footer />
     </div>
   );

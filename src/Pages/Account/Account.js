@@ -17,7 +17,8 @@ const AccountPage = () => {
   const { isLoading } = useSelector((state) => state.app);
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState('');
-  
+
+  // for profile photo
   const handlePhotoChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -29,16 +30,7 @@ const AccountPage = () => {
     reader.readAsDataURL(file);
   };
 
-  const handlLogout = () => {
-    dispatch(getLoggedoutUser());
-    Swal.fire({
-      icon: "success",
-      title: "Logged Out Successfully",
-    });
-    navigate("/");    
-  };
-
-  const userData = {
+  const userData1 = {
     name: user?.name,
     email: user?.email,
     phoneNumber: "123-456-7890",
@@ -50,6 +42,32 @@ const AccountPage = () => {
     ],
   };
 
+  // for phn and address edit 
+  const [editedPhoneNumber, setEditedPhoneNumber] = useState(userData1.phoneNumber);
+  const [editedAddress, setEditedAddress] = useState(userData1.address);
+
+  const handleEditPhoneNumber = () => {
+    const newPhoneNumber = prompt("Enter new phone number:");
+    if (newPhoneNumber) {
+      setEditedPhoneNumber(newPhoneNumber);
+    }
+  };
+
+  const handleEditAddress = () => {
+    const newAddress = prompt("Enter new address:");
+    if (newAddress) {
+      setEditedAddress(newAddress);
+    }
+  };
+
+  const handlLogout = () => {
+    dispatch(getLoggedoutUser());
+    Swal.fire({
+      icon: "success",
+      title: "Logged Out Successfully",
+    });
+    navigate("/");
+  };
 
   return (
     <Fragment>
@@ -71,28 +89,39 @@ const AccountPage = () => {
             <div className="profile-photo">
               <img src={profilePhoto || '../../Assets/Images/profile.png'} alt="Profile" />
               <label htmlFor="photo-input" className="photo-input-label">
-              <input type="file" id="photo-input" accept="image/*" onChange={handlePhotoChange} /> Choose Photo </label>
+                <input type="file" id="photo-input" accept="image/*" onChange={handlePhotoChange} /> Choose Photo </label>
             </div>
             <div className="profile-details">
-              <h2>{userData.name}</h2>
+              <h2>{userData1.name}</h2>
               <p>
-                <b>Email: </b> {userData.email}
+                <b>Email: </b> {userData1.email}
               </p>
-              <p>
+              {/* <p>
                 <b>Phone: </b>
                 {userData.phoneNumber}
+               
               </p>
               <p>
                 <b>Address: </b>
                 {userData.address}
+                
+              </p> */}
+              <p>
+                <b>Phone: </b>
+                {editedPhoneNumber}&nbsp;&nbsp;
+                <a className="fa fa-edit" onClick={()=> handleEditPhoneNumber()}></a>
+              </p>
+              <p>
+                <b>Address: </b>
+                {editedAddress}&nbsp;&nbsp;
+                <a className="fa fa-edit" onClick={()=> handleEditAddress()}></a>
               </p>
             </div>
           </div>
-
           <div className="previous-orders">
             <h3>Previous Orders</h3>
             <ul>
-              {userData.previousOrders.map((order) => (
+              {userData1.previousOrders.map((order) => (
                 <li key={order.id} className="order-item">
                   <span className="order-name">{order.name}</span>
                   <span className="order-price"> ₹ {order.price}</span>
@@ -105,9 +134,9 @@ const AccountPage = () => {
             <FontAwesomeIcon icon={faDownload} className="download-icon" />
             Download
           </button>
-        </div>
+        </div >
       )}
-    </Fragment>
+    </Fragment >
   );
 };
 
