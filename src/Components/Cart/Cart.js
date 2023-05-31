@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
-import CartImg from "../../Assets/Images/Cartitem.jpeg";
+// import CartImg from "../../Assets/Images/Cartitem.jpeg";
 import CartItem from "../CartItem/CartItem.js";
 import AddressBox from "../AddressBox/AddressBox.js";
-import { ProductData } from "../../Data/productsData";
+// import { ProductData } from "../../Data/productsData";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Cart.scss";
@@ -65,6 +65,7 @@ function Cart() {
     setTitle("");
     setAddressContainer(false);
   };
+
   return (
     <>
       {addressContainer && (
@@ -150,10 +151,6 @@ function Cart() {
                 weight={product.weight}
               />
             ))}
-
-            {/* <CartItem name="Item-1"  imgUrl={CartImg} price={50} quantity="500" />
-      <CartItem name="Item-1"  imgUrl={CartImg} price={50} quantity="500" />
-      <CartItem name="Item-1"  imgUrl={CartImg} price={50} quantity="500" /> */}
           </div>
 
           <div onClick={handleChangeComp} className="place__order">
@@ -164,7 +161,8 @@ function Cart() {
           </div>
         </div>
       )}
-      {secondComp && (
+
+      {/* {secondComp && (
         <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
           <div className="top__cart-section">
             <h5>My Address</h5>
@@ -192,12 +190,80 @@ function Cart() {
             </div>
           </div>
 
-          <div onClick={handleChangeComp} className="place__order submit">
-            <h5>Back To Cart</h5>
+          <div onClick={handleChangeComp} className="place__order">
+            <h5>Checkout</h5>
           </div>
         </div>
       )}
-    </>
+
+      {secondComp && (
+       <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
+    <div className="top__cart-section">
+      <h5>Checkout</h5>
+      <RxCross1 onClick={() => setCartOpen(false)} />
+    </div>
+    <div className="address comp2">
+      <div className="add__adress">
+        <h5>Hello world</h5>
+      </div>
+    </div>  
+
+    <div onClick={handleChangeComp} className="place__order submit">
+      <h5>Back To Cart</h5>
+    </div>
+  </div>
+      )} */}
+
+
+{secondComp ? (
+  <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
+    <div className="top__cart-section">
+      <h5>Checkout</h5>
+      <RxCross1 onClick={() => setCartOpen(false)} />
+    </div>
+    <div className="address comp2">
+      <div className="add__adress">
+        <h5>Hello world</h5>
+      </div>
+    </div>
+    <div onClick={handleChangeComp} className="place__order submit">
+      <h5>Back To Cart</h5>
+    </div>
+  </div>
+) : (
+  <div className={`Cart flex__center ${isCartOpen ? "active" : ""}`}>
+    <div className="top__cart-section">
+      <h5>My Address</h5>
+      <RxCross1 onClick={() => setCartOpen(false)} />
+    </div>
+    <div className="address comp2">
+      <span onClick={handleAddressOpener}>+</span>
+      <div className="add__adress">
+        <h5>Add A New Address</h5>
+      </div>
+    </div>
+    <div className="address__selection">
+      <p className="p-text">Choose Delivery Address</p>
+
+      <div className="address__selection-container">
+        {addresses?.map((info, index) => (
+          <AddressBox
+            key={index - info.HNO}
+            name={info.name}
+            HNO={info.HNO}
+            title={info.title}
+            address={info.address}
+          />
+        ))}
+      </div>
+    </div>
+    <div onClick={handleChangeComp} className="place__order">
+      <h5>Checkout</h5>
+    </div>
+  </div>
+)}
+
+  </>
   );
 }
 
