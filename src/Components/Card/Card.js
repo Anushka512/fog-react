@@ -1,36 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Card.scss";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+// import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { setCartOpen } from "../../Redux/slices/appConfigSlice";
 // import { AiOutlineHeart, AiFillCheckCircle } from "react-icons/ai";
 
-function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart ,weight}) {
+function Card({
+  imgUrl,
+  name,
+  price,
+  salePrice,
+  category,
+  id,
+  isOnCart,
+  weight,
+}) {
   const dispatch = useDispatch();
-  const { cart } = useSelector((state) => state.products);
-  const [quantity, setQuantity] = useState(0);
 
-  if (isAddedOnCart) {
-    cart?.map((product) => {
-      if (product._id === id) {
-        setQuantity(product.quantity);
-      }
-    });
-  }
-  console.log("This is price of pRoduct", price);
   const addToCart = (id) => {
     dispatch({
       type: "ProductSlice/addToCart",
-      payload: { id, price ,weight},
+      payload: { id, price, weight },
     });
   };
 
-  const removeCart = (id) => {
-    dispatch({
-      type: "ProductSlice/addToCart",
-      payload: { id },
+  const handleGoToCart = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
+    dispatch(setCartOpen(true));
   };
+
   return (
     <div className="Card">
       <div className="card__top">
@@ -54,12 +56,10 @@ function Card({ imgUrl, name, price, salePrice, category, id, isAddedOnCart ,wei
             <p className="sale__price">₹{salePrice}</p>
           </span>
 
-          {isAddedOnCart ? (
-            <motion.div whileInView={{ opacity: [0, 1] }}>
-              <span className="update__btn">-</span>
-              <span className="update__btn">{quantity}</span>
-              <span className="update__btn">+</span>
-            </motion.div>
+          {isOnCart ? (
+            <button onClick={handleGoToCart} className="btn">
+              Go to cart
+            </button>
           ) : (
             <button onClick={() => addToCart(id)} className="btn">
               Add to cart
