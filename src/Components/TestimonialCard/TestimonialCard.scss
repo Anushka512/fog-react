@@ -1,25 +1,25 @@
 .testimonial__card {
   
-  // width: 500px;
-  height: 250px;
+  min-height: 300px;
   text-align: center;
   background-color: rgb(230, 230, 230);
   background-color: #FFF8EF;
   border-radius: 10px;
   flex-direction: column;
-  padding: 20px;
+  padding: 20px !important;
 
   .stars{
     width: 100px;
   }
   .name{
-    font-size: 24px;
-    text-align: center;
-  }
-  .p-text{
     font-size: 18px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+  .p-text{
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 15px;
     color: #3d3d3c;
   }
   

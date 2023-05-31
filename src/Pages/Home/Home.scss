@@ -41,7 +41,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      
+
       // gap: 10px 0px;
       // border:none !important;
       box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.184);
@@ -353,41 +353,41 @@
 
   .testimonials {
     background-color: #ffffff;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // flex-direction: column;
-
-    h1 {
-      font-size: 70px;
-      text-align: center;
-      font-weight: 500;
-      margin-bottom: 20px;
-
-      .enjoy1 {
-        color: red;
+    
+    .test-text-wp{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .test-head{
+        h1 {
+          font-size: 70px;
+          text-align: center;
+          font-weight: 500;
+          margin-bottom: 20px;
+    
+          .enjoy1 {
+            color: red;
+          }
+    
+          .live1 {
+            color: #54B22C;
+          }
+        }
       }
-
-      .live1 {
-        color: #54B22C;
+      
+  
+      .test-text {
+        text-align: center;
+        max-width: 80%;
+        color: rgb(116, 116, 116);
+        margin-bottom: 50px;
       }
     }
+
+    
   }
 
-  .test-text {
-    text-align: center;
-    max-width: 70%;
-    color: rgb(116, 116, 116);
-    margin-bottom: 50px;
-  }
-
-  .test-cards {
-    // width: 100%;
-    gap: 0px 45px;
-    // border: 1px solid black;
-    padding: 0px 50px;
-    // overflow: hidden;
-  }
 
 }
 
@@ -555,14 +555,7 @@
 // ----------------------MEDIA QUERIES-------------------
 /* Desktops */
 @media only screen and (min-width: 1024px) {
-  .banner .hero__container {
-    width: 100%;
-  }
 
-  .footer .footer__container {
-    width: 80%;
-    margin: 0 auto;
-  }
 }
 
 /* Tablets/iPads */
@@ -575,35 +568,15 @@
       }
     }
   }
-
-
-  .banner .hero__container {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .service__detail .services__option .ser {
-    width: 23%;
-  }
-
-  .products .products__container .product__heading h1 {
-    font-size: 40px;
-  }
-
-  .footer .footer__container {
-    flex-direction: row-reverse;
-  }
-
-  .footer .footer__left {
-    width: 40%;
-  }
-
-  .footer .footer__right .footer__menu {
-    flex-direction: row;
-  }
-
-  .footer .footer__right .footer__menu h4 {
-    margin-right: 30px;
+  .test-text-wp{
+    .test-head{
+      h1{
+        font-size: 50px !important;
+      }
+    }
+    .test-text{
+      font-size: 15px;
+    }
   }
 }
 
@@ -611,16 +584,19 @@
 
 /* Mobile screens */
 @media only screen and (max-width: 767px) {
-
-  .test-wrapper .testimonials h1 {
-    font-size: 50px;
-  }
-
-  .test-wrapper .test-text {
-    text-align: center;
-    max-width: 90%;
-    color: rgb(116, 116, 116);
-    margin-bottom: 50px;
+  .test-text-wp{
+    .test-head{
+      h1{
+        font-size: 35px !important;
+      }
+    }
+    .test-text{
+      text-align: center;
+      max-width: 100%;
+      color: rgb(116, 116, 116);
+      margin-bottom: 50px;
+      font-size: 13px;
+    }
   }
 
   .service__detail {
@@ -725,36 +701,47 @@
       }
     }
   }
+}
 
-  .banner .hero__container {
-    width: 100%;
+
+
+@media only screen and (max-width: 556px) {
+  .popular_product {
+    .p-head-wrapper {
+      .p-head {
+        font-size: 24px !important;
+      }
+
+      .view {
+        display: none;
+      }
+    }
   }
 
-  .service__detail .services__option .ser {
-    width: 100%;
-  }
+  .ysection {
+    .y-top {
+      h2 {
+        font-size: 45px;
+      }
 
-  .products .products__container .product__heading h1 {
-    font-size: 32px;
+      h1 {
+        font-size: 40px;
+      }
+    }
   }
-
-  .footer .footer__container {
-    flex-direction: column;
-  }
-
-  .footer .footer__left {
-    width: 100%;
-  }
-
-  .footer .footer__right .footer__menu {
-    flex-direction: column;
-  }
-
-  .footer .footer__right .footer__menu h4 {
-    margin-right: 0;
-    margin-bottom: 10px;
+  .test-text-wp{
+    .test-head{
+      h1{
+        font-size: 30px !important;
+      }
+    }
+    .test-text{
+      font-size: 13px;
+      width: 100% !important;
+    }
   }
 }
+
 
 @media only screen and (max-width: 496px) {
   .lifestyle {
@@ -812,28 +799,16 @@
     }
   }
 
-}
-
-@media only screen and (max-width: 556px) {
-  .popular_product{
-    .p-head-wrapper{
-      .p-head{
-        font-size: 24px !important;
-      }
-      .view{
-        display: none;
+  .test-text-wp{
+    .test-head{
+      h1{
+        font-size: 25px !important;
       }
     }
-  }
-  .ysection {
-    .y-top {
-      h2 {
-        font-size: 45px;
-      }
-
-      h1 {
-        font-size: 40px;
-      }
+    .test-text{
+      font-size: 13px;
+      width: 100% !important;
     }
   }
+
 }

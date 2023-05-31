@@ -87,15 +87,17 @@
 
       }
     }
+  }
+  .spr-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px 20px;
 
-    .menu__cards-container {
-      flex-wrap: wrap;
-      gap: 45px;
-
-      .Card {
-        &:hover {
-          transform: scale(1.05);
-        }
+    .Card {
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }

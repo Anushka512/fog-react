@@ -42,6 +42,20 @@ const breakpoints = {
     slidesPerView: 5, // 4 slides per view for screens up to 1024px wide
   },
 };
+const testBreakpoints = {
+  320: {
+    slidesPerView: 1, // 1 slide per view for screens up to 320px wide
+  },
+  480: {
+    slidesPerView: 2, // 2 slides per view for screens up to 480px wide
+  },
+  768: {
+    slidesPerView: 2, // 3 slides per view for screens up to 768px wide
+  },
+  1024: {
+    slidesPerView: 3, // 4 slides per view for screens up to 1024px wide
+  },
+};
 
 function Home() {
   const dispatch = useDispatch();
@@ -390,117 +404,91 @@ function Home() {
       {/* {---------------------TESTIMONIALS SECTION START----------------------------} */}
       <section className="test-wrapper">
         <div className=" container testimonials">
-          <h1>
-            We Serve - they
-            <span className="enjoy1"> Enjoy </span> <br />
-            Every minute of their
-            <span className="live1"> Lives</span>
-          </h1>
+          <div className="test-text-wp">
+            <div className="test-head">
+              <h1>
+                We Serve - they
+                <span className="enjoy1"> Enjoy</span>
+              </h1>
+              <h1>
+                Every minute of their
+                <span className="live1"> Lives</span>
+              </h1>
 
-          <p className="test-text">
-            We passionately cater our customers with gluten sensitivities,
-            allowing them to relish every moment without worry, while indulging
-            in our mouthwatering and completely Gluten-Free products. Experience
-            the joy of gluten-free living and embrace a life filled with
-            flavorful delights.
-          </p>
+            </div>
 
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={3}
-            navigation // Enable navigation
-            breakpoints={breakpoints}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
-          >
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
+            <p className="test-text">
+              We passionately cater our customers with gluten sensitivities,
+              allowing them to relish every moment without worry, while indulging
+              in our mouthwatering and completely Gluten-Free products. Experience
+              the joy of gluten-free living and embrace a life filled with
+              flavorful delights.
+            </p>
+
+          </div>
+
+
+
+          <div className="test-cards">
+
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={3}
+              navigation // Enable navigation
+              breakpoints={testBreakpoints}
+              autoplay={{ delay: 2000, disableOnInteraction: false }}
+            >
+              <SwiperSlide>
+                <TestimonialCard
+                  name="Abhinav Gupta"
+                  desc="Ordered a gluten free cake & I was so happily pleased 
               with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
+                />
+              </SwiperSlide>
 
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
+              <SwiperSlide>
+                <TestimonialCard
+                  name="Abhinav Gupta"
+                  desc="Ordered a gluten free cake & I was so happily pleased 
               with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
+                />
+              </SwiperSlide>
 
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
+              <SwiperSlide>
+                <TestimonialCard
+                  name="Abhinav Gupta"
+                  desc="Ordered a gluten free cake & I was so happily pleased 
+              with everything. My go to  Ordered a gluten free cake & I was so happily pleased 
+              with everything. My go to pplace for gluten free food. Thanks for such amazing food."
+                />
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <TestimonialCard
+                  name="Abhinav Gupta"
+                  desc="Ordered a gluten free cake & I was so happily pleased 
               with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
+                />
+              </SwiperSlide>
 
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
+              <SwiperSlide>
+                <TestimonialCard
+                  name="Abhinav Gupta"
+                  desc="Ordered a gluten free cake & I was so happily pleased 
               with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
+                />
+              </SwiperSlide>
 
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
+              <SwiperSlide>
+                <TestimonialCard
+                  name="Abhinav Gupta"
+                  desc="Ordered a gluten free cake & I was so happily pleased 
               with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
+                />
+              </SwiperSlide>
+            </Swiper>
 
-            <SwiperSlide>
-              <TestimonialCard
-                name="Abhinav Gupta"
-                desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-              />
-            </SwiperSlide>
-          </Swiper>
-
-          {/* <div className="test-cards flex__center">
-
-            <TestimonialCard
-              name="Abhinav Gupta"
-              desc="Ordered a gluten free cake & I was so happily pleased 
-              with everything. My go to place for gluten free food. Thanks for such amazing food."
-            />
-
-            <TestimonialCard
-              name="Vishal Bachani"
-              desc="The gluten free pineapple cake was the best ! Reminded me of 
-              the cake we used to get in our school days, with the quality maintained really well."
-            />
-
-            <TestimonialCard
-              name="Shalu Singh"
-              desc="Being a parent of a celiac child, I am so glad there is a gluten free facility in Delhi which fulfills all our 
-              gf bakery needs. Had ordered a birthday cake for my daughter recently… she loved it!"
-            />
-
-            <TestimonialCard
-              name="Aman Kabir"
-              desc="This store is a life saver. Certified gluten free as I've tried it personally and I suffer from celiacs.
-                    I'm just sad it took me so long to find it."
-            />
-            <TestimonialCard
-              name="Neetu Mishra"
-              desc="It is really difficult to find a good celiac friendly Baker. But thank you Chocolate temptations for such an appetizing cake.
-              Also other stuffs on the menu are an added on bonus."
-            />
-
-            <TestimonialCard
-              name="Mahima Seth"
-              desc="The best place to have gluten free food! Yummy & 
-              Delicious. My favourite is Pineapple Pastry. They have a 
-              gluten free dedicated kitchen which is a saviour for all the celiacs."
-            />
-
-
-          </div> */}
+          </div>
         </div>
       </section>
 
