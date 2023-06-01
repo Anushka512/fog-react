@@ -27,18 +27,18 @@ input {
 .container__login{
 	position: relative;
 	width: 100%;
-	min-height: 100vh;
+	min-height: 85vh;
 	background-color: $background-color_1;
 	overflow: hidden;
 	&:before {
 		content: '';
 		position: absolute;
-		width: 2000px;
-		height: 2000px;
+		width: 1922px;
+        height: 1350px;
 		border-radius: 50%;
 		background: linear-gradient(-35deg,rgb(6, 221, 99),rgb(0, 125, 33));
 		top: -10%;
-		right: 48%;
+		right: 58%;
 		transform: translateY(-50%);
 		z-index: 6;
 		transition: 1.8s ease-in-out;
@@ -67,7 +67,7 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 80px;
+	padding: 0 20px;
 	overflow: hidden;
 	grid-column: 1/2;
 	grid-row: 1/2;
@@ -169,31 +169,27 @@ form.sign-up-form {
 	align-items: flex-end;
 	justify-content: space-around;
 	text-align: center;
+
 	.content {
 		color: $color_5;
 		transition: .9s .6s ease-in-out;
 		z-index: 7;
 	}
+
 	h3 {
 		font-weight: 600;
 		line-height: 1;
 		font-size: 24px;
 		z-index: 7;
 	}
-	p {
-		font-size: 15px;
-		padding: 0.7rem 0;
-		z-index: 7;
-		color: $color_5;
-	}
 }
 .left-panel {
 	pointer-events: all;
-	padding: 48px 17% 32px 12%;
+	padding: 0 67% 30% 42%;
 }
 .right-panel {
 	pointer-events: all;
-	padding: 48px 12% 32px 17%;
+	padding: 0 30% 30% 17%;
 	.content {
 		transform: translateX(800px);
 		z-index: 7;
@@ -256,46 +252,49 @@ form.sign-up-form {
 @media (max-width:870px) {
 	.container__login {
 		min-height: 800px;
-		height: 100vh;
+		height: 50vh;
 		&:before {
 			width: 1500px;
 			height: 1500px;
 			left: 30%;
-			bottom: 68%;
+			bottom: 80%;
 			transform: translateX(-50%);
 			right: initial;
 			top: initial;
 			transition: 2s ease-in-out;
 		}
 	}
+
 	.signin-signup {
 		width: 100%;
 		left: 50%;
-		top: 75%;
+		top: 85%;
 		transform: translate(-50%,-100%);
 		transition: 1s 0.8s ease-in-out;
 	}
+
 	.panels-container {
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr 2fr 1fr;
 	}
+
 	.panel {
 		flex-direction: row;
 		justify-content: space-around;
 		align-items: center;
-		padding: 2.5rem 8%;
+		padding: 2.5rem 8%; 
+
 		.content {
 			padding-right: 15%;
 			transition: 0.9s 0.8s ease-in-out;
 		}
+
 		h3 {
 			font-size: 1.5rem;
-		}
-		p {
-			font-size: 0.9rem;
-			padding: 0.5rem 0;
+			margin-top: -20px;
 		}
 	}
+
 	.btn.transparent {
 		width: 110px;
 		height: 35px;
@@ -317,13 +316,13 @@ form.sign-up-form {
 			transform: translateY(300px);
 		}
 	}
+
 	.container__login.sign-up-mode {
 		&:before {
 			transform: translate(-50%,100%);
-			bottom: 32%;
+			bottom: 20%;
 			right: initial;
 		}
-	
 		.left-panel {
 			.image {
 				transform: translateY(-300px);
@@ -333,16 +332,18 @@ form.sign-up-form {
 			}
 		}
 		.signin-signup {
-			top: 5%;
+			top: -4%;
 			transform: translate(-50%,0);
 			left: 50%;
 		}
 	}
+
 	.container__login.sign-up-mode form.sign-up-form {
 		z-index: 2;
 		opacity: 1;
 		margin-bottom: -300px;
 	}
+
 }
 
 

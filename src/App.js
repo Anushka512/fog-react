@@ -1,7 +1,7 @@
 import "./style.scss";
 
 import Navbar from "./Components/Navbar/Navbar.js";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import Error from "./Pages/Error/Error.js";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Pages/Home/Home";
@@ -21,10 +21,11 @@ import CreatePincode from "./Pages/Admin/CreatePincode";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
 import CreateCoupon from "./Pages/Admin/CreateCoupon";
 import CouponList from "./Pages/Admin/CouponsList";
-import Demo from "./Demo.js"
+import Demo from "./Demo.js";
+import Checkout from "./Pages/Checkout/Checkout";
 
 import ProductDetail from "./Pages/ProductDetail/ProductDetails.js";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 // import { ContactEmergency } from "@mui/icons-material";
 import CreateCategory from "./Pages/Admin/CreateCategory";
 import UserList from "./Pages/Admin/UserList";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/admin/header" element={<HeaderOffer />} />
           <Route path="/admin/coupons" element={<CouponList />} />
           <Route path="/admin/coupon/create" element={<CreateCoupon />} />
+        
         </Route>
       </Routes>
 
@@ -63,6 +65,7 @@ function App() {
         <Route path="/auth" element={<Login />} />
         <Route path="/badreq" element={<Error />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route
           path="/product/:id"
           element={

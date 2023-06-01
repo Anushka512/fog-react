@@ -226,9 +226,6 @@ function Home() {
                 slidesPerView={3}
                 navigation // Enable navigation
                 autoplay={{ delay: 2000, disableOnInteraction: false }}
-                // pagination={{ clickable: true }}
-                // onSwiper={(swiper) => console.log(swiper)}
-                // onSlideChange={() => console.log("slide change")}
                 breakpoints={breakpoints}
               >
                 {products?.map((item, index) => (
@@ -276,9 +273,7 @@ function Home() {
                     spaceBetween={20}
                     slidesPerView={3}
                     navigation
-                    autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable navigation
-                    // onSwiper={(swiper) => console.log(swiper)}
-                    // onSlideChange={() => console.log("slide change")}
+                    autoplay={{ delay: 2000, disableOnInteraction: false }} 
                     breakpoints={breakpoints}
                   >
                     {products?.map((item, index) => (
@@ -288,7 +283,6 @@ function Home() {
                           key={item.name + index}
                           imgUrl={item?.images[0]?.url}
                           name={item.name}
-                          // price={item.weightPrice[0].price}
                           weight={item.weightPrice[0].weight}
                           salePrice={item.weightPrice[0].price}
                           category={item.category}
@@ -317,9 +311,7 @@ function Home() {
                     spaceBetween={20}
                     slidesPerView={3}
                     navigation
-                    autoplay={{ delay: 2000, disableOnInteraction: false }} // Enable navigation
-                    // onSwiper={(swiper) => console.log(swiper)}
-                    // onSlideChange={() => console.log("slide change")}
+                    autoplay={{ delay: 2000, disableOnInteraction: false }}
                     breakpoints={breakpoints}
                   >
                     {products?.map((item, index) => (
@@ -329,7 +321,6 @@ function Home() {
                           key={item.name + index}
                           imgUrl={item?.images[0]?.url}
                           name={item.name}
-                          // price={item.weightPrice[0].price}
                           weight={item.weightPrice[0].weight}
                           salePrice={item.weightPrice[0].price}
                           category={item.category}
@@ -422,15 +413,11 @@ function Home() {
               allowing them to relish every moment without worry, while indulging
               in our mouthwatering and completely Gluten-Free products. Experience
               the joy of gluten-free living and embrace a life filled with
-              flavorful delights.
+              flavorful delights.
             </p>
-
           </div>
 
-
-
           <div className="test-cards">
-
             <Swiper
               spaceBetween={20}
               slidesPerView={3}
@@ -511,7 +498,6 @@ function Home() {
           <div className="cta-right">
             <form onSubmit={handleSubmit}>
               <div className="form-field">
-                {/* <label htmlFor="email">Email</label> */}
                 <input
                   type="email"
                   id="email"
@@ -522,18 +508,6 @@ function Home() {
                 />
                 <button type="submit">Submit</button>
               </div>
-              {/* <div className="form-field">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Type your words here"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
-            </div> */}
-              {/* <button type="submit">Submit</button> */}
             </form>
           </div>
         </div>
