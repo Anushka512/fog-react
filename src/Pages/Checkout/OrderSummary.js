@@ -29,6 +29,7 @@ const OrderSummary = () => {
             ))}
           </div>
       </div>
+      <div className='check'>
       <div className="subtotal">
         <span>Subtotal: ₹{cartTotal()}</span>
       </div>
@@ -40,6 +41,7 @@ const OrderSummary = () => {
       </div>
       <div className="total">
         <span>Total: ₹115</span>
+      </div>
       </div>
     </div>
   );

@@ -12,11 +12,11 @@ const ShippingDetails = () => {
         <input type="email" placeholder="Email" />
         <input type="text" placeholder="Phone Number" />
         <br></br>
-        <h2>Payment Details</h2>
+        {/* <h2>Payment Details</h2>
         <input type="text" placeholder="Name on Card" />
         <input type="text" placeholder="Card Number" />
         <input type="text" placeholder="Valid Transaction" />
-        <input type="text" placeholder="CVC Code" />
+        <input type="text" placeholder="CVC Code" /> */}
         <button className="submit-button">Submit</button>
       </form>
     </div>
